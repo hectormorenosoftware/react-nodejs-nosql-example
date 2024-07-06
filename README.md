@@ -1,4 +1,4 @@
-This is an example of a Full Stack Web Application using different databases for development, and production in React JS, Node JS, and Mongo DB.
+This is an example of a Full Stack Web Application using different databases for development and production in React JS, Node JS, and Mongo DB.
 
 To start server:
 
