@@ -1,0 +1,34 @@
+{
+  "JohnNewton": {
+    "name": "John",
+    "lastName": "Newton",
+    "userName": "JohnNewton",
+    "balance": 11000,
+    "accountType": "checking",
+    "currencyType": "USD"
+  },
+  "DavidWillson": {
+    "name": "David",
+    "lastName": "Willson",
+    "userName": "DavidWillson",
+    "balance": 88000,
+    "accountType": "checking",
+    "currencyType": "USD"
+  },
+  "JohnWillson": {
+    "name": "John",
+    "lastName": "Willson",
+    "userName": "JohnWillson",
+    "balance": 188000,
+    "accountType": "checking",
+    "currencyType": "USD"
+  },
+  "MikeWillson": {
+    "name": "Mike",
+    "lastName": "Willson",
+    "userName": "MikeWillson",
+    "balance": 75000,
+    "accountType": "checking",
+    "currencyType": "USD"
+  }
+}
