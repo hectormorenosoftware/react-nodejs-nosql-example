@@ -2,5 +2,5 @@ This is an example of a Full Stack Web Application using different databases for
 
 To start server:
 
-NODE_ENV=dev node index.js
-NODE_ENV=prod node index.js
+NODE_ENV=development node index.js
+NODE_ENV=production node index.js
