@@ -19,7 +19,7 @@ if (cluster.isMaster) {
   app.use(express.static("build"));
 
   app.get("/get-accounts", (req, res) => {
-    if (process.env.NODE_ENV === "dev") {
+    if (process.env.NODE_ENV === "development") {
       console.log("dev");
       const rawData = fs.readFileSync("./database/accounts_dev.json");
       const jsonData = JSON.parse(rawData);
@@ -28,7 +28,7 @@ if (cluster.isMaster) {
       res.send(arrayData);
     }
 
-    if (process.env.NODE_ENV === "prod") {
+    if (process.env.NODE_ENV === "production") {
       console.log("prod");
       const rawData = fs.readFileSync("./database/accounts_prod.json");
       const jsonData = JSON.parse(rawData);
