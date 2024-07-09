@@ -2,10 +2,17 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getDataThunk } from "../redux/actions/exampleActions";
+import {
+  getUsersDataRedux,
+  getUserDataRedux,
+} from "../redux/actions/userActions";
 import "./Index.css";
 
 class IndexPage extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { firstName: "", lastName: "" };
+  }
   componentDidMount() {
     const { data } = this.props;
 
@@ -16,7 +23,36 @@ class IndexPage extends React.PureComponent {
     return null;
   }
 
+  setFirstName = (e) => {
+    const { value } = e.target;
+    this.setState({
+      firstName: value,
+    });
+  };
+
+  setLastName = (e) => {
+    const { value } = e.target;
+    this.setState({
+      lastName: value,
+    });
+  };
+
+  searchForUserByUserName = () => {
+    const { firstName, lastName } = this.state;
+    if (firstName.length === 0) {
+      return null;
+    }
+    if (lastName.length === 0) {
+      return null;
+    }
+
+    if (firstName.length > 0 && lastName.length > 0) {
+      this.props.getIndividualUserDataIndexPage(firstName.concat(lastName));
+    }
+  };
+
   render() {
+    const { firstName, lastName } = this.state;
     const { loading, data } = this.props;
 
     if (loading === true) {
@@ -35,6 +71,28 @@ class IndexPage extends React.PureComponent {
     return (
       <div className="table-style">
         <h1 className="heading-subject">American Express Investing Accounts</h1>
+        <div className="flex-box-searchbar-searchbutton">
+          <input
+            className="search-bar"
+            placeholder="Enter first name"
+            onChange={this.setFirstName}
+            value={firstName}
+          />
+          <input
+            className="search-bar"
+            placeholder="Enter Last name"
+            onChange={this.setLastName}
+            value={lastName}
+          />
+          <button
+            className="search-client-button"
+            type="button"
+            onClick={this.searchForUserByUserName}
+          >
+            Search
+          </button>
+        </div>
+
         <table className="table-data">
           <thead>
             <tr>
@@ -66,13 +124,20 @@ class IndexPage extends React.PureComponent {
 
 function mapStateToProps(state) {
   return {
-    data: state.exampleReducer.data,
-    loading: state.exampleReducer.loading,
+    data: state.userReducer.data,
+    userData: state.userReducer.userData,
+    loading: state.userReducer.loading,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { getDataIndexPage: bindActionCreators(getDataThunk, dispatch) };
+  return {
+    getDataIndexPage: bindActionCreators(getUsersDataRedux, dispatch),
+    getIndividualUserDataIndexPage: bindActionCreators(
+      getUserDataRedux,
+      dispatch
+    ),
+  };
 }
 
 export default withRouter(

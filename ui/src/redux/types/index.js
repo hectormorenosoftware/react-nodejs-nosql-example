@@ -1,3 +1,6 @@
 export const GET_DATA = "GET_DATA";
 export const GET_DATA_SUCCESS = " GET_DATA_SUCCESS";
 export const GET_DATA_ERROR = "GET_DATA_ERROR";
+export const GET_USER_DATA = "GET_USER_DATA";
+export const GET_USER_DATA_SUCCESS = "GET_USER_DATA_SUCCESS";
+export const GET_USER_DATA_ERROR = "GET_USER_DATA_ERROR";

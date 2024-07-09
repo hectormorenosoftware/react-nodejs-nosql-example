@@ -1,14 +1,12 @@
 import axios from "axios";
 
-async function getUserTableData() {
+async function getUsersTableData() {
   try {
     let url = null;
     if (process.env.NODE_ENV === "development") {
-      console.log("Called development", process.env.NODE_ENV);
       url = "http://localhost:5000/get-accounts";
     }
     if (process.env.NODE_ENV === "production") {
-      console.log("Called production", process.env.NODE_ENV);
       url = "http://localhost:5000/get-accounts";
     }
 
@@ -20,4 +18,22 @@ async function getUserTableData() {
   }
 }
 
-export default getUserTableData;
+async function getUserTableData(userName) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = `http://localhost:5000/get-user-account/${userName}`;
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = `http://localhost:5000/get-user-account/${userName}`;
+    }
+
+    const data = await axios(url);
+
+    return data.data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
+export { getUsersTableData, getUserTableData };
