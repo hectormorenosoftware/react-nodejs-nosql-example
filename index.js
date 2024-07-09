@@ -36,8 +36,8 @@ if (cluster.isMaster) {
     }
   });
 
-  app.get("/get-user-account/:userName", (req, res) => {
-    const { userName } = req.params;
+  app.get("/get-user-account", (req, res) => {
+    const { userName } = req.query;
 
     if (process.env.NODE_ENV === "development") {
       const rawData = fs.readFileSync("./database/accounts_dev.json");
