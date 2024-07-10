@@ -24,7 +24,7 @@ if (cluster.isMaster) {
       const jsonData = JSON.parse(rawData);
       const arrayData = Object.values(jsonData);
 
-      res.send(arrayData);
+      return res.send(arrayData);
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -32,8 +32,9 @@ if (cluster.isMaster) {
       const jsonData = JSON.parse(rawData);
       const arrayData = Object.values(jsonData);
 
-      res.send(arrayData);
+      return res.send(arrayData);
     }
+    return res.send([]);
   });
 
   app.get("/get-user-account", (req, res) => {
@@ -43,15 +44,23 @@ if (cluster.isMaster) {
       const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
       const jsonData = JSON.parse(rawData);
 
-      res.send([jsonData[userName]]);
+      if (jsonData[userName] === undefined) {
+        return res.send([]);
+      }
+      return res.send([jsonData[userName]]);
     }
 
     if (process.env.NODE_ENV === "production") {
       const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
       const jsonData = JSON.parse(rawData);
 
-      res.send([jsonData[userName]]);
+      if (jsonData[userName] === undefined) {
+        return res.send([]);
+      }
+      return res.send([jsonData[userName]]);
     }
+
+    return res.send([]);
   });
 
   // All workers use this port

@@ -1,10 +1,11 @@
-This is an example on how to create a basic website using React, Redux, and React Router with Webpack.
-
 To install dependencies
 npm install
 
-To run type in the root
+To run ui server type in this folder root
 npm start
 
-To build run
-npm run build
+To make a build for production
+npm run build-prod
+
+To make a build for development
+npm run build-dev

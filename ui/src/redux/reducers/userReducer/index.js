@@ -9,7 +9,7 @@ import {
 
 const INTIAL_STATE = {
   error: false,
-  loading: false,
+  loading: true,
   data: [],
 };
 

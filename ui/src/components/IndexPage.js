@@ -104,17 +104,19 @@ class IndexPage extends React.PureComponent {
             </tr>
           </thead>
           <tbody>
-            {data.map((value, i) => {
-              return (
-                <tr key={i}>
-                  <td>{value.name}</td>
-                  <td>{value.lastName}</td>
-                  <td>{value.accountType}</td>
-                  <td>{value.balance}</td>
-                  <td>{value.currencyType}</td>
-                </tr>
-              );
-            })}
+            {data.length > 0
+              ? data.map((value, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{value.name}</td>
+                      <td>{value.lastName}</td>
+                      <td>{value.accountType}</td>
+                      <td>{value.balance}</td>
+                      <td>{value.currencyType}</td>
+                    </tr>
+                  );
+                })
+              : null}
           </tbody>
         </table>
       </div>
