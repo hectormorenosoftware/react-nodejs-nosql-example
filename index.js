@@ -20,7 +20,7 @@ if (cluster.isMaster) {
 
   app.get("/get-accounts", (req, res) => {
     if (process.env.NODE_ENV === "development") {
-      const rawData = fs.readFileSync("./database/accounts_dev.json");
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
       const jsonData = JSON.parse(rawData);
       const arrayData = Object.values(jsonData);
 
@@ -28,7 +28,7 @@ if (cluster.isMaster) {
     }
 
     if (process.env.NODE_ENV === "production") {
-      const rawData = fs.readFileSync("./database/accounts_prod.json");
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
       const jsonData = JSON.parse(rawData);
       const arrayData = Object.values(jsonData);
 
@@ -40,14 +40,14 @@ if (cluster.isMaster) {
     const { userName } = req.query;
 
     if (process.env.NODE_ENV === "development") {
-      const rawData = fs.readFileSync("./database/accounts_dev.json");
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
       const jsonData = JSON.parse(rawData);
 
       res.send([jsonData[userName]]);
     }
 
     if (process.env.NODE_ENV === "production") {
-      const rawData = fs.readFileSync("./database/accounts_prod.json");
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
       const jsonData = JSON.parse(rawData);
 
       res.send([jsonData[userName]]);

@@ -28,6 +28,9 @@ async function getUserTableData(userName) {
       url = "http://localhost:5000/get-user-account";
     }
 
+    //axios and fetch in this scenario is the same syntax because
+    //you can't send a body on a GET request using axios or fetch
+
     const data = await axios(url, { params: { userName: userName } });
 
     return data.data;
