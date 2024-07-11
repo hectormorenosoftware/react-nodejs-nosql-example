@@ -39,4 +39,27 @@ async function getUserTableData(userName) {
   }
 }
 
-export { getUsersTableData, getUserTableData };
+async function login(userName, password) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/login";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/login";
+    }
+
+    //axios and fetch in this scenario is the same syntax because
+    //you can't send a body on a GET request using axios or fetch
+
+    const data = await axios(url, {
+      params: { userName: userName, password: password },
+    });
+
+    return data.data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
+export { getUsersTableData, getUserTableData, login };

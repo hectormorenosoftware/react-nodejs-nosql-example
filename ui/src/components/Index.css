@@ -16,16 +16,6 @@ td {
   border: 1px solid black;
 }
 
-.search-bar {
-  border-radius: 18px;
-  border: 1px solid black;
-  height: 38.5px;
-  width: 50%;
-  align-self: center;
-  font-weight: 800;
-  font-size: 18px;
-}
-
 .heading-subject {
   font-weight: bold;
   font-size: 45px;

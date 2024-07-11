@@ -1,0 +1,9 @@
+{
+  "MikeJameson": {
+    "name": "Mike",
+    "lastName": "Jameson",
+    "userName": "MikeJameson",
+    "admin": "true",
+    "password": "helloworld"
+  }
+}
