@@ -194,6 +194,36 @@ if (cluster.isMaster) {
     res.send("Could not create user");
   });
 
+  app.delete("/delete-employee", (req, res) => {
+    const { userName } = req.body;
+
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      delete jsonDataToModify[userName];
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
+
+      return res.send({ message: "Successfully deleted employee" });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      delete jsonDataToModify[userName];
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
+
+      return res.send({ message: "Successfully deleted employee" });
+    }
+
+    res.send("Could not delete employee");
+  });
+
   // All workers use this port
   app.listen(process.env.PORT || 5000, () => {
     console.log(`server listenting in port ${process.env.PORT || 5000}`);

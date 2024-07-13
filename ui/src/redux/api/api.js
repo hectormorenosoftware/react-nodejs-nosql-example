@@ -123,10 +123,41 @@ async function createEmployeeFunc(
   }
 }
 
+async function deleteEmployeeFunc(userName) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/delete-employee";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/delete-employee";
+    }
+
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+
+    const data = await fetch(url, {
+      method: "DELETE",
+      body: JSON.stringify({
+        userName: userName,
+      }),
+      headers: myHeaders,
+    });
+
+    const res = await data.json();
+
+    return res.message;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 export {
   getUsersTableData,
   getUserTableData,
   login,
   createAdminFunc,
   createEmployeeFunc,
+  deleteEmployeeFunc,
 };

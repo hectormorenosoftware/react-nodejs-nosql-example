@@ -6,6 +6,7 @@ import {
   getUsersDataRedux,
   getUserDataRedux,
   resetAllDataRedux,
+  deleteEmployeeRedux,
 } from "../redux/actions/userActions";
 import "./Index.css";
 
@@ -74,6 +75,10 @@ class IndexPage extends React.PureComponent {
     const { history, resetAllDataFuncProp } = this.props;
     resetAllDataFuncProp();
     history.push("/");
+  };
+
+  deleteUser = (userName) => {
+    this.props.deleteEmployeeFuncProp(userName);
   };
 
   render() {
@@ -164,6 +169,7 @@ class IndexPage extends React.PureComponent {
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -175,6 +181,16 @@ class IndexPage extends React.PureComponent {
                         <td>{value.lastName}</td>
                         <td>{value.email}</td>
                         <td>{value.phoneNumber}</td>
+                        <td>
+                          <button
+                            type="text"
+                            className="client-button"
+                            style={{ backgroundColor: "red", color: "white" }}
+                            onClick={this.deleteUser.bind(this, value.userName)}
+                          >
+                            Delete
+                          </button>
+                        </td>
                       </tr>
                     );
                   })
@@ -204,6 +220,7 @@ function mapDispatchToProps(dispatch) {
       dispatch
     ),
     resetAllDataFuncProp: bindActionCreators(resetAllDataRedux, dispatch),
+    deleteEmployeeFuncProp: bindActionCreators(deleteEmployeeRedux, dispatch),
   };
 }
 

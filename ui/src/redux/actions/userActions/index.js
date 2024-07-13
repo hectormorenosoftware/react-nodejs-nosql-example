@@ -16,6 +16,9 @@ import {
   CREATE_EMPLOYEE_SUCCESS,
   CREATE_EMPLOYEE_FAILURE,
   RESET_ALL_DATA,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE,
 } from "../../types";
 import {
   getUsersTableData,
@@ -23,6 +26,7 @@ import {
   login,
   createAdminFunc,
   createEmployeeFunc,
+  deleteEmployeeFunc,
 } from "../../api/api";
 
 export function getUsersDataRedux() {
@@ -114,6 +118,20 @@ export function createEmployeeRedux(
       dispatch({ type: CREATE_EMPLOYEE_SUCCESS, payload: data.message });
     } catch (e) {
       dispatch({ type: CREATE_EMPLOYEE_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function deleteEmployeeRedux(userName) {
+  return async function (dispatch) {
+    dispatch({ type: DELETE_USER_REQUEST });
+    try {
+      const data = await deleteEmployeeFunc(userName);
+
+      dispatch({ type: DELETE_USER_SUCCESS, payload: data });
+    } catch (e) {
+      dispatch({ type: DELETE_USER_FAILURE });
       throw new Error(e);
     }
   };

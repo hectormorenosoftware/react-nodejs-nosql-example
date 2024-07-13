@@ -1,37 +1,9 @@
 {
-  "JohnNewton": {
-    "name": "John",
-    "lastName": "Newton",
-    "userName": "JohnNewton",
-    "email": "johnnewton@gmail.com",
-    "phoneNumber": "619-934-9878"
-  },
   "DavidWillson": {
     "name": "David",
     "lastName": "Willson",
     "userName": "DavidWillson",
-    "email": "davidwillson@gmail.com",
-    "phoneNumber": "619-239-9364"
-  },
-  "JohnWillson": {
-    "name": "John",
-    "lastName": "Willson",
-    "userName": "JohnWillson",
-    "email": "johnwillson@gmail.com",
-    "phoneNumber": "619-442-2993"
-  },
-  "MikeWillson": {
-    "name": "Mike",
-    "lastName": "Willson",
-    "userName": "MikeWillson",
-    "email": "mikewillson@gmail.com",
-    "phoneNumber": "619-313-9812"
-  },
-  "JoseParker": {
-    "name": "Jose",
-    "lastName": "Parker",
-    "userName": "JoseParker",
-    "email": "joseparker@gmail.com",
-    "phoneNumber": "415-988-4994"
+    "email": "david@gmail.com",
+    "phoneNumber": "212-090-2300"
   }
 }

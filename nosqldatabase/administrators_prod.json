@@ -5,19 +5,5 @@
     "userName": "JosePascal",
     "admin": "true",
     "password": "testing"
-  },
-  "PedroParker": {
-    "name": "Pedro",
-    "lastName": "Parker",
-    "userName": "PedroParker",
-    "admin": "true",
-    "password": "hellotesting"
-  },
-  "ManuelParker": {
-    "name": "Manuel",
-    "lastName": "Parker",
-    "userName": "ManuelParker",
-    "admin": "true",
-    "password": "testing233!@"
   }
 }

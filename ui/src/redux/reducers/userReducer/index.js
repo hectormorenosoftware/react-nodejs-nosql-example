@@ -16,6 +16,9 @@ import {
   CREATE_EMPLOYEE_SUCCESS,
   CREATE_EMPLOYEE_FAILURE,
   RESET_ALL_DATA,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -25,6 +28,7 @@ const INTIAL_STATE = {
   loginSuccess: false,
   createAdminMessage: "",
   createEmployeeMessage: "",
+  deletedEmployeeMessage: "",
 };
 
 function userReducer(state = INTIAL_STATE, action) {
@@ -139,6 +143,27 @@ function userReducer(state = INTIAL_STATE, action) {
         error: false,
         loading: false,
         createEmployeeMessage: "",
+      };
+    case DELETE_USER_REQUEST:
+      return {
+        ...state,
+        error: false,
+        loading: true,
+        deletedEmployeeMessage: "",
+      };
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        deletedEmployeeMessage: action.payload,
+      };
+    case DELETE_USER_FAILURE:
+      return {
+        ...state,
+        error: true,
+        loading: false,
+        deletedEmployeeMessage: "",
       };
 
     case RESET_ALL_DATA:

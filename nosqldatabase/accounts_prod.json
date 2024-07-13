@@ -1,25 +1,4 @@
 {
-  "JohnNewton": {
-    "name": "John",
-    "lastName": "Newton",
-    "userName": "JohnNewton",
-    "email": "johnnewton@gmail.com",
-    "phoneNumber": "619-934-9878"
-  },
-  "DavidWillson": {
-    "name": "David",
-    "lastName": "Willson",
-    "userName": "DavidWillson",
-    "email": "davidwillson@gmail.com",
-    "phoneNumber": "619-239-9364"
-  },
-  "JohnWillson": {
-    "name": "John",
-    "lastName": "Willson",
-    "userName": "JohnWillson",
-    "email": "johnwillson@gmail.com",
-    "phoneNumber": "619-442-2993"
-  },
   "MikeWillson": {
     "name": "Mike",
     "lastName": "Willson",
@@ -27,32 +6,11 @@
     "email": "mikewillson@gmail.com",
     "phoneNumber": "619-313-9812"
   },
-  "JoseParker": {
-    "name": "Jose",
-    "lastName": "Parker",
-    "userName": "JoseParker",
-    "email": "joseparker@gmail.com",
-    "phoneNumber": "415-988-4994"
-  },
-  "JoseWatkins": {
-    "name": "Jose",
-    "lastName": "Watkins",
-    "userName": "JoseWatkins",
-    "email": "josewatkins@gmail.com",
-    "phoneNumber": "202-304-4404"
-  },
-  "PedroWatkins": {
-    "name": "Pedro",
-    "lastName": "Watkins",
-    "userName": "PedroWatkins",
-    "email": "pedrowatkins@gmail.com",
-    "phoneNumber": "202-344-3994"
-  },
-  "PedroPascal": {
-    "name": "Pedro",
-    "lastName": "Pascal",
-    "userName": "PedroPascal",
-    "email": "pedropascal@gmail.com",
-    "phoneNumber": "202-393-2993"
+  "DanWalker": {
+    "name": "Dan",
+    "lastName": "Walker",
+    "userName": "DanWalker",
+    "email": "danwalker@gmail.com",
+    "phoneNumber": "202-393-3949"
   }
 }
