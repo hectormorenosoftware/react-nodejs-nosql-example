@@ -5,12 +5,5 @@
     "userName": "MikeWillson",
     "email": "mikewillson@gmail.com",
     "phoneNumber": "619-313-9812"
-  },
-  "DanWalker": {
-    "name": "Dan",
-    "lastName": "Walker",
-    "userName": "DanWalker",
-    "email": "danwalker@gmail.com",
-    "phoneNumber": "202-393-3949"
   }
 }

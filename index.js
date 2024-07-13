@@ -210,13 +210,13 @@ if (cluster.isMaster) {
     }
 
     if (process.env.NODE_ENV === "production") {
-      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
       const jsonDataToModify = JSON.parse(rawData);
 
       delete jsonDataToModify[userName];
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
-      fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
+      fs.writeFileSync("./nosqldatabase/accounts_prod.json", jsonDataToWrite);
 
       return res.send({ message: "Successfully deleted employee" });
     }
