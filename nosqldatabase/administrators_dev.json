@@ -1,9 +1,9 @@
 {
-  "MikeJameson": {
-    "name": "Mike",
-    "lastName": "Jameson",
-    "userName": "MikeJameson",
+  "JosePascal": {
+    "name": "Jose",
+    "lastName": "Pascal",
+    "userName": "JosePascal",
     "admin": "true",
-    "password": "helloworld"
+    "password": "testing"
   }
 }

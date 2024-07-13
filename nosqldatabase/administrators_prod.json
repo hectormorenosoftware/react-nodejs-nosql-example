@@ -1,9 +1,23 @@
 {
-  "MikeJameson": {
-    "name": "Mike",
-    "lastName": "Jameson",
-    "userName": "MikeJameson",
+  "JosePascal": {
+    "name": "Jose",
+    "lastName": "Pascal",
+    "userName": "JosePascal",
     "admin": "true",
-    "password": "helloworld"
+    "password": "testing"
+  },
+  "PedroParker": {
+    "name": "Pedro",
+    "lastName": "Parker",
+    "userName": "PedroParker",
+    "admin": "true",
+    "password": "hellotesting"
+  },
+  "ManuelParker": {
+    "name": "Manuel",
+    "lastName": "Parker",
+    "userName": "ManuelParker",
+    "admin": "true",
+    "password": "testing233!@"
   }
 }

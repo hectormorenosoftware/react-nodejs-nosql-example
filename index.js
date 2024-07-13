@@ -99,6 +99,101 @@ if (cluster.isMaster) {
     return res.send({ loginSuccess: false });
   });
 
+  app.post(
+    "/create-account/:name/:lastName/:userName/:admin/:password",
+    (req, res) => {
+      const { name, lastName, userName, admin, password } = req.params;
+
+      if (process.env.NODE_ENV === "development") {
+        const rawData = fs.readFileSync(
+          "./nosqldatabase/administrators_dev.json"
+        );
+        const jsonDataToModify = JSON.parse(rawData);
+
+        jsonDataToModify[userName] = {
+          name,
+          lastName,
+          userName,
+          admin,
+          password,
+        };
+
+        const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+        fs.writeFileSync(
+          "./nosqldatabase/administrators_dev.json",
+          jsonDataToWrite
+        );
+
+        return res.send(`Successfully created account`);
+      }
+
+      if (process.env.NODE_ENV === "production") {
+        const rawData = fs.readFileSync(
+          "./nosqldatabase/administrators_prod.json"
+        );
+        const jsonDataToModify = JSON.parse(rawData);
+
+        jsonDataToModify[userName] = {
+          name,
+          lastName,
+          userName,
+          admin,
+          password,
+        };
+
+        const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+        fs.writeFileSync(
+          "./nosqldatabase/administrators_prod.json",
+          jsonDataToWrite
+        );
+
+        return res.send(`Successfully created account`);
+      }
+      res.send("Could not create user");
+    }
+  );
+
+  app.post("/create-employee", (req, res) => {
+    const { name, lastName, email, userName, phoneNumber } = req.body;
+
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      jsonDataToModify[userName] = {
+        name,
+        lastName,
+        userName,
+        email,
+        phoneNumber,
+      };
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
+
+      return res.send({ message: "Successfully created employee" });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      jsonDataToModify[userName] = {
+        name,
+        lastName,
+        userName,
+        email,
+        phoneNumber,
+      };
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync("./nosqldatabase/accounts_prod.json", jsonDataToWrite);
+
+      return res.send({ message: "Successfully created employee" });
+    }
+    res.send("Could not create user");
+  });
+
   // All workers use this port
   app.listen(process.env.PORT || 5000, () => {
     console.log(`server listenting in port ${process.env.PORT || 5000}`);

@@ -8,8 +8,22 @@ import {
   LOGIN_REQUEST,
   LOGIN_REQUEST_SUCCESS,
   LOGIN_REQUEST_FAILURE,
+  CREATE_ADMIN_REQUEST,
+  CREATE_ADMIN_SUCCESS,
+  CREATE_ADMIN_FAILURE,
+  RESET_MESSAGE,
+  CREATE_EMPLOYEE_REQUEST,
+  CREATE_EMPLOYEE_SUCCESS,
+  CREATE_EMPLOYEE_FAILURE,
+  RESET_ALL_DATA,
 } from "../../types";
-import { getUsersTableData, getUserTableData, login } from "../../api/api";
+import {
+  getUsersTableData,
+  getUserTableData,
+  login,
+  createAdminFunc,
+  createEmployeeFunc,
+} from "../../api/api";
 
 export function getUsersDataRedux() {
   return async function (dispatch) {
@@ -55,5 +69,64 @@ export function loginRedux(userName, password) {
       dispatch({ type: LOGIN_REQUEST_FAILURE });
       throw new Error(e);
     }
+  };
+}
+
+export function createAdminRedux(name, lastName, userName, password, admin) {
+  return async function (dispatch) {
+    dispatch({ type: CREATE_ADMIN_REQUEST });
+
+    try {
+      const data = await createAdminFunc(
+        name,
+        lastName,
+        userName,
+        password,
+        admin
+      );
+
+      dispatch({ type: CREATE_ADMIN_SUCCESS, payload: data });
+    } catch (e) {
+      dispatch({ type: CREATE_ADMIN_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function createEmployeeRedux(
+  name,
+  lastName,
+  userName,
+  email,
+  phoneNumber
+) {
+  return async function (dispatch) {
+    dispatch({ type: CREATE_EMPLOYEE_REQUEST });
+    try {
+      const data = await createEmployeeFunc(
+        name,
+        lastName,
+        userName,
+        email,
+        phoneNumber
+      );
+
+      dispatch({ type: CREATE_EMPLOYEE_SUCCESS, payload: data.message });
+    } catch (e) {
+      dispatch({ type: CREATE_EMPLOYEE_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function resetMessageRedux() {
+  return function (dispatch) {
+    dispatch({ type: RESET_MESSAGE });
+  };
+}
+
+export function resetAllDataRedux() {
+  return function (dispatch) {
+    dispatch({ type: RESET_ALL_DATA });
   };
 }

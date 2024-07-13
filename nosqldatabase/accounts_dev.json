@@ -3,32 +3,35 @@
     "name": "John",
     "lastName": "Newton",
     "userName": "JohnNewton",
-    "balance": 11000,
-    "accountType": "checking",
-    "currencyType": "USD"
+    "email": "johnnewton@gmail.com",
+    "phoneNumber": "619-934-9878"
   },
   "DavidWillson": {
     "name": "David",
     "lastName": "Willson",
     "userName": "DavidWillson",
-    "balance": 88000,
-    "accountType": "checking",
-    "currencyType": "USD"
+    "email": "davidwillson@gmail.com",
+    "phoneNumber": "619-239-9364"
   },
   "JohnWillson": {
     "name": "John",
     "lastName": "Willson",
     "userName": "JohnWillson",
-    "balance": 188000,
-    "accountType": "checking",
-    "currencyType": "USD"
+    "email": "johnwillson@gmail.com",
+    "phoneNumber": "619-442-2993"
   },
   "MikeWillson": {
     "name": "Mike",
     "lastName": "Willson",
     "userName": "MikeWillson",
-    "balance": 75000,
-    "accountType": "checking",
-    "currencyType": "USD"
+    "email": "mikewillson@gmail.com",
+    "phoneNumber": "619-313-9812"
+  },
+  "JoseParker": {
+    "name": "Jose",
+    "lastName": "Parker",
+    "userName": "JoseParker",
+    "email": "joseparker@gmail.com",
+    "phoneNumber": "415-988-4994"
   }
 }

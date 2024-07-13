@@ -19,7 +19,7 @@ class LoginPage extends React.PureComponent {
   componentDidUpdate() {
     const { loginSuccess, history } = this.props;
     if (loginSuccess === true) {
-      history.push("/accounts");
+      history.push("/employees");
     }
   }
 
@@ -80,11 +80,11 @@ class LoginPage extends React.PureComponent {
     return (
       <React.Fragment>
         <h1 style={{ textAlign: "center" }}>
-          American Express Investment Login Portal
+          American Express Manager Login Portal
         </h1>
         <div className="login-inputs-flex-box">
           <input
-            className="search-bar"
+            className="search-bar margin-create-employee-fields"
             type="text"
             name="username"
             onChange={this.changeUserName}
@@ -93,7 +93,7 @@ class LoginPage extends React.PureComponent {
             value={userName}
           />
           <input
-            className="search-bar"
+            className="search-bar margin-create-employee-fields"
             type={displayPassword ? "text" : "password"}
             name="password"
             onChange={this.changePassword}
@@ -101,20 +101,28 @@ class LoginPage extends React.PureComponent {
             placeholder="Enter your password"
             value={password}
           />
-          <button
-            className="login-page-button"
-            type="button"
-            onClick={this.showPassword}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            Display Password
-          </button>
-          <button
-            className="login-page-button"
-            type="button"
-            onClick={this.loginFunc}
-          >
-            Login
-          </button>
+            <button
+              className="client-button margin-create-employee-fields"
+              type="button"
+              onClick={this.showPassword}
+            >
+              Display Password
+            </button>
+            <button
+              className="client-button margin-create-employee-fields"
+              type="button"
+              onClick={this.loginFunc}
+            >
+              Login
+            </button>
+          </div>
         </div>
       </React.Fragment>
     );

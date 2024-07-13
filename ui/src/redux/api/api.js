@@ -62,4 +62,71 @@ async function login(userName, password) {
   }
 }
 
-export { getUsersTableData, getUserTableData, login };
+async function createAdminFunc(name, lastName, userName, password, admin) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = `http://localhost:5000/create-account/${name}/${lastName}/${userName}/${admin}/${password}`;
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = `http://localhost:5000/create-account/${name}/${lastName}/${userName}/${admin}/${password}`;
+    }
+
+    //axios and fetch in this scenario is the same syntax because
+    //you can't send a body on a GET request using axios or fetch
+
+    const data = await axios.post(url);
+
+    return data.data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
+async function createEmployeeFunc(
+  name,
+  lastName,
+  userName,
+  email,
+  phoneNumber
+) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/create-employee";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/create-employee";
+    }
+
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+
+    const data = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        lastName: lastName,
+        userName: userName,
+        email: email,
+        phoneNumber: phoneNumber,
+      }),
+      headers: myHeaders,
+    });
+
+    const res = await data.json();
+
+    return res;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
+export {
+  getUsersTableData,
+  getUserTableData,
+  login,
+  createAdminFunc,
+  createEmployeeFunc,
+};

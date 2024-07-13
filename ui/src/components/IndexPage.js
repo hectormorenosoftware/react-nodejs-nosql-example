@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import {
   getUsersDataRedux,
   getUserDataRedux,
+  resetAllDataRedux,
 } from "../redux/actions/userActions";
 import "./Index.css";
 
@@ -14,7 +15,11 @@ class IndexPage extends React.PureComponent {
     this.state = { firstName: "", lastName: "" };
   }
   componentDidMount() {
-    const { data } = this.props;
+    const { data, history, loginSuccess } = this.props;
+
+    if (loginSuccess === false) {
+      return history.push("/");
+    }
 
     if (data.length === 0) {
       return this.props.getDataIndexPage();
@@ -51,6 +56,26 @@ class IndexPage extends React.PureComponent {
     }
   };
 
+  routeToCreateEmployee = () => {
+    const { history } = this.props;
+    history.push("/create-employee");
+  };
+
+  routeToCreateAdmin = () => {
+    const { history } = this.props;
+    history.push("/create-admin");
+  };
+
+  resetData = () => {
+    this.props.getDataIndexPage();
+  };
+
+  logOutUser = () => {
+    const { history, resetAllDataFuncProp } = this.props;
+    resetAllDataFuncProp();
+    history.push("/");
+  };
+
   render() {
     const { firstName, lastName } = this.state;
     const { loading, data } = this.props;
@@ -69,57 +94,95 @@ class IndexPage extends React.PureComponent {
     }
 
     return (
-      <div className="table-style">
-        <h1 className="heading-subject">American Express Investing Accounts</h1>
-        <div className="flex-box-searchbar-searchbutton">
-          <input
-            className="search-bar"
-            placeholder="Enter first name"
-            onChange={this.setFirstName}
-            value={firstName}
-          />
-          <input
-            className="search-bar"
-            placeholder="Enter Last name"
-            onChange={this.setLastName}
-            value={lastName}
-          />
-          <button
-            className="search-client-button"
-            type="button"
-            onClick={this.searchForUserByUserName}
+      <React.Fragment>
+        <div className="table-style">
+          <h1 className="heading-subject">American Express Employees</h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              margin: "10px",
+              cursor: "pointer",
+            }}
           >
-            Search
-          </button>
-        </div>
+            <button
+              className="client-button"
+              type="button"
+              onClick={this.routeToCreateEmployee}
+            >
+              Create Employee
+            </button>
+            <button
+              className="client-button"
+              type="button"
+              onClick={this.routeToCreateAdmin}
+            >
+              Create Admin
+            </button>
+            <button
+              type="button"
+              className="client-button"
+              onClick={this.logOutUser}
+            >
+              Log Out
+            </button>
+          </div>
+          <div className="flex-box-searchbar-searchbutton">
+            <input
+              className="search-bar"
+              placeholder="Enter first name"
+              onChange={this.setFirstName}
+              value={firstName}
+            />
+            <input
+              className="search-bar"
+              placeholder="Enter Last name"
+              onChange={this.setLastName}
+              value={lastName}
+            />
+            <button
+              className="client-button"
+              type="button"
+              onClick={this.searchForUserByUserName}
+            >
+              Search
+            </button>
+            <button
+              className="client-button"
+              type="button"
+              onClick={this.resetData}
+            >
+              Reset
+            </button>
+          </div>
 
-        <table className="table-data">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Last Name</th>
-              <th>Account Type</th>
-              <th>Balance</th>
-              <th>Currency Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.length > 0
-              ? data.map((value, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{value.name}</td>
-                      <td>{value.lastName}</td>
-                      <td>{value.accountType}</td>
-                      <td>{value.balance}</td>
-                      <td>{value.currencyType}</td>
-                    </tr>
-                  );
-                })
-              : null}
-          </tbody>
-        </table>
-      </div>
+          <table className="table-data">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.length > 0
+                ? data.map((value, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{value.name}</td>
+                        <td>{value.lastName}</td>
+                        <td>{value.email}</td>
+                        <td>{value.phoneNumber}</td>
+                      </tr>
+                    );
+                  })
+                : null}
+            </tbody>
+          </table>
+        </div>
+      </React.Fragment>
     );
   }
 }
@@ -129,6 +192,7 @@ function mapStateToProps(state) {
     data: state.userReducer.data,
     userData: state.userReducer.userData,
     loading: state.userReducer.loading,
+    loginSuccess: state.userReducer.loginSuccess,
   };
 }
 
@@ -139,6 +203,7 @@ function mapDispatchToProps(dispatch) {
       getUserDataRedux,
       dispatch
     ),
+    resetAllDataFuncProp: bindActionCreators(resetAllDataRedux, dispatch),
   };
 }
 
