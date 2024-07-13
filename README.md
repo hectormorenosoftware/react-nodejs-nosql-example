@@ -4,5 +4,12 @@ To start server:
 
 NODE_ENV=development node index.js or NODE_ENV=production node index.js
 
+To view ui:
+http://localhost:5000
+
+To login:
+userName: JosePascal
+password: testing
+
 To deploy into the internet without using AWS to have full control of your data use ngrok.
 https://ngrok.com/
