@@ -68,6 +68,10 @@ class IndexPage extends React.PureComponent {
   };
 
   resetData = () => {
+    this.setState({
+      firstName: "",
+      lastName: "",
+    });
     this.props.getDataIndexPage();
   };
 
@@ -79,6 +83,10 @@ class IndexPage extends React.PureComponent {
 
   deleteUser = (userName) => {
     this.props.deleteEmployeeFuncProp(userName);
+    this.setState({
+      firstName: "",
+      lastName: "",
+    });
   };
 
   render() {
@@ -101,7 +109,9 @@ class IndexPage extends React.PureComponent {
     return (
       <React.Fragment>
         <div className="table-style">
-          <h1 className="heading-subject">American Express Employees</h1>
+          <h1 className="heading-subject">
+            American Express Employee Management Portal
+          </h1>
           <div
             style={{
               display: "flex",
