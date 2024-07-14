@@ -115,7 +115,7 @@ export function createEmployeeRedux(
         phoneNumber
       );
 
-      dispatch({ type: CREATE_EMPLOYEE_SUCCESS, payload: data.message });
+      dispatch({ type: CREATE_EMPLOYEE_SUCCESS, payload: data });
     } catch (e) {
       dispatch({ type: CREATE_EMPLOYEE_FAILURE });
       throw new Error(e);

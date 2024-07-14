@@ -135,7 +135,8 @@ function userReducer(state = INTIAL_STATE, action) {
         ...state,
         error: false,
         loading: false,
-        createEmployeeMessage: action.payload,
+        createEmployeeMessage: action.payload.message,
+        data: [...action.payload.data],
       };
     case CREATE_EMPLOYEE_FAILURE:
       return {
@@ -156,7 +157,8 @@ function userReducer(state = INTIAL_STATE, action) {
         ...state,
         error: false,
         loading: false,
-        deletedEmployeeMessage: action.payload,
+        deletedEmployeeMessage: action.payload.message,
+        data: [...action.payload.data],
       };
     case DELETE_USER_FAILURE:
       return {

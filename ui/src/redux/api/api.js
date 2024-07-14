@@ -147,7 +147,7 @@ async function deleteEmployeeFunc(userName) {
 
     const res = await data.json();
 
-    return res.message;
+    return res;
   } catch (e) {
     throw new Error(e);
   }

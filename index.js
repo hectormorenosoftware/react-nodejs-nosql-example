@@ -171,7 +171,14 @@ if (cluster.isMaster) {
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
       fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
 
-      return res.send({ message: "Successfully created employee" });
+      const dataToSend = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      return res.send({
+        message: "Successfully created employee",
+        data: arrToSend,
+      });
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -189,7 +196,14 @@ if (cluster.isMaster) {
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
       fs.writeFileSync("./nosqldatabase/accounts_prod.json", jsonDataToWrite);
 
-      return res.send({ message: "Successfully created employee" });
+      const dataToSend = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      return res.send({
+        message: "Successfully created employee",
+        data: arrToSend,
+      });
     }
     res.send("Could not create user");
   });
@@ -206,7 +220,14 @@ if (cluster.isMaster) {
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
       fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
 
-      return res.send({ message: "Successfully deleted employee" });
+      const dataToSend = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      return res.send({
+        message: "Successfully deleted employee",
+        data: arrToSend,
+      });
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -218,7 +239,14 @@ if (cluster.isMaster) {
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
       fs.writeFileSync("./nosqldatabase/accounts_prod.json", jsonDataToWrite);
 
-      return res.send({ message: "Successfully deleted employee" });
+      const dataToSend = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      return res.send({
+        message: "Successfully deleted employee",
+        data: arrToSend,
+      });
     }
 
     res.send("Could not delete employee");
