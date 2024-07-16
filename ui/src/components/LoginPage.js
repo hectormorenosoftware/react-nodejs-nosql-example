@@ -79,9 +79,7 @@ class LoginPage extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <h1 style={{ textAlign: "center" }}>
-          American Express Manager Login Portal
-        </h1>
+        <h1 style={{ textAlign: "center" }}>Management Login Portal</h1>
         <div className="login-inputs-flex-box">
           <input
             className="search-bar margin-create-employee-fields"

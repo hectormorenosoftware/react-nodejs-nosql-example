@@ -5,5 +5,19 @@
     "userName": "JosePascal",
     "admin": "true",
     "password": "testing"
+  },
+  "AndrewPascal": {
+    "name": "Andrew",
+    "lastName": "Pascal",
+    "userName": "AndrewPascal",
+    "admin": "true",
+    "password": "testing"
+  },
+  "JonBonjovi": {
+    "name": "Jon",
+    "lastName": "Bonjovi",
+    "userName": "JonBonjovi",
+    "admin": "true",
+    "password": "test"
   }
 }

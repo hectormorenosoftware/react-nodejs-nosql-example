@@ -109,9 +109,7 @@ class IndexPage extends React.PureComponent {
     return (
       <React.Fragment>
         <div className="table-style">
-          <h1 className="heading-subject">
-            American Express Employee Management Portal
-          </h1>
+          <h1 className="heading-subject">Employee Management Portal</h1>
           <div
             style={{
               display: "flex",
@@ -177,8 +175,12 @@ class IndexPage extends React.PureComponent {
               <tr>
                 <th>Name</th>
                 <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
+                <th>Personal Email</th>
+                <th>Personal Number</th>
+                <th>Company Email</th>
+                <th>Company Number</th>
+                <th>Slack ID</th>
+                <th>Salary</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -189,8 +191,12 @@ class IndexPage extends React.PureComponent {
                       <tr key={i}>
                         <td>{value.name}</td>
                         <td>{value.lastName}</td>
-                        <td>{value.email}</td>
+                        <td>{value.personalEmail}</td>
                         <td>{value.phoneNumber}</td>
+                        <td>{value.companyEmail}</td>
+                        <td>{value.companyNumber}</td>
+                        <td>{value.slackID}</td>
+                        <td>{value.salary}</td>
                         <td>
                           <button
                             type="text"

@@ -154,7 +154,17 @@ if (cluster.isMaster) {
   );
 
   app.post("/create-employee", (req, res) => {
-    const { name, lastName, email, userName, phoneNumber } = req.body;
+    const {
+      name,
+      lastName,
+      personalEmail,
+      userName,
+      phoneNumber,
+      companyEmail,
+      companyNumber,
+      slackID,
+      salary,
+    } = req.body;
 
     if (process.env.NODE_ENV === "development") {
       const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
@@ -164,8 +174,12 @@ if (cluster.isMaster) {
         name,
         lastName,
         userName,
-        email,
+        personalEmail,
         phoneNumber,
+        companyEmail,
+        companyNumber,
+        slackID,
+        salary,
       };
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
@@ -189,8 +203,12 @@ if (cluster.isMaster) {
         name,
         lastName,
         userName,
-        email,
+        personalEmail,
         phoneNumber,
+        companyEmail,
+        companyNumber,
+        slackID,
+        salary,
       };
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);

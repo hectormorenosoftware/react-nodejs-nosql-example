@@ -10,7 +10,16 @@ import {
 class CreateEmployeePage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { name: "", lastName: "", email: "", phoneNumber: "" };
+    this.state = {
+      name: "",
+      lastName: "",
+      personalEmail: "",
+      companyEmail: "",
+      companyNumber: "",
+      phoneNumber: "",
+      slackID: "",
+      salary: "",
+    };
   }
 
   setValue = (e) => {
@@ -28,18 +37,52 @@ class CreateEmployeePage extends React.PureComponent {
 
   createEmployee = () => {
     const { createEmployeeFuncProp } = this.props;
-    const { name, lastName, email, phoneNumber } = this.state;
-    createEmployeeFuncProp(name, lastName, name + lastName, email, phoneNumber);
+    const {
+      name,
+      lastName,
+      personalEmail,
+      companyEmail,
+      companyNumber,
+      phoneNumber,
+      slackID,
+      salary,
+    } = this.state;
+
+    createEmployeeFuncProp(
+      name,
+      lastName,
+      name + lastName,
+      personalEmail,
+      phoneNumber,
+      companyEmail,
+      companyNumber,
+      slackID,
+      salary
+    );
     this.setState({
       name: "",
       lastName: "",
-      email: "",
+      personalEmail: "",
+      companyEmail: "",
+      companyNumber: "",
       phoneNumber: "",
+      slackID: "",
+      salary: "",
     });
   };
 
   render() {
-    const { name, lastName, email, phoneNumber } = this.state;
+    const {
+      name,
+      lastName,
+      personalEmail,
+      companyEmail,
+      companyNumber,
+      phoneNumber,
+      slackID,
+      salary,
+    } = this.state;
+
     const { loading, createEmployeeMessage } = this.props;
 
     if (loading === true) {
@@ -85,19 +128,51 @@ class CreateEmployeePage extends React.PureComponent {
         />
         <input
           type="email"
-          name="email"
-          placeholder="Enter email"
+          name="personalEmail"
+          placeholder="Enter personal email"
           className="search-bar margin-create-employee-fields"
           onChange={this.setValue}
-          value={email}
+          value={personalEmail}
+        />
+        <input
+          type="email"
+          name="companyEmail"
+          placeholder="Enter company email"
+          className="search-bar margin-create-employee-fields"
+          onChange={this.setValue}
+          value={companyEmail}
         />
         <input
           type="text"
           name="phoneNumber"
-          placeholder="Enter phone number"
+          placeholder="Enter personal phone number"
           className="search-bar margin-create-employee-fields"
           onChange={this.setValue}
           value={phoneNumber}
+        />
+        <input
+          type="text"
+          name="companyNumber"
+          placeholder="Enter company phone number"
+          className="search-bar margin-create-employee-fields"
+          onChange={this.setValue}
+          value={companyNumber}
+        />
+        <input
+          type="text"
+          name="slackID"
+          placeholder="Enter slackID"
+          className="search-bar margin-create-employee-fields"
+          onChange={this.setValue}
+          value={slackID}
+        />
+        <input
+          type="text"
+          name="salary"
+          placeholder="Enter salary"
+          className="search-bar margin-create-employee-fields"
+          onChange={this.setValue}
+          value={salary}
         />
         <button
           className="client-button margin-create-employee-fields"

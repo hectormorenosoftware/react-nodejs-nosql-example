@@ -101,8 +101,12 @@ export function createEmployeeRedux(
   name,
   lastName,
   userName,
-  email,
-  phoneNumber
+  personalEmail,
+  phoneNumber,
+  companyEmail,
+  companyNumber,
+  slackID,
+  salary
 ) {
   return async function (dispatch) {
     dispatch({ type: CREATE_EMPLOYEE_REQUEST });
@@ -111,8 +115,12 @@ export function createEmployeeRedux(
         name,
         lastName,
         userName,
-        email,
-        phoneNumber
+        personalEmail,
+        phoneNumber,
+        companyEmail,
+        companyNumber,
+        slackID,
+        salary
       );
 
       dispatch({ type: CREATE_EMPLOYEE_SUCCESS, payload: data });

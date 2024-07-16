@@ -71,6 +71,10 @@ class AdminPage extends React.PureComponent {
       <div>
         <h1 style={{ textAlign: "center" }}>Create Admin</h1>
         <h3 style={{ textAlign: "center" }}>
+          Remember the username will be the first and last name of the person
+          without spaces for example: JohnRafford
+        </h3>
+        <h3 style={{ textAlign: "center" }}>
           {createAdminMessage.length > 0 ? createAdminMessage : ""}
         </h3>
         <div
@@ -80,6 +84,11 @@ class AdminPage extends React.PureComponent {
             alignItems: "center",
           }}
         >
+          <p style={{ textAlign: "center" }}>
+            {name.length > 0 && lastName.length > 0
+              ? `Username: ${name + lastName}`
+              : null}{" "}
+          </p>
           <input
             type="text"
             name="name"
