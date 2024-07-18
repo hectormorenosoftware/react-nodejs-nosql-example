@@ -91,7 +91,7 @@ class IndexPage extends React.PureComponent {
 
   render() {
     const { firstName, lastName } = this.state;
-    const { loading, data } = this.props;
+    const { loading, data, salariesTotal } = this.props;
 
     if (loading === true) {
       return (
@@ -180,7 +180,9 @@ class IndexPage extends React.PureComponent {
                 <th>Company Email</th>
                 <th>Company Number</th>
                 <th>Slack ID</th>
-                <th>Salary</th>
+                <th>
+                  Salary <br></br> Salaries Total: {salariesTotal}
+                </th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -225,6 +227,7 @@ function mapStateToProps(state) {
     userData: state.userReducer.userData,
     loading: state.userReducer.loading,
     loginSuccess: state.userReducer.loginSuccess,
+    salariesTotal: state.userReducer.salariesTotal,
   };
 }
 

@@ -29,6 +29,7 @@ const INTIAL_STATE = {
   createAdminMessage: "",
   createEmployeeMessage: "",
   deletedEmployeeMessage: "",
+  salariesTotal: 0,
 };
 
 function userReducer(state = INTIAL_STATE, action) {
@@ -41,7 +42,8 @@ function userReducer(state = INTIAL_STATE, action) {
     case GET_DATA_SUCCESS:
       return {
         ...state,
-        data: [...action.payload],
+        data: [...action.payload.arrayData],
+        salariesTotal: action.payload.sumAllSalaries,
         loading: false,
       };
     case GET_DATA_ERROR:
@@ -50,6 +52,7 @@ function userReducer(state = INTIAL_STATE, action) {
         error: true,
         loading: false,
         data: [],
+        salariesTotal: 0,
       };
     case GET_USER_DATA:
       return {
@@ -137,6 +140,7 @@ function userReducer(state = INTIAL_STATE, action) {
         loading: false,
         createEmployeeMessage: action.payload.message,
         data: [...action.payload.data],
+        salariesTotal: action.payload.sumAllSalaries,
       };
     case CREATE_EMPLOYEE_FAILURE:
       return {
@@ -159,6 +163,7 @@ function userReducer(state = INTIAL_STATE, action) {
         loading: false,
         deletedEmployeeMessage: action.payload.message,
         data: [...action.payload.data],
+        salariesTotal: action.payload.sumAllSalaries,
       };
     case DELETE_USER_FAILURE:
       return {

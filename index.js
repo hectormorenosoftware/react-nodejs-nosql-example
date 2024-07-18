@@ -23,8 +23,11 @@ if (cluster.isMaster) {
       const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
       const jsonData = JSON.parse(rawData);
       const arrayData = Object.values(jsonData);
+      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
 
-      return res.send(arrayData);
+      return res.send({ arrayData, sumAllSalaries });
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -32,7 +35,11 @@ if (cluster.isMaster) {
       const jsonData = JSON.parse(rawData);
       const arrayData = Object.values(jsonData);
 
-      return res.send(arrayData);
+      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({ arrayData, sumAllSalaries });
     }
     return res.send([]);
   });
@@ -189,9 +196,14 @@ if (cluster.isMaster) {
       const jsonToSend = JSON.parse(dataToSend);
       const arrToSend = Object.values(jsonToSend);
 
+      const sumAllSalaries = arrToSend.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
       return res.send({
         message: "Successfully created employee",
         data: arrToSend,
+        sumAllSalaries,
       });
     }
 
@@ -218,9 +230,14 @@ if (cluster.isMaster) {
       const jsonToSend = JSON.parse(dataToSend);
       const arrToSend = Object.values(jsonToSend);
 
+      const sumAllSalaries = arrToSend.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
       return res.send({
         message: "Successfully created employee",
         data: arrToSend,
+        sumAllSalaries,
       });
     }
     res.send("Could not create user");
@@ -242,9 +259,14 @@ if (cluster.isMaster) {
       const jsonToSend = JSON.parse(dataToSend);
       const arrToSend = Object.values(jsonToSend);
 
+      const sumAllSalaries = arrToSend.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
       return res.send({
         message: "Successfully deleted employee",
         data: arrToSend,
+        sumAllSalaries,
       });
     }
 
@@ -261,9 +283,14 @@ if (cluster.isMaster) {
       const jsonToSend = JSON.parse(dataToSend);
       const arrToSend = Object.values(jsonToSend);
 
+      const sumAllSalaries = arrToSend.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
       return res.send({
         message: "Successfully deleted employee",
         data: arrToSend,
+        sumAllSalaries,
       });
     }
 
