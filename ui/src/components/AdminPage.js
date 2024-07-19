@@ -56,11 +56,8 @@ class AdminPage extends React.PureComponent {
 
     if (loading === true) {
       return (
-        <div className="Hero" style={{ height: "100vh", overflow: "hidden" }}>
-          <div
-            className="HeroGroup"
-            style={{ height: "78vh", background: "none" }}
-          >
+        <div className="Hero" id="hero-height">
+          <div className="HeroGroup" id="hero-group-height">
             <p>Loading please wait ...</p>
           </div>
         </div>
@@ -69,22 +66,16 @@ class AdminPage extends React.PureComponent {
 
     return (
       <div>
-        <h1 style={{ textAlign: "center" }}>Create Admin</h1>
-        <h3 style={{ textAlign: "center" }}>
+        <h1 id="align-text">Create Admin</h1>
+        <h3 id="align-text">
           Remember the username will be the first and last name of the person
           without spaces for example: JohnRafford
         </h3>
-        <h3 style={{ textAlign: "center" }}>
+        <h3 id="align-text">
           {createAdminMessage.length > 0 ? createAdminMessage : ""}
         </h3>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <p style={{ textAlign: "center" }}>
+        <div className="flexbox-column">
+          <p id="align-text">
             {name.length > 0 && lastName.length > 0
               ? `Username: ${name + lastName}`
               : null}{" "}
@@ -92,27 +83,27 @@ class AdminPage extends React.PureComponent {
           <input
             type="text"
             name="name"
+            id="admin-page-adjustment"
             className="search-bar"
             placeholder="Enter a name"
-            style={{ marginBottom: "10px", width: "300px" }}
             onChange={this.onChangeSetValue}
             value={name}
           />
           <input
             type="text"
             name="lastName"
+            id="admin-page-adjustment"
             className="search-bar"
             placeholder="Enter a last name"
-            style={{ marginBottom: "10px", width: "300px" }}
             onChange={this.onChangeSetValue}
             value={lastName}
           />
           <input
             type="text"
             name="password"
+            id="admin-page-adjustment"
             className="search-bar"
             placeholder="Enter a password"
-            style={{ marginBottom: "10px", width: "300px" }}
             onChange={this.onChangeSetValue}
             value={password}
           />

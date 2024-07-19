@@ -1,9 +1,3 @@
-.table-style {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .table-data {
   width: 100%;
   height: 100%;

@@ -95,11 +95,8 @@ class IndexPage extends React.PureComponent {
 
     if (loading === true) {
       return (
-        <div className="Hero" style={{ height: "100vh", overflow: "hidden" }}>
-          <div
-            className="HeroGroup"
-            style={{ height: "78vh", background: "none" }}
-          >
+        <div className="Hero" id="hero-height">
+          <div className="HeroGroup" id="hero-group-height">
             <p>Loading please wait ...</p>
           </div>
         </div>
@@ -108,13 +105,11 @@ class IndexPage extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <div className="table-style">
+        <div className="flexbox-column">
           <h1 className="heading-subject">Employee Management Portal</h1>
           <div
+            className="flex-box-row"
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
               margin: "10px",
               cursor: "pointer",
             }}
@@ -141,7 +136,7 @@ class IndexPage extends React.PureComponent {
               Log Out
             </button>
           </div>
-          <div className="flex-box-searchbar-searchbutton">
+          <div className="flex-box-row">
             <input
               className="search-bar"
               placeholder="Enter first name"

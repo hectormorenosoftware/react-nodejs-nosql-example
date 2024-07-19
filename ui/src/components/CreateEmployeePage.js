@@ -87,11 +87,8 @@ class CreateEmployeePage extends React.PureComponent {
 
     if (loading === true) {
       return (
-        <div className="Hero" style={{ height: "100vh", overflow: "hidden" }}>
-          <div
-            className="HeroGroup"
-            style={{ height: "78vh", background: "none" }}
-          >
+        <div className="Hero" id="hero-height">
+          <div className="HeroGroup" id="hero-group-height">
             <p>Loading please wait ...</p>
           </div>
         </div>
@@ -99,15 +96,9 @@ class CreateEmployeePage extends React.PureComponent {
     }
 
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <h1 style={{ textAlign: "center" }}>Create Employee</h1>
-        <h3 style={{ textAlign: "center" }}>
+      <div className="flexbox-column">
+        <h1 id="align-text">Create Employee</h1>
+        <h3 id="align-text">
           {createEmployeeMessage.length > 0 ? createEmployeeMessage : ""}
         </h3>
         <input

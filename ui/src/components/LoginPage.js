@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { loginRedux } from "../redux/actions/userActions";
 
-import "./Login.css";
-
 class LoginPage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -66,11 +64,8 @@ class LoginPage extends React.PureComponent {
 
     if (loading === true) {
       return (
-        <div className="Hero" style={{ height: "100vh", overflow: "hidden" }}>
-          <div
-            className="HeroGroup"
-            style={{ height: "78vh", background: "none" }}
-          >
+        <div className="Hero" id="hero-height">
+          <div className="HeroGroup" id="hero-group-height">
             <p>Loading please wait ...</p>
           </div>
         </div>
@@ -79,33 +74,27 @@ class LoginPage extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <h1 style={{ textAlign: "center" }}>Management Login Portal</h1>
-        <div className="login-inputs-flex-box">
+        <h1 id="align-text">Management Login Portal</h1>
+        <div className="flexbox-column">
           <input
             className="search-bar margin-create-employee-fields"
+            id="width-login-fields"
             type="text"
             name="username"
             onChange={this.changeUserName}
-            style={{ width: "35%" }}
             placeholder="Enter your username"
             value={userName}
           />
           <input
             className="search-bar margin-create-employee-fields"
+            id="width-login-fields"
             type={displayPassword ? "text" : "password"}
             name="password"
             onChange={this.changePassword}
-            style={{ width: "35%" }}
             placeholder="Enter your password"
             value={password}
           />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+          <div className="flexbox-column">
             <button
               className="client-button margin-create-employee-fields"
               type="button"
