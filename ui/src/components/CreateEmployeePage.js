@@ -173,7 +173,7 @@ class CreateEmployeePage extends React.PureComponent {
         <input
           type="text"
           name="salary"
-          placeholder="Enter salary"
+          placeholder="Enter salary numbers most not have comma's"
           className="search-bar margin-create-employee-fields"
           onChange={this.setValue}
           value={salary}
