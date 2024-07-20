@@ -7,6 +7,7 @@ import {
   getUserDataRedux,
   resetAllDataRedux,
   deleteEmployeeRedux,
+  searchUserByNameRedux,
 } from "../redux/actions/userActions";
 import "./Index.css";
 
@@ -45,15 +46,17 @@ class IndexPage extends React.PureComponent {
 
   searchForUserByUserName = () => {
     const { firstName, lastName } = this.state;
+    const { searchUserByNameFuncProp, getIndividualUserDataIndexPage } =
+      this.props;
     if (firstName.length === 0) {
       return null;
     }
     if (lastName.length === 0) {
-      return null;
+      return searchUserByNameFuncProp(firstName);
     }
 
     if (firstName.length > 0 && lastName.length > 0) {
-      this.props.getIndividualUserDataIndexPage(firstName.concat(lastName));
+      getIndividualUserDataIndexPage(firstName.concat(lastName));
     }
   };
 
@@ -212,6 +215,15 @@ class IndexPage extends React.PureComponent {
               ) : (
                 <tr>
                   <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
+                  <td>No Data</td>
                 </tr>
               )}
             </tbody>
@@ -241,6 +253,10 @@ function mapDispatchToProps(dispatch) {
     ),
     resetAllDataFuncProp: bindActionCreators(resetAllDataRedux, dispatch),
     deleteEmployeeFuncProp: bindActionCreators(deleteEmployeeRedux, dispatch),
+    searchUserByNameFuncProp: bindActionCreators(
+      searchUserByNameRedux,
+      dispatch
+    ),
   };
 }
 

@@ -19,6 +19,9 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
+  SEARCH_BY_NAME_REQUEST,
+  SEARCH_BY_NAME_SUCCESS,
+  SEARCH_BY_NAME_FAILURE,
 } from "../../types";
 import {
   getUsersTableData,
@@ -27,6 +30,7 @@ import {
   createAdminFunc,
   createEmployeeFunc,
   deleteEmployeeFunc,
+  searchUserByNameFunc,
 } from "../../api/api";
 
 export function getUsersDataRedux() {
@@ -142,6 +146,20 @@ export function deleteEmployeeRedux(userName) {
       dispatch({ type: DELETE_USER_SUCCESS, payload: data });
     } catch (e) {
       dispatch({ type: DELETE_USER_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function searchUserByNameRedux(name) {
+  return async function (dispatch) {
+    dispatch({ type: SEARCH_BY_NAME_REQUEST });
+    try {
+      const data = await searchUserByNameFunc(name);
+      dispatch({ type: SEARCH_BY_NAME_SUCCESS, payload: data });
+      return data;
+    } catch (e) {
+      dispatch({ type: SEARCH_BY_NAME_FAILURE });
       throw new Error(e);
     }
   };

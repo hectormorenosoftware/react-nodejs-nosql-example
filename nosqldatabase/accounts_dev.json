@@ -1,16 +1,4 @@
 {
-  "PedroPascal": {
-    "name": "Pedro",
-    "lastName": "Pascal",
-    "userName": "PedroPascal",
-    "personalEmail": "pedropascal@gmail.com",
-    "phoneNumber": "202-477-8955",
-    "companyEmail": "pedropascal@amex.com",
-    "companyNumber": "202-325-8765",
-    "slackID": "pedropascalamex",
-    "salary": "125000",
-    "companyRole": "Software Engineer"
-  },
   "MiguelPascal": {
     "name": "Miguel",
     "lastName": "Pascal",
@@ -118,5 +106,29 @@
     "slackID": "willmascroggins",
     "salary": "175000",
     "companyRole": "VP Engineering"
+  },
+  "RossGomez": {
+    "name": "Ross",
+    "lastName": "Gomez",
+    "userName": "RossGomez",
+    "personalEmail": "rossgomez@gmail.com",
+    "phoneNumber": "202-432-4848",
+    "companyEmail": "rossgomez@amex.com",
+    "companyNumber": "202-784-2938",
+    "slackID": "rossgomez",
+    "salary": "115000",
+    "companyRole": "UI Developer "
+  },
+  "JoseGarmin": {
+    "name": "Jose",
+    "lastName": "Garmin",
+    "userName": "JoseGarmin",
+    "personalEmail": "josegarmin@gmail.com",
+    "phoneNumber": "202-345-3949",
+    "companyEmail": "josegarminamex@amex.com",
+    "companyNumber": "202-475-3848",
+    "slackID": "josegarminamex",
+    "salary": "110000",
+    "companyRole": "Senior React JS Developer"
   }
 }

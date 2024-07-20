@@ -19,6 +19,9 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
+  SEARCH_BY_NAME_REQUEST,
+  SEARCH_BY_NAME_SUCCESS,
+  SEARCH_BY_NAME_FAILURE,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -74,6 +77,30 @@ function userReducer(state = INTIAL_STATE, action) {
         error: true,
         loading: false,
         data: [],
+      };
+    case SEARCH_BY_NAME_REQUEST:
+      return {
+        ...state,
+        error: false,
+        loading: true,
+        data: [],
+        salariesTotal: 0,
+      };
+    case SEARCH_BY_NAME_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        data: [...action.payload.arrayData],
+        salariesTotal: action.payload.sumAllSalaries,
+      };
+    case SEARCH_BY_NAME_FAILURE:
+      return {
+        ...state,
+        error: true,
+        loading: false,
+        data: [],
+        salariesTotal: 0,
       };
     case LOGIN_REQUEST:
       return {

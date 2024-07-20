@@ -163,6 +163,24 @@ async function deleteEmployeeFunc(userName) {
   }
 }
 
+async function searchUserByNameFunc(name) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/search-by-first-name";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/search-by-first-name";
+    }
+
+    const data = await axios(url, { params: { name: name } });
+
+    return data.data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 export {
   getUsersTableData,
   getUserTableData,
@@ -170,4 +188,5 @@ export {
   createAdminFunc,
   createEmployeeFunc,
   deleteEmployeeFunc,
+  searchUserByNameFunc,
 };
