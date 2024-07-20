@@ -8,7 +8,8 @@
     "companyEmail": "pedropascal@amex.com",
     "companyNumber": "202-325-8765",
     "slackID": "pedropascalamex",
-    "salary": "125000"
+    "salary": "125000",
+    "companyRole": "Software Engineer"
   },
   "MiguelPascal": {
     "name": "Miguel",
@@ -19,7 +20,8 @@
     "companyEmail": "miguelpascal@amex.com",
     "companyNumber": "202-789-5523",
     "slackID": "miguelpascalamex",
-    "salary": "145000"
+    "salary": "145000",
+    "companyRole": "Software Engineer"
   },
   "JsohPascal": {
     "name": "Jsoh",
@@ -30,7 +32,8 @@
     "companyEmail": "josh@amex.com",
     "companyNumber": "202-575-5512",
     "slackID": "joshpascalamex",
-    "salary": "100000"
+    "salary": "100000",
+    "companyRole": "Software Engineer"
   },
   "RonPascal": {
     "name": "Ron",
@@ -41,7 +44,8 @@
     "companyEmail": "ron@amex.com",
     "companyNumber": "202-442-4955",
     "slackID": "ronpascalamex",
-    "salary": "105000"
+    "salary": "105000",
+    "companyRole": "Software Engineer"
   },
   "AnneWillson": {
     "name": "Anne",
@@ -52,7 +56,8 @@
     "companyEmail": "anne@amex.com",
     "companyNumber": "202-235--6766",
     "slackID": "annewillsonamex",
-    "salary": "125000"
+    "salary": "125000",
+    "companyRole": "Software Engineer"
   },
   "PeterPascal": {
     "name": "Peter",
@@ -63,7 +68,8 @@
     "companyEmail": "peter@amex.com",
     "companyNumber": "202-557-4344",
     "slackID": "peterpascalamex",
-    "salary": "102000"
+    "salary": "102000",
+    "companyRole": "Software Engineer"
   },
   "RossPascal": {
     "name": "Ross",
@@ -74,7 +80,8 @@
     "companyEmail": "ross@amex.com",
     "companyNumber": "202-553-3312",
     "slackID": "rosspascalamex",
-    "salary": "95000"
+    "salary": "95000",
+    "companyRole": "Software Engineer"
   },
   "DanWillson": {
     "name": "Dan",
@@ -85,7 +92,8 @@
     "companyEmail": "dan@amex.com",
     "companyNumber": "202-349-5586",
     "slackID": "danamex",
-    "salary": "85000"
+    "salary": "85000",
+    "companyRole": "Software Engineer"
   },
   "RalphGomez": {
     "name": "Ralph",
@@ -96,6 +104,19 @@
     "companyEmail": "ralph@amex.com",
     "companyNumber": "202-335-7887",
     "slackID": "ralphgomezamex",
-    "salary": "75000"
+    "salary": "75000",
+    "companyRole": "Software Engineer"
+  },
+  "WillmaScroggins": {
+    "name": "Willma",
+    "lastName": "Scroggins",
+    "userName": "WillmaScroggins",
+    "personalEmail": "willmascroggins@gmail.com",
+    "phoneNumber": "202-455-3945",
+    "companyEmail": "willmanscroggins@gmail.com",
+    "companyNumber": "202-312-4945",
+    "slackID": "willmascroggins",
+    "salary": "175000",
+    "companyRole": "VP Engineering"
   }
 }

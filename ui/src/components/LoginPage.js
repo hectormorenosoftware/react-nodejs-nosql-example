@@ -78,7 +78,7 @@ class LoginPage extends React.PureComponent {
         <div className="flexbox-column">
           <input
             className="search-bar margin-create-employee-fields"
-            id="width-login-fields"
+            id="width-login-username"
             type="text"
             name="username"
             onChange={this.changeUserName}
@@ -87,7 +87,7 @@ class LoginPage extends React.PureComponent {
           />
           <input
             className="search-bar margin-create-employee-fields"
-            id="width-login-fields"
+            id="width-login-password"
             type={displayPassword ? "text" : "password"}
             name="password"
             onChange={this.changePassword}

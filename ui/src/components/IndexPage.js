@@ -105,7 +105,7 @@ class IndexPage extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <div className="flexbox-column">
+        <div>
           <h1 className="heading-subject">Employee Management Portal</h1>
           <div
             className="flex-box-row"
@@ -168,6 +168,7 @@ class IndexPage extends React.PureComponent {
           <table className="table-data">
             <thead>
               <tr>
+                <th>Company Role</th>
                 <th>Name</th>
                 <th>Last Name</th>
                 <th>Personal Email</th>
@@ -182,32 +183,37 @@ class IndexPage extends React.PureComponent {
               </tr>
             </thead>
             <tbody>
-              {data.length > 0
-                ? data.map((value, i) => {
-                    return (
-                      <tr key={i}>
-                        <td>{value.name}</td>
-                        <td>{value.lastName}</td>
-                        <td>{value.personalEmail}</td>
-                        <td>{value.phoneNumber}</td>
-                        <td>{value.companyEmail}</td>
-                        <td>{value.companyNumber}</td>
-                        <td>{value.slackID}</td>
-                        <td>{value.salary}</td>
-                        <td>
-                          <button
-                            type="text"
-                            className="client-button"
-                            style={{ backgroundColor: "red", color: "white" }}
-                            onClick={this.deleteUser.bind(this, value.userName)}
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })
-                : null}
+              {data.length > 0 ? (
+                data.map((value, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{value.companyRole}</td>
+                      <td>{value.name}</td>
+                      <td>{value.lastName}</td>
+                      <td>{value.personalEmail}</td>
+                      <td>{value.phoneNumber}</td>
+                      <td>{value.companyEmail}</td>
+                      <td>{value.companyNumber}</td>
+                      <td>{value.slackID}</td>
+                      <td>{value.salary}</td>
+                      <td>
+                        <button
+                          type="text"
+                          className="client-button"
+                          style={{ backgroundColor: "red", color: "white" }}
+                          onClick={this.deleteUser.bind(this, value.userName)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td>No Data</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

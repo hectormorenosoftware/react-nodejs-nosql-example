@@ -171,6 +171,7 @@ if (cluster.isMaster) {
       companyNumber,
       slackID,
       salary,
+      companyRole,
     } = req.body;
 
     if (process.env.NODE_ENV === "development") {
@@ -187,6 +188,7 @@ if (cluster.isMaster) {
         companyNumber,
         slackID,
         salary,
+        companyRole,
       };
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
@@ -221,6 +223,7 @@ if (cluster.isMaster) {
         companyNumber,
         slackID,
         salary,
+        companyRole,
       };
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
@@ -240,7 +243,7 @@ if (cluster.isMaster) {
         sumAllSalaries,
       });
     }
-    res.send("Could not create user");
+    res.send("Could not create employee");
   });
 
   app.delete("/delete-employee", (req, res) => {

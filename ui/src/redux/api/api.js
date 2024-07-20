@@ -92,7 +92,8 @@ async function createEmployeeFunc(
   companyEmail,
   companyNumber,
   slackID,
-  salary
+  salary,
+  companyRole
 ) {
   try {
     let url = null;
@@ -119,6 +120,7 @@ async function createEmployeeFunc(
         companyNumber: companyNumber,
         slackID: slackID,
         salary: salary,
+        companyRole: companyRole,
       }),
       headers: myHeaders,
     });

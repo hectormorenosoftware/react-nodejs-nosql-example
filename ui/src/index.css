@@ -28,7 +28,11 @@ h6 {
   width: 300px;
 }
 
-#width-login-fields {
+#width-login-username {
+  width: 35%;
+}
+
+#width-login-password {
   width: 35%;
 }
 

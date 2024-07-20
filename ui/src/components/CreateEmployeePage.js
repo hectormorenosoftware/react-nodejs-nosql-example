@@ -19,6 +19,7 @@ class CreateEmployeePage extends React.PureComponent {
       phoneNumber: "",
       slackID: "",
       salary: "",
+      companyRole: "",
     };
   }
 
@@ -46,6 +47,7 @@ class CreateEmployeePage extends React.PureComponent {
       phoneNumber,
       slackID,
       salary,
+      companyRole,
     } = this.state;
 
     createEmployeeFuncProp(
@@ -57,7 +59,8 @@ class CreateEmployeePage extends React.PureComponent {
       companyEmail,
       companyNumber,
       slackID,
-      salary
+      salary,
+      companyRole
     );
     this.setState({
       name: "",
@@ -68,6 +71,7 @@ class CreateEmployeePage extends React.PureComponent {
       phoneNumber: "",
       slackID: "",
       salary: "",
+      companyRole: "",
     });
   };
 
@@ -81,6 +85,7 @@ class CreateEmployeePage extends React.PureComponent {
       phoneNumber,
       slackID,
       salary,
+      companyRole,
     } = this.state;
 
     const { loading, createEmployeeMessage } = this.props;
@@ -156,6 +161,14 @@ class CreateEmployeePage extends React.PureComponent {
           className="search-bar margin-create-employee-fields"
           onChange={this.setValue}
           value={slackID}
+        />
+        <input
+          type="text"
+          name="companyRole"
+          placeholder="Enter company role"
+          className="search-bar margin-create-employee-fields"
+          onChange={this.setValue}
+          value={companyRole}
         />
         <input
           type="text"
