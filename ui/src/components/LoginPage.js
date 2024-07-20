@@ -100,7 +100,7 @@ class LoginPage extends React.PureComponent {
               type="button"
               onClick={this.showPassword}
             >
-              Display Password
+              {displayPassword ? "Hide Password" : "Show Password"}
             </button>
             <button
               className="client-button margin-create-employee-fields"
