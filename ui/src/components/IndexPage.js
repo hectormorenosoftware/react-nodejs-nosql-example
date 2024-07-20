@@ -94,7 +94,7 @@ class IndexPage extends React.PureComponent {
 
   render() {
     const { firstName, lastName } = this.state;
-    const { loading, data, salariesTotal } = this.props;
+    const { loading, data, salariesTotal, getDataIndexPage } = this.props;
 
     if (loading === true) {
       return (
@@ -130,6 +130,13 @@ class IndexPage extends React.PureComponent {
               onClick={this.routeToCreateAdmin}
             >
               Create Admin
+            </button>
+            <button
+              className="client-button"
+              type="button"
+              onClick={getDataIndexPage}
+            >
+              Get Data
             </button>
             <button
               type="button"
