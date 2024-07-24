@@ -19,6 +19,10 @@ h6 {
   font-weight: 800 !important;
 }
 
+.form-errors {
+  color: yellow;
+}
+
 #align-text {
   text-align: center;
 }
