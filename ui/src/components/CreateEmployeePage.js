@@ -152,6 +152,7 @@ class CreateEmployeePage extends React.PureComponent {
         return this.setState({
           [name]: value,
           isPersonalEmailValid: true,
+          formErrors: false,
         });
       }
       if (isEmailValid === false) {
@@ -169,6 +170,7 @@ class CreateEmployeePage extends React.PureComponent {
         return this.setState({
           [name]: value,
           isCompanyEmailValid: true,
+          formErrors: false,
         });
       }
       if (isEmailValid === false) {
