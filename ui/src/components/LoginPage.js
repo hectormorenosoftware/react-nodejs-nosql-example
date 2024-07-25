@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { loginRedux } from "../redux/actions/userActions";
+import { stringRegexPattern, passwordRegexPattern } from "../utils";
 
 class LoginPage extends React.PureComponent {
   constructor(props) {
@@ -11,6 +12,8 @@ class LoginPage extends React.PureComponent {
       userName: "",
       password: "",
       displayPassword: false,
+      isUserNameValid: true,
+      isPasswordValid: true,
     };
   }
 
@@ -21,18 +24,39 @@ class LoginPage extends React.PureComponent {
     }
   }
 
-  changeUserName = (e) => {
-    const { value } = e.target;
-    this.setState({
-      userName: value,
-    });
-  };
+  setInputValue = (e) => {
+    const { name, value } = e.target;
 
-  changePassword = (e) => {
-    const { value } = e.target;
-    this.setState({
-      password: value,
-    });
+    if (name === "username") {
+      const isUserNameValid = stringRegexPattern.test(value);
+      if (isUserNameValid) {
+        return this.setState({
+          userName: value,
+          isUserNameValid: true,
+        });
+      }
+      if (isUserNameValid === false) {
+        return this.setState({
+          userName: "",
+          isUserNameValid: false,
+        });
+      }
+    }
+    if (name === "password") {
+      const isPasswordValid = passwordRegexPattern.test(value);
+      if (isPasswordValid) {
+        return this.setState({
+          password: value,
+          isPasswordValid: true,
+        });
+      }
+      if (isPasswordValid === false) {
+        return this.setState({
+          password: "",
+          isPasswordValid: false,
+        });
+      }
+    }
   };
 
   showPassword = () => {
@@ -45,11 +69,7 @@ class LoginPage extends React.PureComponent {
   loginFunc = () => {
     const { userName, password } = this.state;
 
-    if (userName.length === 0) {
-      return null;
-    }
-
-    if (password.length === 0) {
+    if (userName.length === 0 || password.length === 0) {
       return null;
     }
 
@@ -59,7 +79,13 @@ class LoginPage extends React.PureComponent {
   };
 
   render() {
-    const { userName, password, displayPassword } = this.state;
+    const {
+      userName,
+      password,
+      displayPassword,
+      isUserNameValid,
+      isPasswordValid,
+    } = this.state;
     const { loading } = this.props;
 
     if (loading === true) {
@@ -81,19 +107,29 @@ class LoginPage extends React.PureComponent {
             id="width-login-username"
             type="text"
             name="username"
-            onChange={this.changeUserName}
+            onChange={this.setInputValue}
             placeholder="Enter your username"
             value={userName}
           />
+          {isUserNameValid === false ? (
+            <p className="form-errors">
+              Username can not contain numbers or special characters.
+            </p>
+          ) : null}
           <input
             className="search-bar margin-create-employee-fields"
             id="width-login-password"
             type={displayPassword ? "text" : "password"}
             name="password"
-            onChange={this.changePassword}
+            onChange={this.setInputValue}
             placeholder="Enter your password"
             value={password}
           />
+          {isPasswordValid === false ? (
+            <p className="form-errors">
+              Password can not contain special characters.
+            </p>
+          ) : null}
           <div className="flexbox-column">
             <button
               className="client-button margin-create-employee-fields"

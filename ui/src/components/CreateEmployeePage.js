@@ -44,6 +44,14 @@ class CreateEmployeePage extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { loginSuccess, history } = this.props;
+
+    if (loginSuccess === false) {
+      return history.push("/");
+    }
+  }
+
   setValue = (e) => {
     const { name, value } = e.target;
 
@@ -477,6 +485,7 @@ function mapStateToProps(state) {
   return {
     loading: state.userReducer.loading,
     createEmployeeMessage: state.userReducer.createEmployeeMessage,
+    loginSuccess: state.userReducer.loginSuccess,
   };
 }
 

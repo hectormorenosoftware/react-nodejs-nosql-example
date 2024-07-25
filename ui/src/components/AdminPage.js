@@ -23,6 +23,14 @@ class AdminPage extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { loginSuccess, history } = this.props;
+
+    if (loginSuccess === false) {
+      return history.push("/");
+    }
+  }
+
   onChangeSetValue = (e) => {
     const { resetMessagePropFunc } = this.props;
     const { value, name } = e.target;
@@ -206,6 +214,7 @@ function mapStateToProps(state) {
   return {
     loading: state.userReducer.loading,
     createAdminMessage: state.userReducer.createAdminMessage,
+    loginSuccess: state.userReducer.loginSuccess,
   };
 }
 
