@@ -24,6 +24,7 @@ class AdminPage extends React.PureComponent {
       isNameValid: true,
       isLastNameValid: true,
       isPasswordValid: true,
+      formErrors: false,
     };
   }
 
@@ -45,6 +46,7 @@ class AdminPage extends React.PureComponent {
         this.setState({
           [name]: value,
           isNameValid: true,
+          formErrors: false,
         });
       }
       if (isValid === false) {
@@ -61,6 +63,7 @@ class AdminPage extends React.PureComponent {
         this.setState({
           [name]: value,
           isLastNameValid: true,
+          formErrors: false,
         });
       }
       if (isValid === false) {
@@ -77,6 +80,7 @@ class AdminPage extends React.PureComponent {
         this.setState({
           [name]: value,
           isPasswordValid: true,
+          formErrors: false,
         });
       }
       if (isValid === false) {
@@ -99,6 +103,12 @@ class AdminPage extends React.PureComponent {
   createAdminFunc = () => {
     const { name, lastName, password } = this.state;
     const { createAdminPropFunc, resetMessagePropFunc } = this.props;
+
+    if (name.length === 0 || lastName.length === 0 || password.length === 0) {
+      return this.setState({
+        formErrors: true,
+      });
+    }
     resetMessagePropFunc();
     createAdminPropFunc(
       name,
@@ -127,6 +137,7 @@ class AdminPage extends React.PureComponent {
       isNameValid,
       isLastNameValid,
       isPasswordValid,
+      formErrors,
     } = this.state;
     const { loading, createAdminMessage } = this.props;
 
@@ -143,15 +154,15 @@ class AdminPage extends React.PureComponent {
     return (
       <div>
         <h1 id="align-text">Create Admin</h1>
-        <h3 id="align-text">
+        <h3 className="form-warning" id="align-text">
           Remember the username will be the first and last name of the person
           without spaces for example: JohnRafford
         </h3>
-        <h3 id="align-text">
+        <h3 className="form-warning" id="align-text">
           {createAdminMessage.length > 0 ? createAdminMessage : ""}
         </h3>
         <div className="flexbox-column">
-          <p id="align-text">
+          <p className="form-warning" id="align-text">
             {name.length > 0 && lastName.length > 0
               ? `Username: ${name + lastName.replace(/\s+/g, "")}`
               : null}{" "}
@@ -197,6 +208,12 @@ class AdminPage extends React.PureComponent {
             <p className="form-errors">
               Password can not be more than 21 characters or contain special
               characters.
+            </p>
+          ) : null}
+          {formErrors ? (
+            <p className="form-errors">
+              You need a name, last name, and password to be able to submit this
+              form.
             </p>
           ) : null}
           <button

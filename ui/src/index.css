@@ -19,6 +19,10 @@ h6 {
   font-weight: 800 !important;
 }
 
+.form-warning {
+  color: yellow;
+}
+
 .form-errors {
   color: yellow;
 }

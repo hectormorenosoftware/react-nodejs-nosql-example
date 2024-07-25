@@ -14,6 +14,7 @@ class LoginPage extends React.PureComponent {
       displayPassword: false,
       isUserNameValid: true,
       isPasswordValid: true,
+      formErrors: false,
     };
   }
 
@@ -33,6 +34,7 @@ class LoginPage extends React.PureComponent {
         return this.setState({
           userName: value,
           isUserNameValid: true,
+          formErrors: false,
         });
       }
       if (isUserNameValid === false) {
@@ -48,6 +50,7 @@ class LoginPage extends React.PureComponent {
         return this.setState({
           password: value,
           isPasswordValid: true,
+          formErrors: false,
         });
       }
       if (isPasswordValid === false) {
@@ -70,7 +73,9 @@ class LoginPage extends React.PureComponent {
     const { userName, password } = this.state;
 
     if (userName.length === 0 || password.length === 0) {
-      return null;
+      return this.setState({
+        formErrors: true,
+      });
     }
 
     if (userName.length > 0 && password.length > 0) {
@@ -85,6 +90,7 @@ class LoginPage extends React.PureComponent {
       displayPassword,
       isUserNameValid,
       isPasswordValid,
+      formErrors,
     } = this.state;
     const { loading } = this.props;
 
@@ -100,7 +106,7 @@ class LoginPage extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <h1 id="align-text">Management Login Portal</h1>
+        <h1 id="align-text">Employee Management Login Portal</h1>
         <div className="flexbox-column">
           <input
             className="search-bar margin-create-employee-fields"
@@ -128,6 +134,11 @@ class LoginPage extends React.PureComponent {
           {isPasswordValid === false ? (
             <p className="form-errors">
               Password can not contain special characters.
+            </p>
+          ) : null}
+          {formErrors ? (
+            <p className="form-errors">
+              You need a username and password to log in.
             </p>
           ) : null}
           <div className="flexbox-column">

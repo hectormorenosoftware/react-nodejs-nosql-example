@@ -331,7 +331,7 @@ class CreateEmployeePage extends React.PureComponent {
     return (
       <div className="flexbox-column">
         <h1 id="align-text">Create Employee</h1>
-        <h3 id="align-text">
+        <h3 className="form-warning" id="align-text">
           {createEmployeeMessage.length > 0 ? createEmployeeMessage : ""}
         </h3>
         <input
