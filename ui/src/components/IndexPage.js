@@ -8,6 +8,7 @@ import {
   resetAllDataRedux,
   deleteEmployeeRedux,
   searchUserByNameRedux,
+  searchByLastNameRedux,
 } from "../redux/actions/userActions";
 import { stringRegexPattern } from "../utils";
 
@@ -74,11 +75,14 @@ class IndexPage extends React.PureComponent {
 
   searchForUserByUserName = () => {
     const { firstName, lastName } = this.state;
-    const { searchUserByNameFuncProp, getIndividualUserDataIndexPage } =
-      this.props;
+    const {
+      searchUserByNameFuncProp,
+      getIndividualUserDataIndexPage,
+      searchByLastNameFuncProp,
+    } = this.props;
 
     if (firstName.length === 0) {
-      return null;
+      return searchByLastNameFuncProp(lastName);
     }
     if (lastName.length === 0) {
       return searchUserByNameFuncProp(firstName);
@@ -293,6 +297,10 @@ function mapDispatchToProps(dispatch) {
     deleteEmployeeFuncProp: bindActionCreators(deleteEmployeeRedux, dispatch),
     searchUserByNameFuncProp: bindActionCreators(
       searchUserByNameRedux,
+      dispatch
+    ),
+    searchByLastNameFuncProp: bindActionCreators(
+      searchByLastNameRedux,
       dispatch
     ),
   };

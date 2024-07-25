@@ -310,9 +310,12 @@ if (cluster.isMaster) {
       const filteredArray = arrayData.filter((value) => {
         return value.name === name;
       });
-      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
-        return accumulator + Number(currentValue.salary);
-      }, 0);
+      const sumAllSalaries = filteredArray.reduce(
+        (accumulator, currentValue) => {
+          return accumulator + Number(currentValue.salary);
+        },
+        0
+      );
 
       return res.send({ arrayData: filteredArray, sumAllSalaries });
     }
@@ -324,9 +327,51 @@ if (cluster.isMaster) {
       const filteredArray = arrayData.filter((value) => {
         return value.name === name;
       });
-      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
-        return accumulator + Number(currentValue.salary);
-      }, 0);
+      const sumAllSalaries = filteredArray.reduce(
+        (accumulator, currentValue) => {
+          return accumulator + Number(currentValue.salary);
+        },
+        0
+      );
+
+      return res.send({ arrayData: filteredArray, sumAllSalaries });
+    }
+    return res.send([]);
+  });
+
+  app.get("/search-by-last-name", (req, res) => {
+    const { lastName } = req.query;
+
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonData = JSON.parse(rawData);
+      const arrayData = Object.values(jsonData);
+      const filteredArray = arrayData.filter((value) => {
+        return value.lastName === lastName;
+      });
+      const sumAllSalaries = filteredArray.reduce(
+        (accumulator, currentValue) => {
+          return accumulator + Number(currentValue.salary);
+        },
+        0
+      );
+
+      return res.send({ arrayData: filteredArray, sumAllSalaries });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonData = JSON.parse(rawData);
+      const arrayData = Object.values(jsonData);
+      const filteredArray = arrayData.filter((value) => {
+        return value.lastName === lastName;
+      });
+      const sumAllSalaries = filteredArray.reduce(
+        (accumulator, currentValue) => {
+          return accumulator + Number(currentValue.salary);
+        },
+        0
+      );
 
       return res.send({ arrayData: filteredArray, sumAllSalaries });
     }

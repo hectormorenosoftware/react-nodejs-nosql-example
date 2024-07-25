@@ -181,6 +181,24 @@ async function searchUserByNameFunc(name) {
   }
 }
 
+async function searchUserByLastName(lastName) {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/search-by-last-name";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/search-by-last-name";
+    }
+
+    const data = await axios(url, { params: { lastName: lastName } });
+
+    return data.data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 export {
   getUsersTableData,
   getUserTableData,
@@ -189,4 +207,5 @@ export {
   createEmployeeFunc,
   deleteEmployeeFunc,
   searchUserByNameFunc,
+  searchUserByLastName,
 };

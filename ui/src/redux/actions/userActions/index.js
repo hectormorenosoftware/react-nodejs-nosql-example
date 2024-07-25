@@ -22,6 +22,9 @@ import {
   SEARCH_BY_NAME_REQUEST,
   SEARCH_BY_NAME_SUCCESS,
   SEARCH_BY_NAME_FAILURE,
+  SEARCH_BY_LAST_NAME_REQUEST,
+  SEARCH_BY_LAST_NAME_SUCCESS,
+  SEARCH_BY_LAST_NAME_FAILURE,
 } from "../../types";
 import {
   getUsersTableData,
@@ -31,6 +34,7 @@ import {
   createEmployeeFunc,
   deleteEmployeeFunc,
   searchUserByNameFunc,
+  searchUserByLastName,
 } from "../../api/api";
 
 export function getUsersDataRedux() {
@@ -160,6 +164,22 @@ export function searchUserByNameRedux(name) {
       return data;
     } catch (e) {
       dispatch({ type: SEARCH_BY_NAME_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function searchByLastNameRedux(lastName) {
+  return async function (dispatch) {
+    dispatch({ type: SEARCH_BY_LAST_NAME_REQUEST });
+
+    try {
+      const data = await searchUserByLastName(lastName);
+      dispatch({ type: SEARCH_BY_LAST_NAME_SUCCESS, payload: data });
+
+      return data;
+    } catch (e) {
+      dispatch({ type: SEARCH_BY_LAST_NAME_FAILURE });
       throw new Error(e);
     }
   };

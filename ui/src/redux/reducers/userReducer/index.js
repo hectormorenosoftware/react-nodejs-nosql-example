@@ -22,6 +22,9 @@ import {
   SEARCH_BY_NAME_REQUEST,
   SEARCH_BY_NAME_SUCCESS,
   SEARCH_BY_NAME_FAILURE,
+  SEARCH_BY_LAST_NAME_REQUEST,
+  SEARCH_BY_LAST_NAME_SUCCESS,
+  SEARCH_BY_LAST_NAME_FAILURE,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -198,6 +201,32 @@ function userReducer(state = INTIAL_STATE, action) {
         error: true,
         loading: false,
         deletedEmployeeMessage: "",
+      };
+
+    case SEARCH_BY_LAST_NAME_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        data: [],
+      };
+
+    case SEARCH_BY_LAST_NAME_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: [...action.payload.arrayData],
+        salariesTotal: action.payload.sumAllSalaries,
+      };
+
+    case SEARCH_BY_LAST_NAME_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        data: [],
+        salariesTotal: 0,
       };
 
     case RESET_ALL_DATA:
