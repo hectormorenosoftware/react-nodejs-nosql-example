@@ -6,13 +6,14 @@ import {
   createEmployeeRedux,
   resetMessageRedux,
 } from "../redux/actions/userActions";
-
-const stringRegexPattern = /^[a-zA-Z]{0,20}$/;
-const phoneNumberRegexPattern = /^[0-9-]{0,24}$/;
-const numberRegexPattern = /^[0-9]{0,7}$/;
-const emailRegexPattern = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{0,80}$/;
-const slackRegexPattern = /^[a-zA-Z]{0,20}$/;
-const companyRoleRegexPattern = /^[a-zA-z ]{0,40}$/;
+import {
+  stringRegexPattern,
+  phoneNumberRegexPattern,
+  numberRegexPattern,
+  emailRegexPattern,
+  slackRegexPattern,
+  companyRoleRegexPattern,
+} from "../utils";
 
 class CreateEmployeePage extends React.PureComponent {
   constructor(props) {

@@ -9,6 +9,8 @@ import {
   deleteEmployeeRedux,
   searchUserByNameRedux,
 } from "../redux/actions/userActions";
+import { stringRegexPattern } from "../utils";
+
 import "./Index.css";
 
 class IndexPage extends React.PureComponent {
@@ -30,24 +32,51 @@ class IndexPage extends React.PureComponent {
     return null;
   }
 
-  setFirstName = (e) => {
-    const { value } = e.target;
-    this.setState({
-      firstName: value,
-    });
-  };
+  setInputValue = (e) => {
+    const { value, name } = e.target;
 
-  setLastName = (e) => {
-    const { value } = e.target;
-    this.setState({
-      lastName: value,
-    });
+    if (name === "name") {
+      if (value.length >= 0) {
+        const isFirstNameValid = stringRegexPattern.test(value);
+
+        if (isFirstNameValid) {
+          return this.setState({
+            firstName: value,
+          });
+        }
+
+        if (isFirstNameValid === false) {
+          return this.setState({
+            firstName: "",
+          });
+        }
+      }
+    }
+
+    if (name === "lastName") {
+      if (value.length >= 0) {
+        const isLastNameValid = stringRegexPattern.test(value);
+
+        if (isLastNameValid) {
+          return this.setState({
+            lastName: value,
+          });
+        }
+
+        if (isLastNameValid === false) {
+          return this.setState({
+            lastName: "",
+          });
+        }
+      }
+    }
   };
 
   searchForUserByUserName = () => {
     const { firstName, lastName } = this.state;
     const { searchUserByNameFuncProp, getIndividualUserDataIndexPage } =
       this.props;
+
     if (firstName.length === 0) {
       return null;
     }
@@ -150,14 +179,16 @@ class IndexPage extends React.PureComponent {
             <input
               className="search-bar"
               placeholder="Enter first name"
-              onChange={this.setFirstName}
+              onChange={this.setInputValue}
               value={firstName}
+              name="name"
             />
             <input
               className="search-bar"
               placeholder="Enter Last name"
-              onChange={this.setLastName}
+              onChange={this.setInputValue}
               value={lastName}
+              name="lastName"
             />
             <button
               className="client-button"

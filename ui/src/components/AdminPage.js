@@ -6,6 +6,7 @@ import {
   createAdminRedux,
   resetMessageRedux,
 } from "../redux/actions/userActions";
+import { stringRegexPattern, passwordRegexPattern } from "../utils";
 
 class AdminPage extends React.PureComponent {
   constructor(props) {
@@ -16,6 +17,9 @@ class AdminPage extends React.PureComponent {
       userName: "",
       password: "",
       admin: "true",
+      isNameValid: true,
+      isLastNameValid: true,
+      isPasswordValid: true,
     };
   }
 
@@ -23,11 +27,55 @@ class AdminPage extends React.PureComponent {
     const { resetMessagePropFunc } = this.props;
     const { value, name } = e.target;
 
-    resetMessagePropFunc();
+    if (name === "name") {
+      const isValid = stringRegexPattern.test(value);
+      if (isValid) {
+        this.setState({
+          [name]: value,
+          isNameValid: true,
+        });
+      }
+      if (isValid === false) {
+        this.setState({
+          [name]: "",
+          isNameValid: false,
+        });
+      }
+    }
 
-    this.setState({
-      [name]: value,
-    });
+    if (name === "lastName") {
+      const isValid = stringRegexPattern.test(value);
+      if (isValid) {
+        this.setState({
+          [name]: value,
+          isLastNameValid: true,
+        });
+      }
+      if (isValid === false) {
+        this.setState({
+          [name]: "",
+          isLastNameValid: false,
+        });
+      }
+    }
+
+    if (name === "password") {
+      const isValid = passwordRegexPattern.test(value);
+      if (isValid) {
+        this.setState({
+          [name]: value,
+          isPasswordValid: true,
+        });
+      }
+      if (isValid === false) {
+        this.setState({
+          [name]: "",
+          isPasswordValid: false,
+        });
+      }
+    }
+
+    return resetMessagePropFunc();
   };
 
   goBackToEmployees = () => {
@@ -47,11 +95,21 @@ class AdminPage extends React.PureComponent {
       userName: "",
       password: "",
       admin: "true",
+      isNameValid: true,
+      isLastNameValid: true,
+      isPasswordValid: true,
     });
   };
 
   render() {
-    const { name, lastName, password } = this.state;
+    const {
+      name,
+      lastName,
+      password,
+      isNameValid,
+      isLastNameValid,
+      isPasswordValid,
+    } = this.state;
     const { loading, createAdminMessage } = this.props;
 
     if (loading === true) {
@@ -89,6 +147,11 @@ class AdminPage extends React.PureComponent {
             onChange={this.onChangeSetValue}
             value={name}
           />
+          {isNameValid === false ? (
+            <p className="form-errors">
+              Name can not contain numbers or special characters.
+            </p>
+          ) : null}
           <input
             type="text"
             name="lastName"
@@ -98,6 +161,11 @@ class AdminPage extends React.PureComponent {
             onChange={this.onChangeSetValue}
             value={lastName}
           />
+          {isLastNameValid === false ? (
+            <p className="form-errors">
+              Last Name can not contain numbers or special characters.
+            </p>
+          ) : null}
           <input
             type="text"
             name="password"
@@ -107,6 +175,12 @@ class AdminPage extends React.PureComponent {
             onChange={this.onChangeSetValue}
             value={password}
           />
+          {isPasswordValid === false ? (
+            <p className="form-errors">
+              Password can not be more than 21 characters or contain special
+              characters.
+            </p>
+          ) : null}
           <button
             type="button"
             className="client-button"
