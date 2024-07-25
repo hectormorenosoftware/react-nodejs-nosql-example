@@ -72,7 +72,7 @@ export function getUserDataRedux(userName) {
 
 export function loginRedux(userName, password) {
   return async function (dispatch) {
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: LOGIN_REQUEST, payload: { userName } });
 
     try {
       const data = await login(userName, password);

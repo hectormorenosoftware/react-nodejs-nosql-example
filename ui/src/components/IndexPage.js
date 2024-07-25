@@ -10,7 +10,7 @@ import {
   searchUserByNameRedux,
   searchByLastNameRedux,
 } from "../redux/actions/userActions";
-import { stringRegexPattern } from "../utils";
+import { stringRegexPattern, addASpace } from "../utils";
 
 import "./Index.css";
 
@@ -127,7 +127,8 @@ class IndexPage extends React.PureComponent {
 
   render() {
     const { firstName, lastName } = this.state;
-    const { loading, data, salariesTotal, getDataIndexPage } = this.props;
+    const { loading, data, salariesTotal, getDataIndexPage, userName } =
+      this.props;
 
     if (loading === true) {
       return (
@@ -143,6 +144,9 @@ class IndexPage extends React.PureComponent {
       <React.Fragment>
         <div>
           <h1 className="heading-subject">Employee Management Portal</h1>
+          <h3 style={{ textAlign: "center" }}>
+            Logged In As: {userName.replace(/([a-z])([A-Z])/g, "$1 $2")}
+          </h3>
           <div
             className="flex-box-row"
             style={{
@@ -234,7 +238,7 @@ class IndexPage extends React.PureComponent {
                     <tr key={i}>
                       <td>{value.companyRole}</td>
                       <td>{value.name}</td>
-                      <td>{value.lastName}</td>
+                      <td>{addASpace(value.lastName)}</td>
                       <td>{value.personalEmail}</td>
                       <td>{value.phoneNumber}</td>
                       <td>{value.companyEmail}</td>
@@ -283,6 +287,7 @@ function mapStateToProps(state) {
     loading: state.userReducer.loading,
     loginSuccess: state.userReducer.loginSuccess,
     salariesTotal: state.userReducer.salariesTotal,
+    userName: state.userReducer.userName,
   };
 }
 

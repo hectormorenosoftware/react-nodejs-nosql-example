@@ -36,6 +36,7 @@ const INTIAL_STATE = {
   createEmployeeMessage: "",
   deletedEmployeeMessage: "",
   salariesTotal: 0,
+  userName: "",
 };
 
 function userReducer(state = INTIAL_STATE, action) {
@@ -112,6 +113,7 @@ function userReducer(state = INTIAL_STATE, action) {
         loading: true,
         data: [],
         loginSuccess: false,
+        userName: action.payload.userName,
       };
     case LOGIN_REQUEST_SUCCESS:
       return {
@@ -128,6 +130,7 @@ function userReducer(state = INTIAL_STATE, action) {
         loading: false,
         data: [],
         loginSuccess: false,
+        userName: "",
       };
     case CREATE_ADMIN_REQUEST:
       return {

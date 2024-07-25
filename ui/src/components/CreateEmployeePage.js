@@ -13,6 +13,7 @@ import {
   emailRegexPattern,
   slackRegexPattern,
   companyRoleRegexPattern,
+  lastNameRegexPattern,
 } from "../utils";
 
 class CreateEmployeePage extends React.PureComponent {
@@ -69,7 +70,7 @@ class CreateEmployeePage extends React.PureComponent {
     }
 
     if (name === "lastName") {
-      const isStringValid = stringRegexPattern.test(value);
+      const isStringValid = lastNameRegexPattern.test(value);
       if (isStringValid) {
         return this.setState({
           lastName: value,
@@ -267,8 +268,8 @@ class CreateEmployeePage extends React.PureComponent {
     if (isCompanyEmailValid && isPersonalEmailValid) {
       createEmployeeFuncProp(
         name,
-        lastName,
-        name + lastName,
+        lastName.replace(/\s+/g, ""),
+        name + lastName.replace(/\s+/g, ""),
         personalEmail,
         phoneNumber,
         companyEmail,
@@ -356,7 +357,7 @@ class CreateEmployeePage extends React.PureComponent {
         />
         {isLastNameValid === false ? (
           <p className="form-errors">
-            Last Name can not contain numbers or special characters
+            Last name can not contain numbers or special characters
           </p>
         ) : null}
         <input

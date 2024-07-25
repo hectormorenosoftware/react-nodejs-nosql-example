@@ -6,7 +6,11 @@ import {
   createAdminRedux,
   resetMessageRedux,
 } from "../redux/actions/userActions";
-import { stringRegexPattern, passwordRegexPattern } from "../utils";
+import {
+  stringRegexPattern,
+  lastNameRegexPattern,
+  passwordRegexPattern,
+} from "../utils";
 
 class AdminPage extends React.PureComponent {
   constructor(props) {
@@ -52,7 +56,7 @@ class AdminPage extends React.PureComponent {
     }
 
     if (name === "lastName") {
-      const isValid = stringRegexPattern.test(value);
+      const isValid = lastNameRegexPattern.test(value);
       if (isValid) {
         this.setState({
           [name]: value,
@@ -96,7 +100,13 @@ class AdminPage extends React.PureComponent {
     const { name, lastName, password } = this.state;
     const { createAdminPropFunc, resetMessagePropFunc } = this.props;
     resetMessagePropFunc();
-    createAdminPropFunc(name, lastName, name + lastName, password, "true");
+    createAdminPropFunc(
+      name,
+      lastName.replace(/\s+/g, ""),
+      name + lastName.replace(/\s+/g, ""),
+      password,
+      "true"
+    );
     this.setState({
       name: "",
       lastName: "",
@@ -143,7 +153,7 @@ class AdminPage extends React.PureComponent {
         <div className="flexbox-column">
           <p id="align-text">
             {name.length > 0 && lastName.length > 0
-              ? `Username: ${name + lastName}`
+              ? `Username: ${name + lastName.replace(/\s+/g, "")}`
               : null}{" "}
           </p>
           <input
