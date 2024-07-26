@@ -5,6 +5,16 @@ const cors = require("cors");
 const numCPUs = require("os").cpus().length;
 const fs = require("fs");
 
+function sortFunc(a, b) {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+}
+
 if (cluster.isMaster) {
   for (var i = 0; i < numCPUs; i++) {
     // Create a worker
@@ -27,7 +37,10 @@ if (cluster.isMaster) {
         return accumulator + Number(currentValue.salary);
       }, 0);
 
-      return res.send({ arrayData, sumAllSalaries });
+      return res.send({
+        arrayData: arrayData.sort(sortFunc),
+        sumAllSalaries,
+      });
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -39,7 +52,7 @@ if (cluster.isMaster) {
         return accumulator + Number(currentValue.salary);
       }, 0);
 
-      return res.send({ arrayData, sumAllSalaries });
+      return res.send({ arrayData: arrayData.sort(sortFunc), sumAllSalaries });
     }
     return res.send([]);
   });
@@ -210,7 +223,7 @@ if (cluster.isMaster) {
 
       return res.send({
         message: "Successfully created employee",
-        data: arrToSend,
+        data: arrToSend.sort(sortFunc),
         sumAllSalaries,
       });
     }
@@ -245,7 +258,7 @@ if (cluster.isMaster) {
 
       return res.send({
         message: "Successfully created employee",
-        data: arrToSend,
+        data: arrToSend.sort(sortFunc),
         sumAllSalaries,
       });
     }
@@ -274,7 +287,7 @@ if (cluster.isMaster) {
 
       return res.send({
         message: "Successfully deleted employee",
-        data: arrToSend,
+        data: arrToSend.sort(sortFunc),
         sumAllSalaries,
       });
     }
@@ -298,7 +311,7 @@ if (cluster.isMaster) {
 
       return res.send({
         message: "Successfully deleted employee",
-        data: arrToSend,
+        data: arrToSend.sort(sortFunc),
         sumAllSalaries,
       });
     }
@@ -323,7 +336,10 @@ if (cluster.isMaster) {
         0
       );
 
-      return res.send({ arrayData: filteredArray, sumAllSalaries });
+      return res.send({
+        arrayData: filteredArray.sort(sortFunc),
+        sumAllSalaries,
+      });
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -340,7 +356,10 @@ if (cluster.isMaster) {
         0
       );
 
-      return res.send({ arrayData: filteredArray, sumAllSalaries });
+      return res.send({
+        arrayData: filteredArray.sort(sortFunc),
+        sumAllSalaries,
+      });
     }
     return res.send([]);
   });
@@ -362,7 +381,10 @@ if (cluster.isMaster) {
         0
       );
 
-      return res.send({ arrayData: filteredArray, sumAllSalaries });
+      return res.send({
+        arrayData: filteredArray.sort(sortFunc),
+        sumAllSalaries,
+      });
     }
 
     if (process.env.NODE_ENV === "production") {
@@ -379,7 +401,10 @@ if (cluster.isMaster) {
         0
       );
 
-      return res.send({ arrayData: filteredArray, sumAllSalaries });
+      return res.send({
+        arrayData: filteredArray.sort(sortFunc),
+        sumAllSalaries,
+      });
     }
     return res.send([]);
   });
