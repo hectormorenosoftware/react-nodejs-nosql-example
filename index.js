@@ -80,11 +80,14 @@ if (cluster.isMaster) {
       const jsonData = JSON.parse(rawData);
 
       if (jsonData[userName] === undefined) {
-        return res.send({ loginSuccess: false });
+        return res.send({
+          loginSuccess: false,
+          errorMessage: "User does not exist",
+        });
       }
 
       if (jsonData[userName].password === password) {
-        return res.send({ loginSuccess: true });
+        return res.send({ loginSuccess: true, errorMessage: "" });
       }
     }
 
@@ -95,15 +98,18 @@ if (cluster.isMaster) {
       const jsonData = JSON.parse(rawData);
 
       if (jsonData[userName] === undefined) {
-        return res.send({ loginSuccess: false });
+        return res.send({
+          loginSuccess: false,
+          errorMessage: "User does not exist",
+        });
       }
 
       if (jsonData[userName].password === password) {
-        return res.send({ loginSuccess: true });
+        return res.send({ loginSuccess: true, errorMessage: "" });
       }
     }
 
-    return res.send({ loginSuccess: false });
+    return res.send({ loginSuccess: false, errorMessage: "Wrong password" });
   });
 
   app.post(

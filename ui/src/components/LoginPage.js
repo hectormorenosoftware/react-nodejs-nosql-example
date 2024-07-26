@@ -92,7 +92,9 @@ class LoginPage extends React.PureComponent {
       isPasswordValid,
       formErrors,
     } = this.state;
-    const { loading } = this.props;
+    const { loading, errorMessage } = this.props;
+
+    console.log(errorMessage, "error");
 
     if (loading === true) {
       return (
@@ -141,6 +143,9 @@ class LoginPage extends React.PureComponent {
               You need a username and password to log in.
             </p>
           ) : null}
+          {errorMessage.length > 0 ? (
+            <p className="form-errors">{errorMessage}</p>
+          ) : null}
           <div className="flexbox-column">
             <button
               className="client-button margin-create-employee-fields"
@@ -167,6 +172,7 @@ function mapStateToProps(state) {
   return {
     loading: state.userReducer.loading,
     loginSuccess: state.userReducer.loginSuccess,
+    errorMessage: state.userReducer.errorMessage,
   };
 }
 
