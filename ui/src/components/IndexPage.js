@@ -248,8 +248,7 @@ class IndexPage extends React.PureComponent {
                       <td>
                         <button
                           type="text"
-                          className="client-button"
-                          style={{ backgroundColor: "red", color: "white" }}
+                          className="delete-button"
                           onClick={this.deleteUser.bind(this, value.userName)}
                         >
                           Delete

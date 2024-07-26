@@ -97,6 +97,29 @@ h6 {
 .client-button:hover {
   transform: scale(1.1, 1.1);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  color: #016fd0;
+  background-color: white;
+}
+
+.delete-button {
+  width: 200px;
+  height: 45px;
+  color: white;
+  border-radius: 18px;
+  border: 4px solid black;
+  background-color: red;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.delete-button:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  color: red;
+  background-color: white;
 }
 
 .Hero {

@@ -94,8 +94,6 @@ class LoginPage extends React.PureComponent {
     } = this.state;
     const { loading, errorMessage } = this.props;
 
-    console.log(errorMessage, "error");
-
     if (loading === true) {
       return (
         <div className="Hero" id="hero-height">

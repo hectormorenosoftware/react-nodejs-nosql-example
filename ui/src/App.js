@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, withRouter, Route } from "react-router-dom";
+import { Switch, withRouter, Route, Redirect } from "react-router-dom";
 
 import IndexPage from "./components/IndexPage";
 import LoginPage from "./components/LoginPage";
@@ -19,6 +19,7 @@ class App extends React.PureComponent {
         <Route exact path="/create-admin" render={() => <AdminPage />} />
         <Route exact path="/employees" render={() => <IndexPage />} />
         <Route exact path="/" render={() => <LoginPage />} />
+        <Redirect to="/" />
       </Switch>
     );
   }
