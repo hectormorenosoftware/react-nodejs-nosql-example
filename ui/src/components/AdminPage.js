@@ -24,6 +24,7 @@ class AdminPage extends React.PureComponent {
       isNameValid: true,
       isLastNameValid: true,
       isPasswordValid: true,
+      showPassword: false,
       formErrors: false,
     };
   }
@@ -94,6 +95,12 @@ class AdminPage extends React.PureComponent {
     return resetMessagePropFunc();
   };
 
+  showPasswordFunc = () => {
+    return this.setState({
+      showPassword: !this.state.showPassword,
+    });
+  };
+
   goBackToEmployees = () => {
     const { history, resetMessagePropFunc } = this.props;
     resetMessagePropFunc();
@@ -138,6 +145,7 @@ class AdminPage extends React.PureComponent {
       isLastNameValid,
       isPasswordValid,
       formErrors,
+      showPassword,
     } = this.state;
     const { loading, createAdminMessage } = this.props;
 
@@ -196,7 +204,7 @@ class AdminPage extends React.PureComponent {
             </p>
           ) : null}
           <input
-            type="text"
+            type={showPassword ? "text" : "password"}
             name="password"
             id="admin-page-adjustment"
             className="search-bar"
@@ -216,6 +224,16 @@ class AdminPage extends React.PureComponent {
               form.
             </p>
           ) : null}
+
+          <button
+            type="button"
+            className="client-button"
+            onClick={this.showPasswordFunc}
+            style={{ marginBottom: "5px" }}
+          >
+            {showPassword ? "Hide Password" : "Show Password"}
+          </button>
+
           <button
             type="button"
             className="client-button"
