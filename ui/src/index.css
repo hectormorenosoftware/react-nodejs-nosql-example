@@ -84,6 +84,13 @@ input:focus {
   outline: none;
 }
 
+input::placeholder {
+  color: #016fd0;
+  font-size: 15px;
+  font-style: "Catamaran";
+  opacity: 0.5;
+}
+
 .client-button {
   width: 200px;
   height: 45px;
