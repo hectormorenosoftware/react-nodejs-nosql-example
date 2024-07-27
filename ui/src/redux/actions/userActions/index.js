@@ -25,6 +25,12 @@ import {
   SEARCH_BY_LAST_NAME_REQUEST,
   SEARCH_BY_LAST_NAME_SUCCESS,
   SEARCH_BY_LAST_NAME_FAILURE,
+  SORT_BY_FIRST_NAME_REQUEST,
+  SORT_BY_FIRST_NAME_SUCCESS,
+  SORT_BY_FIRST_NAME_FAILURE,
+  SORT_BY_LAST_NAME_REQUEST,
+  SORT_BY_LAST_NAME_SUCCESS,
+  SORT_BY_LAST_NAME_FAILURE,
 } from "../../types";
 import {
   getUsersTableData,
@@ -35,6 +41,8 @@ import {
   deleteEmployeeFunc,
   searchUserByNameFunc,
   searchUserByLastName,
+  sortByFirstName,
+  sortByLastName,
 } from "../../api/api";
 
 export function getUsersDataRedux() {
@@ -180,6 +188,38 @@ export function searchByLastNameRedux(lastName) {
       return data;
     } catch (e) {
       dispatch({ type: SEARCH_BY_LAST_NAME_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function sortByFirstNameRedux() {
+  return async function (dispatch) {
+    dispatch({ type: SORT_BY_FIRST_NAME_REQUEST });
+    try {
+      const data = await sortByFirstName();
+
+      dispatch({ type: SORT_BY_FIRST_NAME_SUCCESS, payload: data });
+
+      return data;
+    } catch (e) {
+      dispatch({ type: SORT_BY_FIRST_NAME_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function sortByLastNameRedux() {
+  return async function (dispatch) {
+    dispatch({ type: SORT_BY_LAST_NAME_REQUEST });
+    try {
+      const data = await sortByLastName();
+
+      dispatch({ type: SORT_BY_LAST_NAME_SUCCESS, payload: data });
+
+      return data;
+    } catch (e) {
+      dispatch({ type: SORT_BY_LAST_NAME_FAILURE });
       throw new Error(e);
     }
   };

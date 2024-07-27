@@ -25,6 +25,12 @@ import {
   SEARCH_BY_LAST_NAME_REQUEST,
   SEARCH_BY_LAST_NAME_SUCCESS,
   SEARCH_BY_LAST_NAME_FAILURE,
+  SORT_BY_FIRST_NAME_REQUEST,
+  SORT_BY_FIRST_NAME_SUCCESS,
+  SORT_BY_FIRST_NAME_FAILURE,
+  SORT_BY_LAST_NAME_SUCCESS,
+  SORT_BY_LAST_NAME_REQUEST,
+  SORT_BY_LAST_NAME_FAILURE,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -230,6 +236,56 @@ function userReducer(state = INTIAL_STATE, action) {
         ...state,
         loading: false,
         error: true,
+        data: [],
+        salariesTotal: 0,
+      };
+
+    case SORT_BY_FIRST_NAME_REQUEST:
+      return {
+        ...state,
+        error: false,
+        loading: true,
+        data: [],
+        salariesTotal: 0,
+      };
+    case SORT_BY_FIRST_NAME_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        data: [...action.payload.arrayData],
+        salariesTotal: action.payload.sumAllSalaries,
+      };
+    case SORT_BY_FIRST_NAME_FAILURE:
+      return {
+        ...state,
+        error: true,
+        loading: false,
+        data: [],
+        salariesTotal: 0,
+      };
+    case SORT_BY_LAST_NAME_REQUEST:
+      return {
+        ...state,
+        error: false,
+        loading: true,
+        data: [],
+        salariesTotal: 0,
+      };
+    case SORT_BY_LAST_NAME_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        data: [...action.payload.arrayData],
+        salariesTotal: action.payload.sumAllSalaries,
+      };
+
+    case SORT_BY_LAST_NAME_FAILURE:
+      return {
+        ...state,
+        error: true,
+        loading: false,
         data: [],
         salariesTotal: 0,
       };

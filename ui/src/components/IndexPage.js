@@ -9,6 +9,8 @@ import {
   deleteEmployeeRedux,
   searchUserByNameRedux,
   searchByLastNameRedux,
+  sortByFirstNameRedux,
+  sortByLastNameRedux,
 } from "../redux/actions/userActions";
 import { stringRegexPattern, addASpace } from "../utils";
 
@@ -147,6 +149,7 @@ class IndexPage extends React.PureComponent {
           <h3 style={{ textAlign: "center" }}>
             Logged In As: {userName.replace(/([a-z])([A-Z])/g, "$1 $2")}
           </h3>
+
           <div
             className="flex-box-row"
             style={{
@@ -181,6 +184,22 @@ class IndexPage extends React.PureComponent {
               onClick={this.logOutUser}
             >
               Log Out
+            </button>
+          </div>
+          <div className="flex-box-row" style={{ cursor: "pointer" }}>
+            <button
+              className="client-button"
+              type="button"
+              onClick={() => this.props.sortByFirstNameFuncProp()}
+            >
+              Sort By Name
+            </button>
+            <button
+              className="client-button"
+              type="button"
+              onClick={() => this.props.sortByLastNameFuncProp()}
+            >
+              Sort By Last Name
             </button>
           </div>
           <div className="flex-box-row">
@@ -307,6 +326,8 @@ function mapDispatchToProps(dispatch) {
       searchByLastNameRedux,
       dispatch
     ),
+    sortByFirstNameFuncProp: bindActionCreators(sortByFirstNameRedux, dispatch),
+    sortByLastNameFuncProp: bindActionCreators(sortByLastNameRedux, dispatch),
   };
 }
 

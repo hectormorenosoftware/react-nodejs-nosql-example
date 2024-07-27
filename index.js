@@ -15,6 +15,16 @@ function sortFunc(a, b) {
   return 0;
 }
 
+function sortLastName(a, b) {
+  if (a.lastName < b.lastName) {
+    return -1;
+  }
+  if (a.lastName > b.lastName) {
+    return 1;
+  }
+  return 0;
+}
+
 if (cluster.isMaster) {
   for (var i = 0; i < numCPUs; i++) {
     // Create a worker
@@ -403,6 +413,67 @@ if (cluster.isMaster) {
 
       return res.send({
         arrayData: filteredArray.sort(sortFunc),
+        sumAllSalaries,
+      });
+    }
+    return res.send([]);
+  });
+
+  app.get("/sort-by-name", (req, res) => {
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonData = JSON.parse(rawData);
+      const arrayData = Object.values(jsonData);
+      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({
+        arrayData: arrayData.sort(sortFunc),
+        sumAllSalaries,
+      });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonData = JSON.parse(rawData);
+      const arrayData = Object.values(jsonData);
+
+      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({ arrayData: arrayData.sort(sortFunc), sumAllSalaries });
+    }
+    return res.send([]);
+  });
+
+  app.get("/sort-by-last-name", (req, res) => {
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonData = JSON.parse(rawData);
+      const arrayData = Object.values(jsonData);
+      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({
+        arrayData: arrayData.sort(sortLastName),
+        sumAllSalaries,
+      });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonData = JSON.parse(rawData);
+      const arrayData = Object.values(jsonData);
+
+      const sumAllSalaries = arrayData.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({
+        arrayData: arrayData.sort(sortLastName),
         sumAllSalaries,
       });
     }

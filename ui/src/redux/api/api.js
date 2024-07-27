@@ -199,6 +199,44 @@ async function searchUserByLastName(lastName) {
   }
 }
 
+async function sortByFirstName() {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/sort-by-name";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/sort-by-name";
+    }
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
+async function sortByLastName() {
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/sort-by-last-name";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/sort-by-last-name";
+    }
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 export {
   getUsersTableData,
   getUserTableData,
@@ -208,4 +246,6 @@ export {
   deleteEmployeeFunc,
   searchUserByNameFunc,
   searchUserByLastName,
+  sortByFirstName,
+  sortByLastName,
 };
