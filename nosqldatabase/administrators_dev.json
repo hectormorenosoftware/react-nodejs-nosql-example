@@ -1,18 +1,4 @@
 {
-  "JosePascal": {
-    "name": "Jose",
-    "lastName": "Pascal",
-    "userName": "JosePascal",
-    "admin": "true",
-    "password": "testing"
-  },
-  "AndrewPascal": {
-    "name": "Andrew",
-    "lastName": "Pascal",
-    "userName": "AndrewPascal",
-    "admin": "true",
-    "password": "testing"
-  },
   "JonBonjovi": {
     "name": "Jon",
     "lastName": "Bonjovi",
