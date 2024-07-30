@@ -12,6 +12,11 @@ import {
   passwordRegexPattern,
 } from "../utils";
 
+const styles = {
+  marginBottom: "10px",
+  width: "300px",
+};
+
 class AdminPage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -178,11 +183,11 @@ class AdminPage extends React.PureComponent {
           <input
             type="text"
             name="name"
-            id="admin-page-adjustment"
             className="search-bar"
             placeholder="Enter a name"
             onChange={this.onChangeSetValue}
             value={name}
+            style={styles}
           />
           {isNameValid === false ? (
             <p className="form-errors">
@@ -192,11 +197,11 @@ class AdminPage extends React.PureComponent {
           <input
             type="text"
             name="lastName"
-            id="admin-page-adjustment"
             className="search-bar"
             placeholder="Enter a last name"
             onChange={this.onChangeSetValue}
             value={lastName}
+            style={styles}
           />
           {isLastNameValid === false ? (
             <p className="form-errors">
@@ -206,11 +211,11 @@ class AdminPage extends React.PureComponent {
           <input
             type={showPassword ? "text" : "password"}
             name="password"
-            id="admin-page-adjustment"
             className="search-bar"
             placeholder="Enter a password"
             onChange={this.onChangeSetValue}
             value={password}
+            style={styles}
           />
           {isPasswordValid === false ? (
             <p className="form-errors">

@@ -1,38 +1,86 @@
 {
-  "RalphGomez": {
-    "name": "Ralph",
+  "EmmaWattson": {
+    "name": "Emma",
+    "lastName": "Wattson",
+    "userName": "EmmaWattson",
+    "personalEmail": "emmawattson@gmail.com",
+    "phoneNumber": "202-554-7383",
+    "companyEmail": "emma@visa.com",
+    "companyNumber": "202-584-8737",
+    "slackID": "EmmaWattson",
+    "salary": "175000",
+    "companyRole": "Project Manager"
+  },
+  "NataliePortman": {
+    "name": "Natalie",
+    "lastName": "Portman",
+    "userName": "NataliePortman",
+    "personalEmail": "natalieportman@gmail.com",
+    "phoneNumber": "202-575-4985",
+    "companyEmail": "natalieportman@visa.com",
+    "companyNumber": "202-495-8744",
+    "slackID": "NataliePortman",
+    "salary": "175000",
+    "companyRole": "Project Manager"
+  },
+  "JessicaAlba": {
+    "name": "Jessica",
+    "lastName": "Alba",
+    "userName": "JessicaAlba",
+    "personalEmail": "jessicaalba@gmail.com",
+    "phoneNumber": "202-453-4593",
+    "companyEmail": "jessicaalba@visa.com",
+    "companyNumber": "202-485-7484",
+    "slackID": "JessicaAlba",
+    "salary": "175000",
+    "companyRole": "Project Manager"
+  },
+  "GalGadot": {
+    "name": "Gal",
+    "lastName": "Gadot",
+    "userName": "GalGadot",
+    "personalEmail": "galgadot@gmail.com",
+    "phoneNumber": "202-395-3959",
+    "companyEmail": "galgadot@visa.com",
+    "companyNumber": "202-485-4758",
+    "slackID": "GalGadot",
+    "salary": "175000",
+    "companyRole": "Project Manager"
+  },
+  "SelenaGomez": {
+    "name": "Selena",
     "lastName": "Gomez",
-    "userName": "RalphGomez",
-    "personalEmail": "ralph@gmail.com",
-    "phoneNumber": "202-686-9005",
-    "companyEmail": "ralph@amex.com",
-    "companyNumber": "202-335-7887",
-    "slackID": "ralphgomezamex",
-    "salary": "75000",
-    "companyRole": "Software Engineer"
-  },
-  "OwenOliver": {
-    "name": "Owen",
-    "lastName": "Oliver",
-    "userName": "OwenOliver",
-    "personalEmail": "owenoliver@gmail.com",
-    "phoneNumber": "202-594-5993",
-    "companyEmail": "owenoliver@amex.com",
-    "companyNumber": "202-593-4959",
-    "slackID": "owenwillson",
+    "userName": "SelenaGomez",
+    "personalEmail": "selenagomez@gmail.com",
+    "phoneNumber": "202-344-5943",
+    "companyEmail": "selenagomez@visa.com",
+    "companyNumber": "202-304-5259",
+    "slackID": "SelenaGomez",
     "salary": "175000",
-    "companyRole": "Senior React JS Developer and Node JS Developer"
+    "companyRole": "Backend Engineer"
   },
-  "ParkerCooper": {
-    "name": "Parker",
-    "lastName": "Cooper",
-    "userName": "ParkerCooper",
-    "personalEmail": "parkercooper@gmail.com",
-    "phoneNumber": "202-484-8843",
-    "companyEmail": "parkercooper@amex.com",
-    "companyNumber": "202-473-8843",
-    "slackID": "parkercooper",
+  "RashidaJones": {
+    "name": "Rashida",
+    "lastName": "Jones",
+    "userName": "RashidaJones",
+    "personalEmail": "rashidajones@gmail.com",
+    "phoneNumber": "202-574-3847",
+    "companyEmail": "rashidajones@visa.com",
+    "companyNumber": "202-783-4885",
+    "slackID": "RashidaJones",
     "salary": "175000",
-    "companyRole": "Senior React JS Developer and Node JS Developer"
+    "companyRole": "Backend Engineer"
+  },
+  "JJAbrams": {
+    "name": "JJ",
+    "lastName": "Abrams",
+    "userName": "JJAbrams",
+    "personalEmail": "jjabrams@gmail.com",
+    "phoneNumber": "206-777-7837",
+    "companyEmail": "jjabrams@visa.com",
+    "companyNumber": "206-777-3848",
+    "slackID": "JJAbrams",
+    "salary": "178000",
+    "companyRole": "Senior React JS Developer and Backend Engineer"
   }
 }
