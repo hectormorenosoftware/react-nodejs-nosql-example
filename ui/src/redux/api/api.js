@@ -22,18 +22,26 @@ async function getUserTableData(userName) {
   try {
     let url = null;
     if (process.env.NODE_ENV === "development") {
-      url = "http://localhost:5000/get-user-account";
+      url = `http://localhost:5000/get-user-account?userName=${userName}`;
     }
     if (process.env.NODE_ENV === "production") {
-      url = "http://localhost:5000/get-user-account";
+      url = `http://localhost:5000/get-user-account?userName=${userName}`;
     }
 
     //axios and fetch in this scenario is the same syntax because
     //you can't send a body on a GET request using axios or fetch
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
 
-    const data = await axios(url, { params: { userName: userName } });
+    const res = await fetch(url, {
+      method: "GET",
+      headers: myHeaders,
+    });
 
-    return data.data;
+    const data = await res.json();
+
+    return data;
   } catch (e) {
     throw new Error(e);
   }
