@@ -6,7 +6,7 @@ module.exports = {
   devtool: "source-map",
   entry: { index: path.resolve(__dirname, "src", "index.js") },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
   },
   plugins: [
     new HtmlWebpackPlugin({

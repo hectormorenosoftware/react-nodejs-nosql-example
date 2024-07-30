@@ -16,6 +16,8 @@ import { stringRegexPattern, addASpace } from "../utils";
 
 import "./Index.css";
 
+const todaysDate = new Date().toLocaleDateString();
+
 class IndexPage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -145,10 +147,23 @@ class IndexPage extends React.PureComponent {
     return (
       <React.Fragment>
         <div>
-          <h1 className="heading-subject">Employee Management Portal</h1>
-          <h3 style={{ textAlign: "center" }}>
-            Logged In As: {userName.replace(/([a-z])([A-Z])/g, "$1 $2")}
-          </h3>
+          <div
+            style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+          >
+            <h3 style={{ justifySelf: "left", marginLeft: "1rem" }}>
+              Welcome! Date of Login: {todaysDate}
+            </h3>
+
+            <h3
+              style={{
+                textAlign: "center",
+                justifySelf: "right",
+                marginRight: "1rem",
+              }}
+            >
+              Logged In As: {userName.replace(/([a-z])([A-Z])/g, "$1 $2")}
+            </h3>
+          </div>
 
           <div
             className="flex-box-row"
