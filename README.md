@@ -20,7 +20,7 @@ Remember that in the folder "nosqldatabase" in the file administrators_dev.json 
 To deploy into the internet without using AWS to have full control of your data use a tunnel through ngrok.
 https://ngrok.com/
 
-Or you can you can deploy this application using Heroku. Heroku is owned by Salesforce.
+Or you can you can deploy this application using Heroku. Heroku is a cloud based company that is owned by Salesforce.
 
 www.heroku.com
 
