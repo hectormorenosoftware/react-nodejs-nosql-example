@@ -1,4 +1,5 @@
 import React from "react";
+import ChangeBackground from "./ChangeBackground";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -92,7 +93,7 @@ class LoginPage extends React.PureComponent {
       isPasswordValid,
       formErrors,
     } = this.state;
-    const { loading, errorMessage } = this.props;
+    const { loading, errorMessage, changedColorProp } = this.props;
 
     if (loading === true) {
       return (
@@ -107,6 +108,7 @@ class LoginPage extends React.PureComponent {
     return (
       <React.Fragment>
         <h1 id="align-text">Employee Management Login Portal</h1>
+
         <div className="flexbox-column">
           <input
             className="search-bar margin-create-employee-fields"
@@ -146,19 +148,28 @@ class LoginPage extends React.PureComponent {
           ) : null}
           <div className="flexbox-column">
             <button
-              className="client-button margin-create-employee-fields"
+              className={`${
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              } margin-create-employee-fields`}
               type="button"
               onClick={this.showPassword}
             >
               {displayPassword ? "Hide Password" : "Show Password"}
             </button>
             <button
-              className="client-button margin-create-employee-fields"
+              className={`${
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              } margin-create-employee-fields`}
               type="button"
               onClick={this.loginFunc}
             >
               Login
             </button>
+            <ChangeBackground stylesProps={null} />
           </div>
         </div>
       </React.Fragment>
@@ -171,6 +182,7 @@ function mapStateToProps(state) {
     loading: state.userReducer.loading,
     loginSuccess: state.userReducer.loginSuccess,
     errorMessage: state.userReducer.errorMessage,
+    changedColorProp: state.userReducer.changedColor,
   };
 }
 

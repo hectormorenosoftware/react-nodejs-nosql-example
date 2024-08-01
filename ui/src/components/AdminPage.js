@@ -152,7 +152,7 @@ class AdminPage extends React.PureComponent {
       formErrors,
       showPassword,
     } = this.state;
-    const { loading, createAdminMessage } = this.props;
+    const { loading, createAdminMessage, changedColorProp } = this.props;
 
     if (loading === true) {
       return (
@@ -232,7 +232,9 @@ class AdminPage extends React.PureComponent {
 
           <button
             type="button"
-            className="client-button"
+            className={
+              changedColorProp === true ? "client-button-two" : "client-button"
+            }
             onClick={this.showPasswordFunc}
             style={{ marginBottom: "5px" }}
           >
@@ -241,14 +243,18 @@ class AdminPage extends React.PureComponent {
 
           <button
             type="button"
-            className="client-button"
+            className={
+              changedColorProp === true ? "client-button-two" : "client-button"
+            }
             onClick={this.createAdminFunc}
           >
             Create Admin
           </button>
           <button
             type="button"
-            className="client-button"
+            className={
+              changedColorProp === true ? "client-button-two" : "client-button"
+            }
             onClick={this.goBackToEmployees}
             style={{ marginTop: "5px" }}
           >
@@ -265,6 +271,7 @@ function mapStateToProps(state) {
     loading: state.userReducer.loading,
     createAdminMessage: state.userReducer.createAdminMessage,
     loginSuccess: state.userReducer.loginSuccess,
+    changedColorProp: state.userReducer.changedColor,
   };
 }
 

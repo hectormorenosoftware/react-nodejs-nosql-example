@@ -31,6 +31,7 @@ import {
   SORT_BY_LAST_NAME_REQUEST,
   SORT_BY_LAST_NAME_SUCCESS,
   SORT_BY_LAST_NAME_FAILURE,
+  CHANGED_COLOR,
 } from "../../types";
 import {
   getUsersTableData,
@@ -44,6 +45,12 @@ import {
   sortByFirstName,
   sortByLastName,
 } from "../../api/api";
+
+export function changeColorRedux() {
+  return function (dispatch) {
+    dispatch({ type: CHANGED_COLOR });
+  };
+}
 
 export function getUsersDataRedux() {
   return async function (dispatch) {

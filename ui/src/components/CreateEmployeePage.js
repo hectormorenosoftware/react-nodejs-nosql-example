@@ -316,7 +316,7 @@ class CreateEmployeePage extends React.PureComponent {
       formErrors,
     } = this.state;
 
-    const { loading, createEmployeeMessage } = this.props;
+    const { loading, createEmployeeMessage, changedColorProp } = this.props;
 
     if (loading === true) {
       return (
@@ -458,14 +458,18 @@ class CreateEmployeePage extends React.PureComponent {
           </p>
         ) : null}
         <button
-          className="client-button margin-create-employee-fields"
+          className={`${
+            changedColorProp === true ? "client-button-two" : "client-button"
+          } margin-create-employee-fields`}
           type="button"
           onClick={this.createEmployee}
         >
           Create Employee
         </button>
         <button
-          className="client-button margin-create-employee-fields"
+          className={`${
+            changedColorProp === true ? "client-button-two" : "client-button"
+          } margin-create-employee-fields`}
           type="button"
           onClick={this.goBackToEmployeesPage}
         >
@@ -481,6 +485,7 @@ function mapStateToProps(state) {
     loading: state.userReducer.loading,
     createEmployeeMessage: state.userReducer.createEmployeeMessage,
     loginSuccess: state.userReducer.loginSuccess,
+    changedColorProp: state.userReducer.changedColor,
   };
 }
 

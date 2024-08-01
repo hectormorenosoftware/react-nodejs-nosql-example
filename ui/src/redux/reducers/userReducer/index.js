@@ -31,6 +31,7 @@ import {
   SORT_BY_LAST_NAME_SUCCESS,
   SORT_BY_LAST_NAME_REQUEST,
   SORT_BY_LAST_NAME_FAILURE,
+  CHANGED_COLOR,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -44,10 +45,16 @@ const INTIAL_STATE = {
   salariesTotal: 0,
   userName: "",
   errorMessage: "",
+  changedColor: false,
 };
 
 function userReducer(state = INTIAL_STATE, action) {
   switch (action.type) {
+    case CHANGED_COLOR:
+      return {
+        ...state,
+        changedColor: !state.changedColor,
+      };
     case GET_DATA:
       return {
         ...state,
@@ -291,7 +298,7 @@ function userReducer(state = INTIAL_STATE, action) {
       };
 
     case RESET_ALL_DATA:
-      return { ...INTIAL_STATE };
+      return { ...INTIAL_STATE, changedColor: state.changedColor };
     default:
       return state;
   }

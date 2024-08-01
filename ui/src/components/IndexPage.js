@@ -2,6 +2,7 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import ChangeBackground from "./ChangeBackground";
 import {
   getUsersDataRedux,
   getUserDataRedux,
@@ -131,8 +132,14 @@ class IndexPage extends React.PureComponent {
 
   render() {
     const { firstName, lastName } = this.state;
-    const { loading, data, salariesTotal, getDataIndexPage, userName } =
-      this.props;
+    const {
+      loading,
+      data,
+      salariesTotal,
+      getDataIndexPage,
+      userName,
+      changedColorProp,
+    } = this.props;
 
     if (loading === true) {
       return (
@@ -163,6 +170,14 @@ class IndexPage extends React.PureComponent {
             >
               Logged In As: {userName.replace(/([a-z])([A-Z])/g, "$1 $2")}
             </h3>
+            <ChangeBackground
+              stylesProp={{
+                position: "absolute",
+                right: "0",
+                marginRight: "1rem",
+                marginTop: "4rem",
+              }}
+            />
           </div>
 
           <div
@@ -173,21 +188,33 @@ class IndexPage extends React.PureComponent {
             }}
           >
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={this.routeToCreateEmployee}
             >
               Create Employee
             </button>
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={this.routeToCreateAdmin}
             >
               Create Admin
             </button>
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={getDataIndexPage}
             >
@@ -195,7 +222,11 @@ class IndexPage extends React.PureComponent {
             </button>
             <button
               type="button"
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               onClick={this.logOutUser}
             >
               Log Out
@@ -203,14 +234,22 @@ class IndexPage extends React.PureComponent {
           </div>
           <div className="flex-box-row" style={{ cursor: "pointer" }}>
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={() => this.props.sortByFirstNameFuncProp()}
             >
               Sort By Name
             </button>
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={() => this.props.sortByLastNameFuncProp()}
             >
@@ -233,14 +272,22 @@ class IndexPage extends React.PureComponent {
               name="lastName"
             />
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={this.searchForUserByUserName}
             >
               Search
             </button>
             <button
-              className="client-button"
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
               type="button"
               onClick={this.resetData}
             >
@@ -321,6 +368,7 @@ function mapStateToProps(state) {
     loginSuccess: state.userReducer.loginSuccess,
     salariesTotal: state.userReducer.salariesTotal,
     userName: state.userReducer.userName,
+    changedColorProp: state.userReducer.changedColor,
   };
 }
 
