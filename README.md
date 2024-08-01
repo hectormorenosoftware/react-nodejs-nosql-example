@@ -25,3 +25,5 @@ Or you can deploy this application using Heroku. Heroku is a cloud based company
 www.heroku.com
 
 https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+
+Created by: Hector Moreno Gomez
