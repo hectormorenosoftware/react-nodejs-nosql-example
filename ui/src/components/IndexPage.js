@@ -316,7 +316,14 @@ class IndexPage extends React.PureComponent {
               {data.length > 0 ? (
                 data.map((value, i) => {
                   return (
-                    <tr key={i}>
+                    <tr
+                      key={i}
+                      className={
+                        changedColorProp === true
+                          ? "second-row-background"
+                          : "first-row-background"
+                      }
+                    >
                       <td>{value.companyRole}</td>
                       <td>{value.name}</td>
                       <td>{addASpace(value.lastName)}</td>

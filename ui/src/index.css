@@ -150,6 +150,24 @@ input::placeholder {
   background-color: white;
 }
 
+.first-row-background {
+  cursor: pointer;
+}
+
+.first-row-background:hover {
+  color: #016fd0;
+  background-color: white;
+}
+
+.second-row-background {
+  cursor: pointer;
+}
+
+.second-row-background:hover {
+  color: black;
+  background-color: white;
+}
+
 .Hero {
   background: url(./images/splashtwo.png);
   height: 920px;
