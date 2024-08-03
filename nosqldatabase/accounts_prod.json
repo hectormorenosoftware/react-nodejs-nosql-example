@@ -82,5 +82,41 @@
     "slackID": "JJAbrams",
     "salary": "178000",
     "companyRole": "Senior React JS Developer and Backend Engineer"
+  },
+  "AeliusOtho": {
+    "name": "Aelius",
+    "lastName": "Otho",
+    "userName": "AeliusOtho",
+    "personalEmail": "aeliusotho@gmail.com",
+    "phoneNumber": "202-394-4994",
+    "companyEmail": "aeliusotho@amex.com",
+    "companyNumber": "202-485-8758",
+    "slackID": "AeliusOtho",
+    "salary": "175000",
+    "companyRole": "Senior React JS Developer and Node JS Developer"
+  },
+  "PorciaScaevola": {
+    "name": "Porcia",
+    "lastName": "Scaevola",
+    "userName": "PorciaScaevola",
+    "personalEmail": "porciascaevola@gmail.com",
+    "phoneNumber": "202-394-2843",
+    "companyEmail": "porciascaevola@amex.com",
+    "companyNumber": "202-276-8787",
+    "slackID": "PorciaScaevola",
+    "salary": "175000",
+    "companyRole": "Senior React JS and Node JS Developer"
+  },
+  "VitusTullius": {
+    "name": "Vitus",
+    "lastName": "Tullius",
+    "userName": "VitusTullius",
+    "personalEmail": "vitustullius@gmail.com",
+    "phoneNumber": "202-878-7647",
+    "companyEmail": "vitustullius@amex.com",
+    "companyNumber": "202-878-7458",
+    "slackID": "VitusTullius",
+    "salary": "198000",
+    "companyRole": "Project Manager"
   }
 }
