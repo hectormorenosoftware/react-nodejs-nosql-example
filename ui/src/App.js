@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, withRouter, Route, Redirect } from "react-router-dom";
 
-import IndexPage from "./components/IndexPage";
-import LoginPage from "./components/LoginPage";
-import AdminPage from "./components/AdminPage";
-import CreateEmployeePage from "./components/CreateEmployeePage";
+import IndexPage from "./components/pages/IndexPage";
+import LoginPage from "./components/pages/LoginPage";
+import AdminPage from "./components/pages/AdminPage";
+import CreateEmployeePage from "./components/pages/CreateEmployeePage";
 
 class App extends React.PureComponent {
   render() {

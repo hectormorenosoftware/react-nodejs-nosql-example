@@ -32,6 +32,7 @@ import {
   SORT_BY_LAST_NAME_REQUEST,
   SORT_BY_LAST_NAME_FAILURE,
   CHANGED_COLOR,
+  RESET_DELETED_MESSAGE,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -50,6 +51,11 @@ const INTIAL_STATE = {
 
 function userReducer(state = INTIAL_STATE, action) {
   switch (action.type) {
+    case RESET_DELETED_MESSAGE:
+      return {
+        ...state,
+        deletedEmployeeMessage: "",
+      };
     case CHANGED_COLOR:
       return {
         ...state,

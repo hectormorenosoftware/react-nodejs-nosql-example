@@ -1,10 +1,11 @@
 import React from "react";
-import ChangeBackground from "./ChangeBackground";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { loginRedux } from "../redux/actions/userActions";
-import { stringRegexPattern, passwordRegexPattern } from "../utils";
+import ChangeBackground from "../representational/ChangeBackground";
+import Loading from "../representational/Loading";
+import { loginRedux } from "../../redux/actions/userActions";
+import { stringRegexPattern, passwordRegexPattern } from "../../utils";
 
 class LoginPage extends React.PureComponent {
   constructor(props) {
@@ -96,13 +97,7 @@ class LoginPage extends React.PureComponent {
     const { loading, errorMessage, changedColorProp } = this.props;
 
     if (loading === true) {
-      return (
-        <div className="Hero" id="hero-height">
-          <div className="HeroGroup" id="hero-group-height">
-            <p>Loading please wait ...</p>
-          </div>
-        </div>
-      );
+      return <Loading />;
     }
 
     return (

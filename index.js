@@ -281,6 +281,9 @@ if (cluster.isMaster) {
     if (process.env.NODE_ENV === "development") {
       const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
       const jsonDataToModify = JSON.parse(rawData);
+      const userFirstName = jsonDataToModify[userName].name;
+      const userLastName = jsonDataToModify[userName].lastName;
+      const companyRole = jsonDataToModify[userName].companyRole;
 
       delete jsonDataToModify[userName];
 
@@ -296,7 +299,7 @@ if (cluster.isMaster) {
       }, 0);
 
       return res.send({
-        message: "Successfully deleted employee",
+        message: `Successfully deleted ${companyRole}: ${userFirstName} ${userLastName}`,
         data: arrToSend.sort(sortFunc),
         sumAllSalaries,
       });
@@ -305,6 +308,9 @@ if (cluster.isMaster) {
     if (process.env.NODE_ENV === "production") {
       const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
       const jsonDataToModify = JSON.parse(rawData);
+      const userFirstName = jsonDataToModify[userName].name;
+      const userLastName = jsonDataToModify[userName].lastName;
+      const companyRole = jsonDataToModify[userName].companyRole;
 
       delete jsonDataToModify[userName];
 
@@ -320,7 +326,7 @@ if (cluster.isMaster) {
       }, 0);
 
       return res.send({
-        message: "Successfully deleted employee",
+        message: `Successfully deleted ${companyRole}: ${userFirstName} ${userLastName}`,
         data: arrToSend.sort(sortFunc),
         sumAllSalaries,
       });

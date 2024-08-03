@@ -2,15 +2,16 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Loading from "../representational/Loading";
 import {
   createAdminRedux,
   resetMessageRedux,
-} from "../redux/actions/userActions";
+} from "../../redux/actions/userActions";
 import {
   stringRegexPattern,
   lastNameRegexPattern,
   passwordRegexPattern,
-} from "../utils";
+} from "../../utils";
 
 const styles = {
   marginBottom: "10px",
@@ -155,13 +156,7 @@ class AdminPage extends React.PureComponent {
     const { loading, createAdminMessage, changedColorProp } = this.props;
 
     if (loading === true) {
-      return (
-        <div className="Hero" id="hero-height">
-          <div className="HeroGroup" id="hero-group-height">
-            <p>Loading please wait ...</p>
-          </div>
-        </div>
-      );
+      return <Loading />;
     }
 
     return (

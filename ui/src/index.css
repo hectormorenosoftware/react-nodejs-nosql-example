@@ -9,6 +9,31 @@ body {
   font-weight: 700;
 }
 
+.table-data {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-spacing: 0;
+}
+
+.heading-subject {
+  font-weight: bold;
+  font-size: 45px;
+  text-align: center;
+}
+
+.flex-box-searchbar-searchbutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 h1,
 h2,
 h3,
@@ -37,16 +62,6 @@ h6 {
 
 #width-login-password {
   width: 25rem;
-}
-
-#hero-group-height {
-  height: 78vh;
-  background: none;
-}
-
-#hero-height {
-  height: 100vh;
-  overflow: hidden;
 }
 
 .flexbox-column {
@@ -168,47 +183,39 @@ input::placeholder {
   background-color: white;
 }
 
-.Hero {
-  background: url(./images/splashtwo.png);
-  height: 920px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+@keyframes BlinkingAnimation {
+  50% {
+    opacity: 1;
+  }
 }
 
-.HeroGroup {
-  margin: 0 auto;
-  padding: 150px 50px;
+.Hero {
+  position: relative;
   text-align: center;
-  height: 67%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .Hero p {
   color: rgba(255, 255, 255, 0.8);
   font-size: 30px;
   line-height: 1.5;
-  animation: HeroAnimation 3s 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: BlinkingAnimation 4s linear infinite;
   opacity: 0;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 17rem;
+  bottom: 0;
 }
 
 @media (max-width: 640px) {
-  .HeroGroup {
-    padding: 100px 20px;
-  }
-
   .Hero p {
     font-size: 24px;
   }
 }
 
-@keyframes HeroAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
+.deleted-employee-message {
+  opacity: 0;
+  animation: BlinkingAnimation 4s linear infinite;
+  text-align: center;
 }

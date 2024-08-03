@@ -32,6 +32,7 @@ import {
   SORT_BY_LAST_NAME_SUCCESS,
   SORT_BY_LAST_NAME_FAILURE,
   CHANGED_COLOR,
+  RESET_DELETED_MESSAGE,
 } from "../../types";
 import {
   getUsersTableData,
@@ -45,6 +46,12 @@ import {
   sortByFirstName,
   sortByLastName,
 } from "../../api/api";
+
+export function resetDeletedMessageRedux() {
+  return function (dispatch) {
+    dispatch({ type: RESET_DELETED_MESSAGE });
+  };
+}
 
 export function changeColorRedux() {
   return function (dispatch) {

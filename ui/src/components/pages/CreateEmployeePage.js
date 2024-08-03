@@ -2,10 +2,11 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Loading from "../representational/Loading";
 import {
   createEmployeeRedux,
   resetMessageRedux,
-} from "../redux/actions/userActions";
+} from "../../redux/actions/userActions";
 import {
   stringRegexPattern,
   phoneNumberRegexPattern,
@@ -14,7 +15,7 @@ import {
   slackRegexPattern,
   companyRoleRegexPattern,
   lastNameRegexPattern,
-} from "../utils";
+} from "../../utils";
 
 class CreateEmployeePage extends React.PureComponent {
   constructor(props) {
@@ -319,13 +320,7 @@ class CreateEmployeePage extends React.PureComponent {
     const { loading, createEmployeeMessage, changedColorProp } = this.props;
 
     if (loading === true) {
-      return (
-        <div className="Hero" id="hero-height">
-          <div className="HeroGroup" id="hero-group-height">
-            <p>Loading please wait ...</p>
-          </div>
-        </div>
-      );
+      return <Loading />;
     }
 
     return (

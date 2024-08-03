@@ -2,7 +2,8 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import ChangeBackground from "./ChangeBackground";
+import ChangeBackground from "../representational/ChangeBackground";
+import Loading from "../representational/Loading";
 import {
   getUsersDataRedux,
   getUserDataRedux,
@@ -12,10 +13,8 @@ import {
   searchByLastNameRedux,
   sortByFirstNameRedux,
   sortByLastNameRedux,
-} from "../redux/actions/userActions";
-import { stringRegexPattern, addASpace } from "../utils";
-
-import "./Index.css";
+} from "../../redux/actions/userActions";
+import { stringRegexPattern, addASpace } from "../../utils";
 
 const todaysDate = new Date().toLocaleDateString();
 
@@ -109,11 +108,17 @@ class IndexPage extends React.PureComponent {
   };
 
   resetData = () => {
+    const { getDataIndexPage } = this.props;
     this.setState({
       firstName: "",
       lastName: "",
     });
-    this.props.getDataIndexPage();
+    getDataIndexPage();
+  };
+
+  clearMessages = () => {
+    const { resetDeletedMessageFuncProp } = this.props;
+    resetDeletedMessageFuncProp();
   };
 
   logOutUser = () => {
@@ -139,16 +144,11 @@ class IndexPage extends React.PureComponent {
       getDataIndexPage,
       userName,
       changedColorProp,
+      deletedEmployeeMessage,
     } = this.props;
 
     if (loading === true) {
-      return (
-        <div className="Hero" id="hero-height">
-          <div className="HeroGroup" id="hero-group-height">
-            <p>Loading please wait ...</p>
-          </div>
-        </div>
-      );
+      return <Loading />;
     }
 
     return (
@@ -232,6 +232,7 @@ class IndexPage extends React.PureComponent {
               Log Out
             </button>
           </div>
+
           <div className="flex-box-row" style={{ cursor: "pointer" }}>
             <button
               className={
@@ -255,7 +256,27 @@ class IndexPage extends React.PureComponent {
             >
               Sort By Last Name
             </button>
+            <button
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
+              type="button"
+              onClick={this.clearMessages}
+            >
+              Clear all messages
+            </button>
           </div>
+
+          <div>
+            {deletedEmployeeMessage.length > 0 ? (
+              <h3 className="deleted-employee-message">
+                {deletedEmployeeMessage}
+              </h3>
+            ) : null}
+          </div>
+
           <div className="flex-box-row">
             <input
               className="search-bar"
@@ -327,10 +348,27 @@ class IndexPage extends React.PureComponent {
                       <td>{value.companyRole}</td>
                       <td>{value.name}</td>
                       <td>{addASpace(value.lastName)}</td>
-                      <td>{value.personalEmail}</td>
-                      <td>{value.phoneNumber}</td>
-                      <td>{value.companyEmail}</td>
-                      <td>{value.companyNumber}</td>
+                      <td>
+                        <a href={`mailto:${value.personalEmail}`}>
+                          {value.personalEmail}
+                        </a>
+                      </td>
+                      <td>
+                        <a href={`tel:${value.phoneNumber}`}>
+                          {value.phoneNumber}{" "}
+                        </a>
+                      </td>
+                      <td>
+                        {" "}
+                        <a href={`mailto:${value.companyEmail}`}>
+                          {value.companyEmail}
+                        </a>
+                      </td>
+                      <td>
+                        <a href={`tel:${value.companyNumber}`}>
+                          {value.companyNumber}
+                        </a>
+                      </td>
                       <td>{value.slackID}</td>
                       <td>{value.salary}</td>
                       <td>
@@ -376,6 +414,7 @@ function mapStateToProps(state) {
     salariesTotal: state.userReducer.salariesTotal,
     userName: state.userReducer.userName,
     changedColorProp: state.userReducer.changedColor,
+    deletedEmployeeMessage: state.userReducer.deletedEmployeeMessage,
   };
 }
 
@@ -398,6 +437,8 @@ function mapDispatchToProps(dispatch) {
     ),
     sortByFirstNameFuncProp: bindActionCreators(sortByFirstNameRedux, dispatch),
     sortByLastNameFuncProp: bindActionCreators(sortByLastNameRedux, dispatch),
+    resetDeletedMessageFuncProp: () =>
+      dispatch({ type: "RESET_DELETED_MESSAGE" }),
   };
 }
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeColorRedux } from "../redux/actions/userActions";
-import sunImage from "../images/sun.png";
-import moonImage from "../images/moon.png";
+import { changeColorRedux } from "../../redux/actions/userActions";
+import sunImage from "../../images/sun.png";
+import moonImage from "../../images/moon.png";
 
 class ChangeBackground extends React.Component {
   constructor(props) {
