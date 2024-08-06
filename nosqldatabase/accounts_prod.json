@@ -35,18 +35,6 @@
     "salary": "175000",
     "companyRole": "Project Manager"
   },
-  "GalGadot": {
-    "name": "Gal",
-    "lastName": "Gadot",
-    "userName": "GalGadot",
-    "personalEmail": "galgadot@gmail.com",
-    "phoneNumber": "202-395-3959",
-    "companyEmail": "galgadot@visa.com",
-    "companyNumber": "202-485-4758",
-    "slackID": "GalGadot",
-    "salary": "175000",
-    "companyRole": "Project Manager"
-  },
   "SelenaGomez": {
     "name": "Selena",
     "lastName": "Gomez",
