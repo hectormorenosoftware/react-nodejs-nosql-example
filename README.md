@@ -26,4 +26,12 @@ www.heroku.com
 
 https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
+To use FaceTime to make calls if you are using OSX
+
+1. Command + Space(Search for FaceTime).
+2. Once you have FaceTime open on the left corner in the top next to the Apple icon in your Mac
+   ,Macbook Air, or Macbook Pro click on the FaceTime text and in the drop-down menu choose Preferences.
+3. In the section "Default for Calls:" click on the drop-down menu and choose FaceTime to be able to use
+   FaceTime to call employees once you click on a phone number.
+
 Created by: Hector Moreno Gomez
