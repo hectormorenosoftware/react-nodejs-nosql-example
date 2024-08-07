@@ -85,6 +85,10 @@ class IndexPage extends React.PureComponent {
       searchByLastNameFuncProp,
     } = this.props;
 
+    if (firstName.length === 0 && lastName.length === 0) {
+      return null;
+    }
+
     if (firstName.length === 0) {
       return searchByLastNameFuncProp(lastName);
     }
