@@ -21,7 +21,12 @@ const todaysDate = new Date().toLocaleDateString();
 class IndexPage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { firstName: "", lastName: "" };
+    this.state = {
+      firstName: "",
+      lastName: "",
+      areYouSure: false,
+      chosenArrayObjIndex: 0,
+    };
   }
   componentDidMount() {
     const { data, history, loginSuccess } = this.props;
@@ -133,14 +138,32 @@ class IndexPage extends React.PureComponent {
 
   deleteUser = (userName) => {
     this.props.deleteEmployeeFuncProp(userName);
-    this.setState({
-      firstName: "",
-      lastName: "",
+    this.setState((state, props) => {
+      return {
+        firstName: "",
+        lastName: "",
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      };
     });
   };
 
+  areYouSureFunc = (val, agreement) => {
+    if (agreement === true) {
+      return this.setState((state, props) => {
+        return { areYouSure: !state.areYouSure, chosenArrayObjIndex: val };
+      });
+    }
+
+    if (agreement === false) {
+      return this.setState((state, props) => {
+        return { areYouSure: false, chosenArrayObjIndex: 0 };
+      });
+    }
+  };
+
   render() {
-    const { firstName, lastName } = this.state;
+    const { firstName, lastName, areYouSure, chosenArrayObjIndex } = this.state;
     const {
       loading,
       data,
@@ -376,13 +399,39 @@ class IndexPage extends React.PureComponent {
                       <td>{value.slackID}</td>
                       <td>{value.salary}</td>
                       <td>
-                        <button
-                          type="text"
-                          className="delete-button"
-                          onClick={this.deleteUser.bind(this, value.userName)}
-                        >
-                          Delete
-                        </button>
+                        {areYouSure === false ? (
+                          <button
+                            type="text"
+                            className="delete-button"
+                            onClick={this.areYouSureFunc.bind(this, i, true)}
+                          >
+                            Delete
+                          </button>
+                        ) : areYouSure === true && chosenArrayObjIndex === i ? (
+                          <React.Fragment>
+                            <button
+                              className="delete-button"
+                              type="button"
+                              onClick={this.deleteUser.bind(
+                                this,
+                                value.userName
+                              )}
+                            >
+                              Yes
+                            </button>
+                            <button
+                              className={
+                                changedColorProp === true
+                                  ? "client-button-two"
+                                  : "client-button"
+                              }
+                              type="button"
+                              onClick={this.areYouSureFunc.bind(this, i, false)}
+                            >
+                              No
+                            </button>
+                          </React.Fragment>
+                        ) : null}
                       </td>
                     </tr>
                   );
