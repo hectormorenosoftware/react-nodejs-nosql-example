@@ -247,7 +247,7 @@ class IndexPage extends React.PureComponent {
               type="button"
               onClick={() => this.props.sortByFirstNameFuncProp()}
             >
-              Sort By Name
+              Sort By First Name
             </button>
             <button
               className={
