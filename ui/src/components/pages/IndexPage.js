@@ -104,25 +104,48 @@ class IndexPage extends React.PureComponent {
     if (firstName.length > 0 && lastName.length > 0) {
       getIndividualUserDataIndexPage(firstName.concat(lastName));
     }
+
+    this.setState((state, props) => {
+      return {
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      };
+    });
   };
 
   routeToCreateEmployee = () => {
     const { history } = this.props;
     history.push("/create-employee");
+    this.setState((state, props) => {
+      return {
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      };
+    });
   };
 
   routeToCreateAdmin = () => {
     const { history } = this.props;
     history.push("/create-admin");
+    this.setState((state, props) => {
+      return {
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      };
+    });
   };
 
   resetData = () => {
     const { getDataIndexPage } = this.props;
-    this.setState({
-      firstName: "",
-      lastName: "",
-    });
     getDataIndexPage();
+    this.setState((state, props) => {
+      return {
+        firstName: "",
+        lastName: "",
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      };
+    });
   };
 
   clearMessages = () => {
@@ -134,6 +157,12 @@ class IndexPage extends React.PureComponent {
     const { history, resetAllDataFuncProp } = this.props;
     resetAllDataFuncProp();
     history.push("/");
+    this.setState((state, props) => {
+      return {
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      };
+    });
   };
 
   deleteUser = (userName) => {
@@ -243,7 +272,15 @@ class IndexPage extends React.PureComponent {
                   : "client-button"
               }
               type="button"
-              onClick={getDataIndexPage}
+              onClick={() => {
+                getDataIndexPage();
+                this.setState((state, props) => {
+                  return {
+                    areYouSure: false,
+                    chosenArrayObjIndex: 0,
+                  };
+                });
+              }}
             >
               Get Data
             </button>
@@ -268,7 +305,15 @@ class IndexPage extends React.PureComponent {
                   : "client-button"
               }
               type="button"
-              onClick={() => this.props.sortByFirstNameFuncProp()}
+              onClick={() => {
+                this.props.sortByFirstNameFuncProp();
+                this.setState((state, props) => {
+                  return {
+                    areYouSure: false,
+                    chosenArrayObjIndex: 0,
+                  };
+                });
+              }}
             >
               Sort By First Name
             </button>
@@ -279,7 +324,15 @@ class IndexPage extends React.PureComponent {
                   : "client-button"
               }
               type="button"
-              onClick={() => this.props.sortByLastNameFuncProp()}
+              onClick={() => {
+                this.props.sortByLastNameFuncProp();
+                this.setState((state, props) => {
+                  return {
+                    areYouSure: false,
+                    chosenArrayObjIndex: 0,
+                  };
+                });
+              }}
             >
               Sort By Last Name
             </button>
