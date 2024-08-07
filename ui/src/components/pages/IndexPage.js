@@ -91,25 +91,39 @@ class IndexPage extends React.PureComponent {
     } = this.props;
 
     if (firstName.length === 0 && lastName.length === 0) {
+      this.setState({
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      });
       return null;
     }
 
     if (firstName.length === 0) {
+      this.setState({
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      });
       return searchByLastNameFuncProp(lastName);
     }
     if (lastName.length === 0) {
+      this.setState({
+        areYouSure: false,
+        chosenArrayObjIndex: 0,
+      });
       return searchUserByNameFuncProp(firstName);
     }
 
     if (firstName.length > 0 && lastName.length > 0) {
-      getIndividualUserDataIndexPage(firstName.concat(lastName));
-    }
-
-    this.setState((state, props) => {
-      return {
+      this.setState({
         areYouSure: false,
         chosenArrayObjIndex: 0,
-      };
+      });
+      return getIndividualUserDataIndexPage(firstName.concat(lastName));
+    }
+
+    this.setState({
+      areYouSure: false,
+      chosenArrayObjIndex: 0,
     });
   };
 
