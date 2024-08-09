@@ -5,10 +5,9 @@ import { changeColorRedux } from "../../redux/actions/userActions";
 import sunImage from "../../images/sun.png";
 import moonImage from "../../images/moon.png";
 
-class ChangeBackground extends React.Component {
+class ChangeBackground extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   changeBackgroundColor = () => {
