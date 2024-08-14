@@ -15,15 +15,19 @@ class ChangeBackground extends React.PureComponent {
 
     changeBackgroundColorPropFunc();
     if (document.body.style.backgroundColor === "") {
-      return (document.body.style.backgroundColor = "black");
+      return (document.body.style.backgroundColor = "#1d2a35");
     }
 
-    if (document.body.style.backgroundColor === "black") {
+    if (document.body.style.backgroundColor === "#1d2a35") {
       return (document.body.style.backgroundColor = "#016fd0");
     }
 
     if (document.body.style.backgroundColor === "rgb(1, 111, 208)") {
-      return (document.body.style.backgroundColor = "black");
+      return (document.body.style.backgroundColor = "#1d2a35");
+    }
+
+    if (document.body.style.backgroundColor === "rgb(29, 42, 53)") {
+      return (document.body.style.backgroundColor = "#016fd0");
     }
   };
 
