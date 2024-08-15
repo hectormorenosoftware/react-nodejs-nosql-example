@@ -224,6 +224,9 @@ class IndexPage extends React.PureComponent {
     return (
       <React.Fragment>
         <div>
+          <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+            <ChangeBackground stylesProp={null} />
+          </div>
           <div
             style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
           >
@@ -240,14 +243,6 @@ class IndexPage extends React.PureComponent {
             >
               Logged In As: {userName.replace(/([a-z])([A-Z])/g, "$1 $2")}
             </h3>
-            <ChangeBackground
-              stylesProp={{
-                position: "absolute",
-                right: "0",
-                marginRight: "1rem",
-                marginTop: "4rem",
-              }}
-            />
           </div>
 
           <div

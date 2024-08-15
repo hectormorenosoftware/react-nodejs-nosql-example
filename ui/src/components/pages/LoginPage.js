@@ -102,7 +102,12 @@ class LoginPage extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <h1 id="align-text">Employee Management Login Portal</h1>
+        <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+          <ChangeBackground stylesProps={null} />
+        </div>
+        <div style={{ position: "relative" }}>
+          <h1 id="align-text">Employee Management Login Portal</h1>
+        </div>
 
         <div className="flexbox-column">
           <input
@@ -164,7 +169,6 @@ class LoginPage extends React.PureComponent {
             >
               Login
             </button>
-            <ChangeBackground stylesProps={null} />
           </div>
         </div>
       </React.Fragment>
