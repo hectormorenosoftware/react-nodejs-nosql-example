@@ -38,8 +38,8 @@ class ChangeBackground extends React.PureComponent {
         onClick={this.changeBackgroundColor}
         src={changedColorProp ? sunImage : moonImage}
         style={{
-          width: "50px",
-          height: "50px",
+          width: "35px",
+          height: "35px",
           borderRadius: "40px",
           cursor: "pointer",
           ...stylesProp,

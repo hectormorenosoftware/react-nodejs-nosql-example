@@ -6,6 +6,7 @@ import ChangeBackground from "../representational/ChangeBackground";
 import Loading from "../representational/Loading";
 import { loginRedux } from "../../redux/actions/userActions";
 import { stringRegexPattern, passwordRegexPattern } from "../../utils";
+import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 class LoginPage extends React.PureComponent {
   constructor(props) {
@@ -105,7 +106,15 @@ class LoginPage extends React.PureComponent {
         <div style={{ display: "flex", flexDirection: "row-reverse" }}>
           <ChangeBackground stylesProps={null} />
         </div>
-        <div style={{ position: "relative" }}>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
           <h1 id="align-text">Employee Management Login Portal</h1>
         </div>
 
@@ -121,7 +130,7 @@ class LoginPage extends React.PureComponent {
           />
           {isUserNameValid === false ? (
             <p className="form-errors">
-              Username can not contain numbers or special characters.
+              Username can not contain numbers or special characters
             </p>
           ) : null}
           <input
@@ -135,12 +144,12 @@ class LoginPage extends React.PureComponent {
           />
           {isPasswordValid === false ? (
             <p className="form-errors">
-              Password can not contain special characters.
+              Password can not contain special characters
             </p>
           ) : null}
           {formErrors ? (
             <p className="form-errors">
-              You need a username and password to log in.
+              You need a username and password to log in
             </p>
           ) : null}
           {errorMessage.length > 0 ? (

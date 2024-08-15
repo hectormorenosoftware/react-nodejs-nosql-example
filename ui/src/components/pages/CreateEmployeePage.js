@@ -449,7 +449,7 @@ class CreateEmployeePage extends React.PureComponent {
         ) : null}
         {formErrors ? (
           <p className="form-errors">
-            This form has errors and can not be submitted.
+            This form has errors and can not be submitted
           </p>
         ) : null}
         <button

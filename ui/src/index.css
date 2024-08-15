@@ -215,12 +215,12 @@ input::placeholder {
 
 .form-errors {
   opacity: 0;
-  color: yellow;
+  color: #ffbb00;
   animation: BlinkingAnimation 1.7s linear infinite;
 }
 
 .form-warning {
   opacity: 0;
-  color: yellow;
+  color: #ffbb00;
   animation: BlinkingAnimation 1.7s linear infinite;
 }
