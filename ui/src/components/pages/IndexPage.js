@@ -15,6 +15,7 @@ import {
   sortByLastNameRedux,
 } from "../../redux/actions/userActions";
 import { stringRegexPattern, addASpace } from "../../utils";
+import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 const todaysDate = new Date().toLocaleDateString();
 
@@ -224,8 +225,18 @@ class IndexPage extends React.PureComponent {
     return (
       <React.Fragment>
         <div>
-          <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-            <ChangeBackground stylesProp={null} />
+          <div
+            style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+          >
+            <img
+              src={MicrosoftLogo}
+              width={"50px"}
+              height={"50px"}
+              style={{
+                justifySelf: "left",
+              }}
+            />
+            <ChangeBackground stylesProp={{ justifySelf: "right" }} />
           </div>
           <div
             style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
