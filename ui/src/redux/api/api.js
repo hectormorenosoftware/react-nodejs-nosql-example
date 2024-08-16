@@ -101,7 +101,9 @@ async function createEmployeeFunc(
   companyNumber,
   slackID,
   salary,
-  companyRole
+  companyRole,
+  notes,
+  progress
 ) {
   try {
     let url = null;
@@ -129,6 +131,8 @@ async function createEmployeeFunc(
         slackID: slackID,
         salary: salary,
         companyRole: companyRole,
+        notes: notes,
+        progress: progress,
       }),
       headers: myHeaders,
     });
@@ -245,6 +249,60 @@ async function sortByLastName() {
   }
 }
 
+async function updatesNotesAndProgress(details) {
+  const {
+    name,
+    lastName,
+    userName,
+    personalEmail,
+    phoneNumber,
+    companyEmail,
+    companyNumber,
+    slackID,
+    salary,
+    companyRole,
+    notes,
+    progress,
+  } = details;
+
+  try {
+    let url = null;
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/update-user-notes-and-progress";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "http://localhost:5000/update-user-notes-and-progress";
+    }
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+
+    const res = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        name: name,
+        lastName: lastName,
+        userName: userName,
+        personalEmail: personalEmail,
+        phoneNumber: phoneNumber,
+        companyEmail: companyEmail,
+        companyNumber: companyNumber,
+        slackID: slackID,
+        salary: salary,
+        companyRole: companyRole,
+        notes: notes,
+        progress: progress,
+      }),
+      headers: myHeaders,
+    });
+    const data = await res.json();
+
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 export {
   getUsersTableData,
   getUserTableData,
@@ -256,4 +314,5 @@ export {
   searchUserByLastName,
   sortByFirstName,
   sortByLastName,
+  updatesNotesAndProgress,
 };

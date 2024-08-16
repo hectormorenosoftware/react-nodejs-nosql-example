@@ -201,6 +201,8 @@ if (cluster.isMaster) {
       slackID,
       salary,
       companyRole,
+      notes,
+      progress,
     } = req.body;
 
     if (process.env.NODE_ENV === "development") {
@@ -218,6 +220,8 @@ if (cluster.isMaster) {
         slackID,
         salary,
         companyRole,
+        notes,
+        progress,
       };
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
@@ -253,6 +257,8 @@ if (cluster.isMaster) {
         slackID,
         salary,
         companyRole,
+        notes,
+        progress,
       };
 
       const jsonDataToWrite = JSON.stringify(jsonDataToModify);
@@ -484,6 +490,97 @@ if (cluster.isMaster) {
       });
     }
     return res.send([]);
+  });
+
+  app.put("/update-user-notes-and-progress", (req, res) => {
+    const {
+      name,
+      lastName,
+      personalEmail,
+      userName,
+      phoneNumber,
+      companyEmail,
+      companyNumber,
+      slackID,
+      salary,
+      companyRole,
+      notes,
+      progress,
+    } = req.body;
+
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      jsonDataToModify[userName] = {
+        name,
+        lastName,
+        userName,
+        personalEmail,
+        phoneNumber,
+        companyEmail,
+        companyNumber,
+        slackID,
+        salary,
+        companyRole,
+        notes,
+        progress,
+      };
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync("./nosqldatabase/accounts_dev.json", jsonDataToWrite);
+
+      const dataToSend = fs.readFileSync("./nosqldatabase/accounts_dev.json");
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      const sumAllSalaries = arrToSend.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({
+        message: "Successfully updates notes and progress for task",
+        data: arrToSend.sort(sortFunc),
+        sumAllSalaries,
+      });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      jsonDataToModify[userName] = {
+        name,
+        lastName,
+        userName,
+        personalEmail,
+        phoneNumber,
+        companyEmail,
+        companyNumber,
+        slackID,
+        salary,
+        companyRole,
+        notes,
+        progress,
+      };
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync("./nosqldatabase/accounts_prod.json", jsonDataToWrite);
+
+      const dataToSend = fs.readFileSync("./nosqldatabase/accounts_prod.json");
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      const sumAllSalaries = arrToSend.reduce((accumulator, currentValue) => {
+        return accumulator + Number(currentValue.salary);
+      }, 0);
+
+      return res.send({
+        message: "Successfully updates notes and progress for task",
+        data: arrToSend.sort(sortFunc),
+        sumAllSalaries,
+      });
+    }
   });
 
   // All workers use this port

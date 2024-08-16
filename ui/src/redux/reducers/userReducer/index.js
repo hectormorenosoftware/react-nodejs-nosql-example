@@ -33,6 +33,9 @@ import {
   SORT_BY_LAST_NAME_FAILURE,
   CHANGED_COLOR,
   RESET_DELETED_MESSAGE,
+  UPDATE_NOTES_AND_TASK_REQUEST,
+  UPDATE_NOTES_AND_TASK_SUCCESS,
+  UPDATE_NOTES_AND_TASK_FAILURE,
 } from "../../types";
 
 const INTIAL_STATE = {
@@ -295,6 +298,31 @@ function userReducer(state = INTIAL_STATE, action) {
       };
 
     case SORT_BY_LAST_NAME_FAILURE:
+      return {
+        ...state,
+        error: true,
+        loading: false,
+        data: [],
+        salariesTotal: 0,
+      };
+
+    case UPDATE_NOTES_AND_TASK_REQUEST:
+      return {
+        ...state,
+        error: false,
+        loading: true,
+        data: [],
+        salariesTotal: 0,
+      };
+    case UPDATE_NOTES_AND_TASK_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        data: [...action.payload.data],
+        salariesTotal: action.payload.sumAllSalaries,
+      };
+    case UPDATE_NOTES_AND_TASK_FAILURE:
       return {
         ...state,
         error: true,

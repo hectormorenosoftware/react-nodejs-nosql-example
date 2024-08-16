@@ -5,11 +5,13 @@ import IndexPage from "./components/pages/IndexPage";
 import LoginPage from "./components/pages/LoginPage";
 import AdminPage from "./components/pages/AdminPage";
 import CreateEmployeePage from "./components/pages/CreateEmployeePage";
+import EditNotes from "./components/pages/EditNotes";
 
 class App extends React.PureComponent {
   render() {
     return (
       <Switch>
+        <Route exact path="/edit-notes" render={() => <EditNotes />}></Route>
         <Route
           exact
           path="/create-employee"

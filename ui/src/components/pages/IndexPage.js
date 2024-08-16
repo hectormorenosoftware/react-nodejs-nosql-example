@@ -139,6 +139,12 @@ class IndexPage extends React.PureComponent {
     });
   };
 
+  routeToEditNotes = (userName) => {
+    const { history, getIndividualUserDataIndexPage } = this.props;
+    history.push("/edit-notes");
+    getIndividualUserDataIndexPage(userName);
+  };
+
   routeToCreateAdmin = () => {
     const { history } = this.props;
     history.push("/create-admin");
@@ -427,9 +433,12 @@ class IndexPage extends React.PureComponent {
                 <th>Company Email</th>
                 <th>Company Number</th>
                 <th>Slack ID</th>
+                <th>Notes</th>
+                <th>Status</th>
                 <th>
                   Salary <br></br> Salaries Total: {salariesTotal}
                 </th>
+                <th>Edit Notes</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -470,7 +479,29 @@ class IndexPage extends React.PureComponent {
                         </a>
                       </td>
                       <td>{value.slackID}</td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        {value.notes.length === 0
+                          ? "No notes yet"
+                          : value.notes}
+                      </td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        {value.progress.length === 0
+                          ? "You need to have a note to be able to select a status"
+                          : value.progress}
+                      </td>
                       <td>{value.salary}</td>
+                      <td>
+                        <button
+                          type="button"
+                          className="edit-button"
+                          onClick={this.routeToEditNotes.bind(
+                            this,
+                            value.userName
+                          )}
+                        >
+                          Edit Notes
+                        </button>
+                      </td>
                       <td>
                         {areYouSure === false ? (
                           <button

@@ -9,7 +9,9 @@
     "companyNumber": "202-584-8737",
     "slackID": "EmmaWattson",
     "salary": "175000",
-    "companyRole": "Project Manager"
+    "companyRole": "Project Manager",
+    "notes": "",
+    "progress": ""
   },
   "NataliePortman": {
     "name": "Natalie",
@@ -21,7 +23,9 @@
     "companyNumber": "202-495-8744",
     "slackID": "NataliePortman",
     "salary": "175000",
-    "companyRole": "Project Manager"
+    "companyRole": "Project Manager",
+    "notes": "",
+    "progress": ""
   },
   "JessicaAlba": {
     "name": "Jessica",
@@ -33,7 +37,9 @@
     "companyNumber": "202-485-7484",
     "slackID": "JessicaAlba",
     "salary": "175000",
-    "companyRole": "Project Manager"
+    "companyRole": "Project Manager",
+    "notes": "",
+    "progress": ""
   },
   "SelenaGomez": {
     "name": "Selena",
@@ -45,7 +51,9 @@
     "companyNumber": "202-304-5259",
     "slackID": "SelenaGomez",
     "salary": "175000",
-    "companyRole": "Backend Engineer"
+    "companyRole": "Backend Engineer",
+    "notes": "",
+    "progress": ""
   },
   "RashidaJones": {
     "name": "Rashida",
@@ -57,7 +65,9 @@
     "companyNumber": "202-783-4885",
     "slackID": "RashidaJones",
     "salary": "175000",
-    "companyRole": "Backend Engineer"
+    "companyRole": "Backend Engineer",
+    "notes": "",
+    "progress": ""
   },
   "JJAbrams": {
     "name": "JJ",
@@ -69,7 +79,9 @@
     "companyNumber": "206-777-3848",
     "slackID": "JJAbrams",
     "salary": "178000",
-    "companyRole": "Senior React JS Developer and Backend Engineer"
+    "companyRole": "Senior React JS Developer and Backend Engineer",
+    "notes": "",
+    "progress": ""
   },
   "AeliusOtho": {
     "name": "Aelius",
@@ -81,7 +93,9 @@
     "companyNumber": "202-485-8758",
     "slackID": "AeliusOtho",
     "salary": "175000",
-    "companyRole": "Senior React JS Developer and Node JS Developer"
+    "companyRole": "Senior React JS Developer and Node JS Developer",
+    "notes": "",
+    "progress": ""
   },
   "PorciaScaevola": {
     "name": "Porcia",
@@ -93,7 +107,9 @@
     "companyNumber": "202-276-8787",
     "slackID": "PorciaScaevola",
     "salary": "175000",
-    "companyRole": "Senior React JS and Node JS Developer"
+    "companyRole": "Senior React JS and Node JS Developer",
+    "notes": "",
+    "progress": ""
   },
   "VitusTullius": {
     "name": "Vitus",
@@ -105,6 +121,8 @@
     "companyNumber": "202-878-7458",
     "slackID": "VitusTullius",
     "salary": "198000",
-    "companyRole": "Project Manager"
+    "companyRole": "Project Manager",
+    "notes": "",
+    "progress": ""
   }
 }

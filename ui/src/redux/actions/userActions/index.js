@@ -33,6 +33,9 @@ import {
   SORT_BY_LAST_NAME_FAILURE,
   CHANGED_COLOR,
   RESET_DELETED_MESSAGE,
+  UPDATE_NOTES_AND_TASK_REQUEST,
+  UPDATE_NOTES_AND_TASK_SUCCESS,
+  UPDATE_NOTES_AND_TASK_FAILURE,
 } from "../../types";
 import {
   getUsersTableData,
@@ -45,6 +48,7 @@ import {
   searchUserByLastName,
   sortByFirstName,
   sortByLastName,
+  updatesNotesAndProgress,
 } from "../../api/api";
 
 export function resetDeletedMessageRedux() {
@@ -137,7 +141,9 @@ export function createEmployeeRedux(
   companyNumber,
   slackID,
   salary,
-  companyRole
+  companyRole,
+  notes,
+  progress
 ) {
   return async function (dispatch) {
     dispatch({ type: CREATE_EMPLOYEE_REQUEST });
@@ -152,12 +158,54 @@ export function createEmployeeRedux(
         companyNumber,
         slackID,
         salary,
-        companyRole
+        companyRole,
+        notes,
+        progress
       );
 
       dispatch({ type: CREATE_EMPLOYEE_SUCCESS, payload: data });
     } catch (e) {
       dispatch({ type: CREATE_EMPLOYEE_FAILURE });
+      throw new Error(e);
+    }
+  };
+}
+
+export function updateTaskAndProgressRedux(
+  name,
+  lastName,
+  userName,
+  personalEmail,
+  phoneNumber,
+  companyEmail,
+  companyNumber,
+  slackID,
+  salary,
+  companyRole,
+  notes,
+  progress
+) {
+  return async function (dispatch) {
+    dispatch({ type: UPDATE_NOTES_AND_TASK_REQUEST });
+    const data = await updatesNotesAndProgress({
+      name,
+      lastName,
+      userName,
+      personalEmail,
+      phoneNumber,
+      companyEmail,
+      companyNumber,
+      slackID,
+      salary,
+      companyRole,
+      notes,
+      progress,
+    });
+
+    dispatch({ type: UPDATE_NOTES_AND_TASK_SUCCESS, payload: data });
+    try {
+    } catch (e) {
+      dispatch({ type: UPDATE_NOTES_AND_TASK_FAILURE });
       throw new Error(e);
     }
   };

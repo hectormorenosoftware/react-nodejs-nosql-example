@@ -277,7 +277,9 @@ class CreateEmployeePage extends React.PureComponent {
         companyNumber,
         slackID,
         salary,
-        companyRole
+        companyRole,
+        "",
+        ""
       );
       this.setState({
         name: "",
