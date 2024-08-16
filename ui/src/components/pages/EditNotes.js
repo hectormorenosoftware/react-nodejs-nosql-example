@@ -6,6 +6,7 @@ import {
   getUsersDataRedux,
   updateTaskAndProgressRedux,
 } from "../../redux/actions/userActions";
+import { addASpace } from "../../utils";
 import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 const selectOptions = [
@@ -126,7 +127,7 @@ class EditNotes extends React.PureComponent {
         >
           <h3 style={{ textAlign: "center" }}>
             Name: {userDetails === undefined ? null : userDetails.name}{" "}
-            {userDetails === undefined ? null : userDetails.lastName}
+            {userDetails === undefined ? null : addASpace(userDetails.lastName)}
           </h3>
         </div>
         <button
