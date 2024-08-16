@@ -115,7 +115,7 @@ class LoginPage extends React.PureComponent {
           }}
         >
           <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
-          <h1 id="align-text">Employee Management Login Portal</h1>
+          <h1 id="align-text">Project Management Tools</h1>
         </div>
 
         <div className="flexbox-column">
