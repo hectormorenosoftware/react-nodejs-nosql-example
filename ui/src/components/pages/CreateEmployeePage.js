@@ -16,6 +16,7 @@ import {
   companyRoleRegexPattern,
   lastNameRegexPattern,
 } from "../../utils";
+import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 class CreateEmployeePage extends React.PureComponent {
   constructor(props) {
@@ -327,6 +328,7 @@ class CreateEmployeePage extends React.PureComponent {
 
     return (
       <div className="flexbox-column">
+        <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
         <h1 id="align-text">Create Employee</h1>
         <h3 className="form-warning" id="align-text">
           {createEmployeeMessage.length > 0 ? createEmployeeMessage : ""}

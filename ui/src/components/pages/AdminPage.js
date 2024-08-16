@@ -12,6 +12,7 @@ import {
   lastNameRegexPattern,
   passwordRegexPattern,
 } from "../../utils";
+import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 const styles = {
   marginBottom: "10px",
@@ -161,6 +162,15 @@ class AdminPage extends React.PureComponent {
 
     return (
       <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
+        </div>
         <h1 id="align-text">Create Admin</h1>
         <h3 className="form-warning" id="align-text">
           Remember the username will be the first and last name of the person

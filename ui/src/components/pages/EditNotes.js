@@ -6,6 +6,7 @@ import {
   getUsersDataRedux,
   updateTaskAndProgressRedux,
 } from "../../redux/actions/userActions";
+import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 const selectOptions = [
   { name: "Not Started" },
@@ -114,6 +115,7 @@ class EditNotes extends React.PureComponent {
           alignItems: "center",
         }}
       >
+        <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
         <h1 style={{ textAlign: "center" }}>Edit Employee Notes</h1>
         <div
           style={{
