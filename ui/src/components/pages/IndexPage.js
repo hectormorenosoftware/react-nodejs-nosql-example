@@ -501,7 +501,7 @@ class IndexPage extends React.PureComponent {
                           {value.personalEmail}
                         </a>
                       </td>
-                      <td>
+                      <td style={{ whiteSpace: "nowrap" }}>
                         <a href={`tel:${value.phoneNumber}`}>
                           {value.phoneNumber}{" "}
                         </a>
@@ -512,7 +512,7 @@ class IndexPage extends React.PureComponent {
                           {value.companyEmail}
                         </a>
                       </td>
-                      <td>
+                      <td style={{ whiteSpace: "nowrap" }}>
                         <a href={`tel:${value.companyNumber}`}>
                           {value.companyNumber}
                         </a>
