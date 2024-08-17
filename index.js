@@ -583,6 +583,86 @@ if (cluster.isMaster) {
     }
   });
 
+  app.post("/edit-sprint-options", (req, res) => {
+    const { sprintStartedDate, sprintEndDate } = req.body;
+
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/sprintoptions_dev.json");
+      const jsonDataToModify = JSON.parse(rawData);
+
+      jsonDataToModify["sprint-options"] = {
+        sprintStartedDate,
+        sprintEndDate,
+      };
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync(
+        "./nosqldatabase/sprintoptions_dev.json",
+        jsonDataToWrite
+      );
+
+      const dataToSend = fs.readFileSync(
+        "./nosqldatabase/sprintoptions_dev.json"
+      );
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      return res.send({
+        message: "Successfully updated sprint options",
+        data: arrToSend[0],
+      });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync(
+        "./nosqldatabase/sprintoptions_prod.json"
+      );
+      const jsonDataToModify = JSON.parse(rawData);
+
+      jsonDataToModify["sprint-options"] = {
+        sprintStartedDate,
+        sprintEndDate,
+      };
+
+      const jsonDataToWrite = JSON.stringify(jsonDataToModify);
+      fs.writeFileSync(
+        "./nosqldatabase/sprintoptions_prod.json",
+        jsonDataToWrite
+      );
+
+      const dataToSend = fs.readFileSync(
+        "./nosqldatabase/sprintoptions_prod.json"
+      );
+      const jsonToSend = JSON.parse(dataToSend);
+      const arrToSend = Object.values(jsonToSend);
+
+      return res.send({
+        message: "Successfully updated sprint options",
+        data: arrToSend[0],
+      });
+    }
+  });
+
+  app.get("/sprint-options-details", (req, res) => {
+    if (process.env.NODE_ENV === "development") {
+      const rawData = fs.readFileSync("./nosqldatabase/sprintoptions_dev.json");
+      const jsonDataToModify = JSON.parse(rawData);
+      const arrData = Object.values(jsonDataToModify);
+
+      return res.send({ data: arrData[0] });
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const rawData = fs.readFileSync(
+        "./nosqldatabase/sprintoptions_prod.json"
+      );
+      const jsonDataToModify = JSON.parse(rawData);
+      const arrayData = Object.values(jsonDataToModify);
+
+      return res.send({ data: arrayData[0] });
+    }
+  });
+
   // All workers use this port
   app.listen(process.env.PORT || 5000, () => {
     console.log(`server listenting in port ${process.env.PORT || 5000}`);

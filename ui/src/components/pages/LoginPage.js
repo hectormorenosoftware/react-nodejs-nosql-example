@@ -106,14 +106,7 @@ class LoginPage extends React.PureComponent {
         <div style={{ display: "flex", flexDirection: "row-reverse" }}>
           <ChangeBackground stylesProps={null} />
         </div>
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <div className="flexbox-column">
           <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
           <h1 id="align-text">Project Management Tools</h1>
         </div>

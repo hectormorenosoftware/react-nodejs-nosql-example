@@ -13,8 +13,13 @@ import {
   searchByLastNameRedux,
   sortByFirstNameRedux,
   sortByLastNameRedux,
+  getSprintOptionsRedux,
 } from "../../redux/actions/userActions";
-import { stringRegexPattern, addASpace } from "../../utils";
+import {
+  stringRegexPattern,
+  addASpace,
+  differenceInTwoDays,
+} from "../../utils";
 import MicrosoftLogo from "../../images/microsoftlogo.png";
 
 const todaysDate = new Date().toLocaleDateString();
@@ -30,14 +35,21 @@ class IndexPage extends React.PureComponent {
     };
   }
   componentDidMount() {
-    const { data, history, loginSuccess } = this.props;
+    const {
+      data,
+      history,
+      loginSuccess,
+      getSprintOptionsFuncProp,
+      getDataIndexPage,
+    } = this.props;
 
     if (loginSuccess === false) {
       return history.push("/");
     }
 
     if (data.length === 0) {
-      return this.props.getDataIndexPage();
+      getSprintOptionsFuncProp();
+      return getDataIndexPage();
     }
 
     return null;
@@ -145,6 +157,12 @@ class IndexPage extends React.PureComponent {
     getIndividualUserDataIndexPage(userName);
   };
 
+  routeToSprintOptions = () => {
+    const { history } = this.props;
+
+    history.push("/sprint-options");
+  };
+
   routeToCreateAdmin = () => {
     const { history } = this.props;
     history.push("/create-admin");
@@ -222,6 +240,7 @@ class IndexPage extends React.PureComponent {
       userName,
       changedColorProp,
       deletedEmployeeMessage,
+      sprintOptions,
     } = this.props;
 
     if (loading === true) {
@@ -248,7 +267,15 @@ class IndexPage extends React.PureComponent {
             style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
           >
             <h3 style={{ justifySelf: "left", marginLeft: "1rem" }}>
-              Welcome! Date of Login: {todaysDate}
+              Welcome! Date of Login: {todaysDate} <br></br>
+              Days left in sprint:{" "}
+              {sprintOptions.sprintStartedDate.length > 0 &&
+              sprintOptions.sprintEndDate.length > 0
+                ? differenceInTwoDays(
+                    sprintOptions.sprintStartedDate,
+                    sprintOptions.sprintEndDate
+                  )
+                : null}
             </h3>
 
             <h3
@@ -372,6 +399,17 @@ class IndexPage extends React.PureComponent {
               onClick={this.clearMessages}
             >
               Clear all messages
+            </button>
+            <button
+              className={
+                changedColorProp === true
+                  ? "client-button-two"
+                  : "client-button"
+              }
+              type="button"
+              onClick={this.routeToSprintOptions}
+            >
+              Sprint Options
             </button>
           </div>
 
@@ -572,6 +610,7 @@ function mapStateToProps(state) {
     userName: state.userReducer.userName,
     changedColorProp: state.userReducer.changedColor,
     deletedEmployeeMessage: state.userReducer.deletedEmployeeMessage,
+    sprintOptions: state.userReducer.sprintOptions,
   };
 }
 
@@ -596,6 +635,10 @@ function mapDispatchToProps(dispatch) {
     sortByLastNameFuncProp: bindActionCreators(sortByLastNameRedux, dispatch),
     resetDeletedMessageFuncProp: () =>
       dispatch({ type: "RESET_DELETED_MESSAGE" }),
+    getSprintOptionsFuncProp: bindActionCreators(
+      getSprintOptionsRedux,
+      dispatch
+    ),
   };
 }
 

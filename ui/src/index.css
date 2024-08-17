@@ -94,6 +94,18 @@ input::placeholder {
   opacity: 0.5;
 }
 
+.select-choice {
+  cursor: pointer;
+  width: 20rem;
+  height: 2rem;
+  margin: 10px;
+}
+
+.text-area-notes {
+  width: 80%;
+  height: 10rem;
+}
+
 .client-button {
   width: 200px;
   height: 45px;

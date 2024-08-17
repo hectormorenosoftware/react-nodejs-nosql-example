@@ -109,23 +109,11 @@ class EditNotes extends React.PureComponent {
     const { notes, progress } = this.state;
 
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <div className="flexbox-column" id="align-text">
         <img src={MicrosoftLogo} width={"50px"} height={"50px"} />
-        <h1 style={{ textAlign: "center" }}>Edit Employee Notes</h1>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <h3 style={{ textAlign: "center" }}>
+        <h1>Edit Employee Notes</h1>
+        <div className="flex-box-row">
+          <h3>
             Name: {userDetails === undefined ? null : userDetails.name}{" "}
             {userDetails === undefined ? null : addASpace(userDetails.lastName)}
           </h3>
@@ -140,13 +128,8 @@ class EditNotes extends React.PureComponent {
           Go Back
         </button>
         <select
+          className="select-choice"
           onChange={this.selectOption}
-          style={{
-            cursor: "pointer",
-            width: "20rem",
-            height: "2rem",
-            margin: "10px",
-          }}
           value={progress}
         >
           <option>Please choose a status</option>
@@ -155,10 +138,10 @@ class EditNotes extends React.PureComponent {
           ))}
         </select>
         <textarea
+          className="text-area-notes"
           name="notes"
           rows="30"
           cols="30"
-          style={{ width: "80%", height: "10rem" }}
           placeholder="Add your notes about your employees tasks this sprint here."
           onChange={this.setNotes}
           value={notes}

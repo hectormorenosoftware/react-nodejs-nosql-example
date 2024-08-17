@@ -1,3 +1,4 @@
+import { editSprintOptions } from "../../api/api";
 import {
   GET_DATA,
   GET_DATA_SUCCESS,
@@ -36,16 +37,27 @@ import {
   UPDATE_NOTES_AND_TASK_REQUEST,
   UPDATE_NOTES_AND_TASK_SUCCESS,
   UPDATE_NOTES_AND_TASK_FAILURE,
+  EDIT_SPRINT_OPTIONS_REQUEST,
+  EDIT_SPRINT_OPTIONS_SUCCESS,
+  EDIT_SPRINT_OPTIONS_FAILURE,
+  GET_SPRINT_OPTIONS_REQUEST,
+  GET_SPRINT_OPTIONS_SUCCESS,
+  GET_SPRINT_OPTIONS_FAILURE,
 } from "../../types";
 
 const INTIAL_STATE = {
   error: false,
   loading: false,
   data: [],
+  sprintOptions: {
+    sprintStartedDate: "",
+    sprintEndDate: "",
+  },
   loginSuccess: false,
   createAdminMessage: "",
   createEmployeeMessage: "",
   deletedEmployeeMessage: "",
+  editedSprintOptionsMessage: "",
   salariesTotal: 0,
   userName: "",
   errorMessage: "",
@@ -54,6 +66,67 @@ const INTIAL_STATE = {
 
 function userReducer(state = INTIAL_STATE, action) {
   switch (action.type) {
+    case EDIT_SPRINT_OPTIONS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        sprintOptions: {
+          sprintStartedDate: "",
+          sprintEndDate: "",
+        },
+        editedSprintOptionsMessage: "",
+      };
+    case EDIT_SPRINT_OPTIONS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        sprintOptions: {
+          ...action.payload.data,
+        },
+        editedSprintOptionsMessage: action.payload.editedSprintOptionsMessage,
+      };
+    case EDIT_SPRINT_OPTIONS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        sprintOptions: {
+          sprintStartedDate: "",
+          sprintEndDate: "",
+        },
+        editedSprintOptionsMessage: "",
+      };
+    case GET_SPRINT_OPTIONS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        sprintOptions: {
+          sprintStartedDate: "",
+          sprintEndDate: "",
+        },
+      };
+    case GET_SPRINT_OPTIONS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        sprintOptions: {
+          ...action.payload.data,
+        },
+      };
+    case GET_SPRINT_OPTIONS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        sprintOptions: {
+          sprintStartedDate: "",
+          sprintEndDate: "",
+        },
+      };
     case RESET_DELETED_MESSAGE:
       return {
         ...state,
