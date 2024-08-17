@@ -116,7 +116,7 @@ class SprintOptions extends React.PureComponent {
         </button>
 
         <h2>
-          Days Left In Current Sprint{" "}
+          Days Left In Current Sprint:&nbsp;
           {differenceInTwoDays(
             todayTimeZone.toLocaleDateString(),
             sprintOptions.sprintEndDate
