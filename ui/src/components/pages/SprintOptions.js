@@ -123,13 +123,6 @@ class SprintOptions extends React.PureComponent {
           )}
         </h2>
 
-        <h2>
-          New Sprint Length:{" "}
-          {sprintLength.length > 0
-            ? `${sprintLength} days`
-            : "You need to select two dates to know the length of the sprint."}
-        </h2>
-
         <h2>Select a new start date for your sprint</h2>
 
         <select
@@ -153,6 +146,13 @@ class SprintOptions extends React.PureComponent {
             <option key={i}>{value.date}</option>
           ))}
         </select>
+
+        <h2>
+          New Sprint Length:{" "}
+          {sprintLength.length > 0
+            ? `${sprintLength} days`
+            : "You need to select two dates to know the length of the sprint."}
+        </h2>
 
         <button
           className={
