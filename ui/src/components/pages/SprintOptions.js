@@ -10,6 +10,14 @@ import {
 import { differenceInTwoDays } from "../../utils";
 import MicrosoftLogo from "../../images/microsoftlogo.png";
 
+let todayTimeZone = new Date();
+todayTimeZone.setDate(todayTimeZone.getDate());
+
+let tomorrowFifthteenZone = new Date();
+tomorrowFifthteenZone.setDate(tomorrowFifthteenZone.getDate() + 14);
+
+const todaysArray = [{ date: todayTimeZone.toLocaleDateString() }];
+
 class SprintOptions extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -28,11 +36,11 @@ class SprintOptions extends React.PureComponent {
         (state.sprintEndDate.length === 0 && state.sprintLength.length === 0)
     ) {
       return {
-        sprintStartedDate: props.sprintOptions.sprintStartedDate,
-        sprintEndDate: props.sprintOptions.sprintEndDate,
+        sprintStartedDate: todayTimeZone.toLocaleDateString(),
+        sprintEndDate: tomorrowFifthteenZone.toLocaleDateString(),
         sprintLength: differenceInTwoDays(
-          props.sprintOptions.sprintStartedDate,
-          props.sprintOptions.sprintEndDate
+          todayTimeZone.toLocaleDateString(),
+          tomorrowFifthteenZone.toLocaleDateString()
         ),
       };
     }
@@ -56,7 +64,7 @@ class SprintOptions extends React.PureComponent {
 
   setValue = (e) => {
     const { value, name } = e.target;
-    const { sprintStartedDate, sprintEndDate } = this.state;
+    const { sprintEndDate } = this.state;
 
     if (name === "sprintStartedDate") {
       const datesDifference = differenceInTwoDays(value, sprintEndDate);
@@ -67,7 +75,10 @@ class SprintOptions extends React.PureComponent {
     }
 
     if (name === "sprintEndDate") {
-      const datesDifference = differenceInTwoDays(sprintStartedDate, value);
+      const datesDifference = differenceInTwoDays(
+        todayTimeZone.toLocaleDateString(),
+        value
+      );
       return this.setState({
         sprintEndDate: value,
         sprintLength: datesDifference,
@@ -77,14 +88,17 @@ class SprintOptions extends React.PureComponent {
 
   saveSprintOptions = () => {
     const { editSprintOptionsFuncProps, history } = this.props;
-    const { sprintStartedDate, sprintEndDate } = this.state;
+    const { sprintEndDate } = this.state;
 
-    editSprintOptionsFuncProps(sprintStartedDate, sprintEndDate);
+    editSprintOptionsFuncProps(
+      todayTimeZone.toLocaleDateString(),
+      sprintEndDate
+    );
     return history.push("/employees");
   };
 
   render() {
-    const { changedColorProp } = this.props;
+    const { changedColorProp, sprintOptions } = this.props;
     const { sprintStartedDate, sprintEndDate, sprintLength } = this.state;
 
     return (
@@ -102,13 +116,21 @@ class SprintOptions extends React.PureComponent {
         </button>
 
         <h2>
-          Length of Sprint:{" "}
+          Days Left In Current Sprint{" "}
+          {differenceInTwoDays(
+            todayTimeZone.toLocaleDateString(),
+            sprintOptions.sprintEndDate
+          )}
+        </h2>
+
+        <h2>
+          New Sprint Length:{" "}
           {sprintLength.length > 0
             ? `${sprintLength} days`
             : "You need to select two dates to know the length of the sprint."}
         </h2>
 
-        <h2>Select a start date for your sprint</h2>
+        <h2>Select a new start date for your sprint</h2>
 
         <select
           className="select-choice"
@@ -116,11 +138,11 @@ class SprintOptions extends React.PureComponent {
           onChange={this.setValue}
           value={sprintStartedDate}
         >
-          {arrayOfDates.map((value, i) => (
+          {todaysArray.map((value, i) => (
             <option key={i}>{value.date}</option>
           ))}
         </select>
-        <h2>Select an end date for your sprint</h2>
+        <h2>Select a new end date for your sprint</h2>
         <select
           className="select-choice"
           name="sprintEndDate"

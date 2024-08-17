@@ -22,7 +22,8 @@ import {
 } from "../../utils";
 import MicrosoftLogo from "../../images/microsoftlogo.png";
 
-const todaysDate = new Date().toLocaleDateString();
+let todayTime = new Date();
+todayTime.setDate(todayTime.getDate());
 
 class IndexPage extends React.PureComponent {
   constructor(props) {
@@ -267,12 +268,12 @@ class IndexPage extends React.PureComponent {
             style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
           >
             <h3 style={{ justifySelf: "left", marginLeft: "1rem" }}>
-              Welcome! Date of Login: {todaysDate} <br></br>
+              Welcome! Date of Login: {todayTime.toLocaleDateString()} <br></br>
               Days left in sprint:{" "}
               {sprintOptions.sprintStartedDate.length > 0 &&
               sprintOptions.sprintEndDate.length > 0
                 ? differenceInTwoDays(
-                    sprintOptions.sprintStartedDate,
+                    todayTime.toLocaleDateString(),
                     sprintOptions.sprintEndDate
                   )
                 : null}

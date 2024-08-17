@@ -1,3 +1,6 @@
+let today = new Date();
+today.setDate(today.getDate());
+
 let tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
 
@@ -44,6 +47,9 @@ let tomorrowFifthteeen = new Date();
 tomorrowFifthteeen.setDate(tomorrowFifthteeen.getDate() + 15);
 
 export default [
+  {
+    date: today.toLocaleDateString(),
+  },
   {
     date: tomorrow.toLocaleDateString(),
   },
