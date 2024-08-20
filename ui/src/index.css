@@ -74,11 +74,8 @@ h6 {
 }
 
 .search-bar {
-  border-radius: 18px;
-  border: 1px solid black;
   height: 38.5px;
   width: 50%;
-  align-self: center;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -111,7 +108,7 @@ input::placeholder {
   height: 45px;
   color: white;
   border-radius: 18px;
-  border: 4px solid black;
+  border: 1.5px solid black;
   background-color: #016fd0;
   cursor: pointer;
   font-weight: 500;
@@ -132,7 +129,7 @@ input::placeholder {
   height: 45px;
   color: white;
   border-radius: 18px;
-  border: 4px solid white;
+  border: 1.5px solid white;
   background-color: #1d2a35;
   cursor: pointer;
   font-weight: 500;
@@ -146,7 +143,7 @@ input::placeholder {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   color: black;
   background-color: white;
-  border: 4px solid black;
+  border: 1.5px solid black;
 }
 
 .edit-button {
@@ -154,7 +151,7 @@ input::placeholder {
   height: 45px;
   color: white;
   border-radius: 18px;
-  border: 4px solid black;
+  border: 1.5px solid black;
   background-color: #7cbb00;
   cursor: pointer;
   font-weight: 500;
@@ -175,7 +172,7 @@ input::placeholder {
   height: 45px;
   color: white;
   border-radius: 18px;
-  border: 4px solid black;
+  border: 1.5px solid black;
   background-color: #de0a26;
   cursor: pointer;
   font-weight: 500;
