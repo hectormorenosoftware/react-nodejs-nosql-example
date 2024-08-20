@@ -115,6 +115,8 @@ class SprintOptions extends React.PureComponent {
           Go Back
         </button>
 
+        <h2>Current Sprint Start Date: {sprintOptions.sprintStartedDate}</h2>
+        <h2>Current Sprint End Date: {sprintOptions.sprintEndDate}</h2>
         <h2>
           Days Left In Current Sprint:&nbsp;
           {differenceInTwoDays(
