@@ -461,140 +461,154 @@ class IndexPage extends React.PureComponent {
             </button>
           </div>
 
-          <table className="table-data">
-            <thead>
-              <tr>
-                <th>Company Role</th>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Personal Email</th>
-                <th>Personal Number</th>
-                <th>Company Email</th>
-                <th>Company Number</th>
-                <th>Slack ID</th>
-                <th>Notes</th>
-                <th>Status</th>
-                <th>
-                  Salary <br></br> Salaries Total: {salariesTotal}
-                </th>
-                <th>Edit Notes</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.length > 0 ? (
-                data.map((value, i) => {
-                  return (
-                    <tr
-                      key={i}
-                      className={
-                        changedColorProp === true
-                          ? "second-row-background"
-                          : "first-row-background"
-                      }
-                    >
-                      <td>{value.companyRole}</td>
-                      <td>{value.name}</td>
-                      <td>{addASpace(value.lastName)}</td>
-                      <td>
-                        <a href={`mailto:${value.personalEmail}`}>
-                          {value.personalEmail}
-                        </a>
-                      </td>
-                      <td style={{ whiteSpace: "nowrap" }}>
-                        <a href={`tel:${value.phoneNumber}`}>
-                          {value.phoneNumber}{" "}
-                        </a>
-                      </td>
-                      <td>
-                        {" "}
-                        <a href={`mailto:${value.companyEmail}`}>
-                          {value.companyEmail}
-                        </a>
-                      </td>
-                      <td style={{ whiteSpace: "nowrap" }}>
-                        <a href={`tel:${value.companyNumber}`}>
-                          {value.companyNumber}
-                        </a>
-                      </td>
-                      <td>{value.slackID}</td>
-                      <td style={{ whiteSpace: "nowrap" }}>
-                        {value.notes.length === 0
-                          ? "No notes yet"
-                          : value.notes}
-                      </td>
-                      <td style={{ whiteSpace: "nowrap" }}>
-                        {value.progress.length === 0
-                          ? "You need to have a note to be able to select a status"
-                          : value.progress}
-                      </td>
-                      <td>{value.salary}</td>
-                      <td>
-                        <button
-                          type="button"
-                          className="edit-button"
-                          onClick={this.routeToEditNotes.bind(
-                            this,
-                            value.userName
-                          )}
-                        >
-                          Edit Notes
-                        </button>
-                      </td>
-                      <td>
-                        {areYouSure === false ? (
-                          <button
-                            type="text"
-                            className="delete-button"
-                            onClick={this.areYouSureFunc.bind(this, i, true)}
-                          >
-                            Delete
-                          </button>
-                        ) : areYouSure === true && chosenArrayObjIndex === i ? (
-                          <React.Fragment>
-                            <button
-                              className="delete-button"
-                              type="button"
-                              onClick={this.deleteUser.bind(
-                                this,
-                                value.userName
-                              )}
-                            >
-                              Yes
-                            </button>
-                            <button
-                              className={
-                                changedColorProp === true
-                                  ? "client-button-two"
-                                  : "client-button"
-                              }
-                              type="button"
-                              onClick={this.areYouSureFunc.bind(this, i, false)}
-                            >
-                              No
-                            </button>
-                          </React.Fragment>
-                        ) : null}
-                      </td>
-                    </tr>
-                  );
-                })
-              ) : (
+          <div
+            style={{
+              overflow: "hidden",
+              overflowY: "scroll",
+              overflowX: "scroll",
+              height: "30rem",
+            }}
+          >
+            <table className="table-data">
+              <thead>
                 <tr>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
-                  <td>No Data</td>
+                  <th>Company Role</th>
+                  <th>Name</th>
+                  <th>Last Name</th>
+                  <th>Personal Email</th>
+                  <th>Personal Number</th>
+                  <th>Company Email</th>
+                  <th>Company Number</th>
+                  <th>Slack ID</th>
+                  <th>Notes</th>
+                  <th>Status</th>
+                  <th>
+                    Salary <br></br> Salaries Total: {salariesTotal}
+                  </th>
+                  <th>Edit Notes</th>
+                  <th>Delete</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data.length > 0 ? (
+                  data.map((value, i) => {
+                    return (
+                      <tr
+                        key={i}
+                        className={
+                          changedColorProp === true
+                            ? "second-row-background"
+                            : "first-row-background"
+                        }
+                      >
+                        <td>{value.companyRole}</td>
+                        <td>{value.name}</td>
+                        <td>{addASpace(value.lastName)}</td>
+                        <td>
+                          <a href={`mailto:${value.personalEmail}`}>
+                            {value.personalEmail}
+                          </a>
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          <a href={`tel:${value.phoneNumber}`}>
+                            {value.phoneNumber}{" "}
+                          </a>
+                        </td>
+                        <td>
+                          {" "}
+                          <a href={`mailto:${value.companyEmail}`}>
+                            {value.companyEmail}
+                          </a>
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          <a href={`tel:${value.companyNumber}`}>
+                            {value.companyNumber}
+                          </a>
+                        </td>
+                        <td>{value.slackID}</td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          {value.notes.length === 0
+                            ? "No notes yet"
+                            : value.notes}
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          {value.progress.length === 0
+                            ? "You need to have a note to be able to select a status"
+                            : value.progress}
+                        </td>
+                        <td>{value.salary}</td>
+                        <td>
+                          <button
+                            type="button"
+                            className="edit-button"
+                            onClick={this.routeToEditNotes.bind(
+                              this,
+                              value.userName
+                            )}
+                          >
+                            Edit Notes
+                          </button>
+                        </td>
+                        <td>
+                          {areYouSure === false ? (
+                            <button
+                              type="text"
+                              className="delete-button"
+                              onClick={this.areYouSureFunc.bind(this, i, true)}
+                            >
+                              Delete
+                            </button>
+                          ) : areYouSure === true &&
+                            chosenArrayObjIndex === i ? (
+                            <React.Fragment>
+                              <button
+                                className="delete-button"
+                                type="button"
+                                onClick={this.deleteUser.bind(
+                                  this,
+                                  value.userName
+                                )}
+                              >
+                                Yes
+                              </button>
+                              <button
+                                className={
+                                  changedColorProp === true
+                                    ? "client-button-two"
+                                    : "client-button"
+                                }
+                                type="button"
+                                onClick={this.areYouSureFunc.bind(
+                                  this,
+                                  i,
+                                  false
+                                )}
+                              >
+                                No
+                              </button>
+                            </React.Fragment>
+                          ) : null}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </React.Fragment>
     );
