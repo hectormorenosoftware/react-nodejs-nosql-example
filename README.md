@@ -34,6 +34,6 @@ To use FaceTime to make calls if you are using OSX
 3. In the section "Default for Calls:" click on the drop-down menu and choose FaceTime to be able to use
    FaceTime to call employees once you click on a phone number.
 
-Note: I chose Node JS as the technology for my server because of libuv the C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform.
+Note: I chose Node JS as the technology for my server because of libuv the C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. https://nodejs.org/api/addons.html
 
 Created by: Hector Moreno Gomez
