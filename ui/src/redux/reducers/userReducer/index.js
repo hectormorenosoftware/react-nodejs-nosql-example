@@ -384,8 +384,6 @@ function userReducer(state = INTIAL_STATE, action) {
         ...state,
         error: false,
         loading: true,
-        data: [],
-        salariesTotal: 0,
       };
     case UPDATE_NOTES_AND_TASK_SUCCESS:
       return {
