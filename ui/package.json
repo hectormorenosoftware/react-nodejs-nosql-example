@@ -1,7 +1,7 @@
 {
   "name": "react-node-nosql-example-ui",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the GUI for Project Management Tools.",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "Hector Moreno Gomez",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/runtime": "^7.14.0",
