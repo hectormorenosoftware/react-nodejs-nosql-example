@@ -45,3 +45,5 @@ https://nodejs.org/api/addons.html
 Note: I want to remind engineers that "data" is always JSON to the UI that is sent through HTTPS requests. This NOSQL database writes and reads into a json file which is the same as Mongo DB.
 
 Created by: Hector Moreno Gomez
+Development Machine: Macbook Air 2020 M1 RAM 16GB SSD 500GB
+OS Machine: macOS Big Sur
