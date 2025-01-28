@@ -1,4 +1,4 @@
-This is a Full Stack Web Application to track the progress of sprints, employee tasks, and status of employee tasks using different databases for development and production in React JS, Node JS, and NOSQL made by Hector Moreno Gomez. This software will allow you to track the status of your sprint by adding notes for each employee task. You can set the status of each employee's task to "not started", "in progress", "verifying", and "done" and you can also change the length of your sprint at any time.
+This is a Full-Stack Web Application to track the progress of sprints, employee tasks, and status of employee tasks using different databases for development and production in React JS, Node JS, and NOSQL made by Hector Moreno Gomez. This software will allow you to track the status of your sprint by adding notes for each employee task. You can set the status of each employee's task to "not started", "in progress", "verifying", and "done" and you can also change the length of your sprint at any time.
 
 To start server in development mode:
 
